@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Header from '../Header/Header';
+import Main from '../Main/Main';
+import {Route, Switch, withRouter} from 'react-router-dom';
 
 function App() {
   const [size, setSize] = React.useState({}); // ширина окна
@@ -22,9 +24,11 @@ function App() {
   
   return (
     <div className="App" ref={ref}>
+      
       <Header
         size={size}
         />
+      <Main/>
     </div>
   );
 }

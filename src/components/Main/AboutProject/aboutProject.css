@@ -1,0 +1,118 @@
+.aboutProject {
+  /* width: 98%; */
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns:  100%; */
+  /* justify-content: center; */
+  align-items: center;
+  max-width: 100%;
+  background-color: #fff;
+}
+
+.aboutProject__heading {
+  width: 89%;
+  /* max-width: 1140px; */
+  height: 50px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -1px;
+  text-align: left;
+  color: #000;
+  margin: 0;
+  margin-top: 110px;
+  margin-bottom: 23px;
+  border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__heading {
+    width: 87%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .aboutProject__heading {
+    width: 89%;
+  }
+}
+
+.aboutProject__blocks-title {
+  width: 89%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr minmax(min-content, max-content); */
+  color: #000;
+  flex-wrap: wrap;
+  /* max-width: 1140px; */
+
+  margin-top: 28px;
+
+  /* grid-template-columns: repeat(auto-fit, 550px); */
+  /* grid-row-gap: 20px; */
+  /* grid-column-gap: 17px; */
+  /* justify-content: center; */
+  /* list-style-type: none; */
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+.aboutProject__blocks-title div:last-of-type {
+  margin-right: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__blocks-title {
+    width: 87%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .aboutProject__blocks-title {
+    width: 89%;
+  }
+}
+
+.aboutProject__block-title {
+  /* max-width: 550px;
+  min-width: 284px; */
+  width: 43%;
+  margin-right: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__block-title {
+    width: 42%;
+    margin-right: 66px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .aboutProject__block-title {
+    width: 89%;
+    min-width: 284px;
+    margin-right: 0;
+  }
+}
+
+.aboutProject__block-title-heading {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+}
+
+.aboutProject__block-title-title {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 26px;
+}
