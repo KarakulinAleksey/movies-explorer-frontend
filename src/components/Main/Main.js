@@ -3,6 +3,8 @@ import "./main.css";
 import Promo from "./Promo/Promo";
 import NavTab from "./NavTab/NavTab";
 import AboutProject from "./AboutProject/AboutProject";
+import Techs from "./Techs/Techs";
+import AboutMe from "./AboutMe/AboutMe";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
@@ -15,6 +17,8 @@ export default function Header (props) {
                    <Promo />
                    <NavTab />
                    <AboutProject />
+                   <Techs />
+                   <AboutMe />
             </main>
     );
 }
