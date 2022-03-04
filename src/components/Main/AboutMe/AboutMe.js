@@ -28,22 +28,6 @@ export default function AboutMe(props) {
         	
         <img  className="aboutMe__block-title-image" src={fotoMe} alt="фото студента"/>
       </li>
-      {/* <li className="aboutMe__portfolio">
-        <div className="aboutMe__portfolio-backend">
-          <p className="aboutMe__portfolio-title">1 неделя</p>
-        </div>
-        <div className="aboutMe__portfolio-frontend">
-          <p className="aboutMe__portfolio-title">4 недели</p>
-        </div>
-      </li>
-      <li className="aboutMe__portfolio editMargin">
-        <div className="aboutMe__portfolio-backend whiteBackground">
-          <p className="aboutMe__portfolio-title">Back-end</p>
-        </div>
-        <div className="aboutMe__portfolio-frontend whiteBackground">
-          <p className="aboutMe__portfolio-title">Front-end</p>
-        </div>
-      </li> */}
     </ul>
   );
 }
