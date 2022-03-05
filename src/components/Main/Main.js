@@ -10,7 +10,7 @@ import Portfolio from './Portfolio/Portfolio';
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function Header (props) {
+export default function Main (props) {
    
 
     return (

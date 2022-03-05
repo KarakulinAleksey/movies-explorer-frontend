@@ -1,0 +1,12 @@
+.movies {
+    /* display: grid; */
+    /* grid-template-columns: 1fr; */
+    /* justify-content: center; */
+    /* align-content: center; */
+    width: 89%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+ 
+}
+
