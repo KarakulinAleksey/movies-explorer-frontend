@@ -10,9 +10,9 @@ export default function FilterCheckbox (props) {
 
     return (
             <div className="searchForm">
-                <img className="searchFormIcon" src={searchFormIcon} alt="иконка поиска"/>
-                <p className='searchFormTitle'>Фильм</p>
-                <div className='searchFormButton'>Найти</div>
+                <img className="searchForm__icon" src={searchFormIcon} alt="иконка поиска"/>
+                <p className='searchForm__title'>Фильм</p>
+                <div className='searchForm__button'>Найти</div>
             </div>
     );
 }

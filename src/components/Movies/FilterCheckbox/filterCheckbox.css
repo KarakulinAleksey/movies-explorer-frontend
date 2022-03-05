@@ -1,0 +1,27 @@
+.filterCheckbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1140px;
+  margin-top: 30px;
+}
+
+.filterCheckbox__title {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000;
+  margin: 0;
+  margin-left: 13px;
+  /* margin-top: 10px;
+  margin-bottom: 14px; */
+}
+
+.filterCheckbox__button {
+  width: 36px;
+  height: 20px;
+
+}

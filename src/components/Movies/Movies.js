@@ -1,7 +1,7 @@
 import React from 'react';
 import "./movies.css";
 import SearchForm from "./SearchForm/SearchForm";
-// import NavTab from "./NavTab/NavTab";
+import FilterCheckbox from "./FilterCheckbox/FilterCheckbox";
 // import AboutProject from "./AboutProject/AboutProject";
 // import Techs from "./Techs/Techs";
 // import AboutMe from "./AboutMe/AboutMe";
@@ -16,7 +16,7 @@ export default function Movies (props) {
     return (
             <main className="movies">
                    <SearchForm />
-                   {/* <NavTab /> */}
+                   <FilterCheckbox/>
                    {/* <AboutProject /> */}
                    {/* <Techs /> */}
                    {/* <AboutMe /> */}
