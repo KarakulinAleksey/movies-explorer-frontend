@@ -7,7 +7,7 @@ import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Header (props) {
-    console.log(props.size.clientWidth);
+    // console.log(props.size.clientWidth);
     // const history = useHistory();
     const location = useLocation();
     let className = "header header__section";
@@ -22,21 +22,21 @@ export default function Header (props) {
                     <NavLink className="header__link-movies" to="/saved-movies">Сохраненные фильмы</NavLink>
                 </div> 
       
-                <NavLink className="header__logo" to="/">
-                    <img className="header__singin" src={profile} alt="кнопка профайл"/>
+                <NavLink className="header__signin-link" to="/">
+                    <img className="header__signin" src={profile} alt="кнопка профайл"/>
                 </NavLink>
              </>
           );
         } else {
           return (   
             <>
-                <div className="header__signup-block">
+                {/* <div className="header__signup-block">
                     <NavLink className="header__link-movies" to="/movies">Фильмы</NavLink>
                     <NavLink className="header__link-movies" to="/saved-movies">Сохраненные фильмы</NavLink>
-                </div> 
+                </div>  */}
       
                 <NavLink className="header__logo" to="/">
-                    <img className="header__singin" src={iconMenu} alt="кнопка меню"/>
+                    <img className="header__signin" src={iconMenu} alt="кнопка меню"/>
                 </NavLink>
              </>
           );

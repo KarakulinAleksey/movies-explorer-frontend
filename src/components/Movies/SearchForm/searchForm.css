@@ -8,6 +8,19 @@
   border-bottom: 1px solid #e8e8e8;
 }
 
+@media screen and (max-width: 768px) {
+  .searchForm {
+    margin-top: 72px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .searchForm {
+    height: 44px;
+    margin-top: 84px;
+  }
+}
+
 .searchForm__icon {
 }
 
@@ -22,6 +35,14 @@
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 14px;
+}
+
+@media screen and (max-width: 500px) {
+  .searchForm__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0;
+  }
 }
 
 .searchForm__button {

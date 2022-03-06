@@ -3,6 +3,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import {Route, Switch, withRouter} from 'react-router-dom';
 
@@ -31,7 +32,12 @@ function App() {
         size={size}
         />
       {/* <Main/> */}
-      <Movies/>
+      {/* <Movies
+        size={size}
+        /> */}
+      <SavedMovies
+        size={size}
+        />
       <Footer/>
     </div>
   );

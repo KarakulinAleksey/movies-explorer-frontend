@@ -11,7 +11,10 @@ export default function FilterCheckbox (props) {
     return (
             <div className="filterCheckbox">
                  
-                <img className="filterCheckbox__button" src={filterCheckboxImage} alt="кнопка короткометражек"/>
+                <img className="filterCheckbox__button"
+                    src={filterCheckboxImage}
+                    alt="кнопка короткометражек"
+                />
                 <p className='filterCheckbox__title'>Короткометражки</p>
             </div>
     );

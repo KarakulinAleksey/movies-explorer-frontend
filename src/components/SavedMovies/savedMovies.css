@@ -1,8 +1,4 @@
-.movies {
-    /* display: grid; */
-    /* grid-template-columns: 1fr; */
-    /* justify-content: center; */
-    /* align-content: center; */
+.savedMovies {
     width: 89%;
     max-width: 1140px;
     margin-left: auto;
@@ -11,13 +7,13 @@
 }
 
 @media screen and (max-width: 768px) {
-    .movies {
+    .savedMovies {
       width: 92%;
     }
   }
   
   @media screen and (max-width: 320px) {
-    .movies {
+    .savedMovies {
       margin-top: 5px;
       margin-bottom: 5px;
       width: 94%;

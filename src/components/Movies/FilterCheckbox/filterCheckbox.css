@@ -7,6 +7,12 @@
   margin-top: 30px;
 }
 
+@media screen and (max-width: 500px) {
+  .filterCheckbox {
+    margin-top: 45px;
+  }
+}
+
 .filterCheckbox__title {
   font-family: Inter;
   font-style: normal;
@@ -18,6 +24,13 @@
   margin-left: 13px;
   /* margin-top: 10px;
   margin-bottom: 14px; */
+}
+
+@media screen and (max-width: 500px) {
+  .filterCheckbox__title {
+    font-size: 11px;
+    line-height: 18px;
+  }
 }
 
 .filterCheckbox__button {

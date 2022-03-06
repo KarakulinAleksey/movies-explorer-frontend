@@ -1,21 +1,17 @@
 import React from 'react';
-import "./movies.css";
-import SearchForm from "./SearchForm/SearchForm";
-import FilterCheckbox from "./FilterCheckbox/FilterCheckbox";
+import "./savedMovies.css";
+import SearchForm from "../Movies/SearchForm/SearchForm";
+import FilterCheckbox from "../Movies/FilterCheckbox/FilterCheckbox";
 import MovaviesCardList from "./MoviesCardList/MoviesCardList";
-// import AboutProject from "./AboutProject/AboutProject";
-// import Techs from "./Techs/Techs";
-// import AboutMe from "./AboutMe/AboutMe";
-// import Portfolio from './Portfolio/Portfolio';
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function Movies (props) {
+export default function SavedMovies (props) {
    
 
     return (
-            <main className="movies">
+            <main className="savedMovies">
                    <SearchForm 
                      size={props.size}
                    />

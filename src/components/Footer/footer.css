@@ -29,8 +29,9 @@
 
 @media screen and (max-width: 768px) {
   .footer {
-    margin-top: 130px;
+    margin-top: 160px;
     width: 94%;
+    grid-column-gap: 17px;
     /* grid-template-columns: 77% 1fr 1fr 1fr; */
     /* width: 87%; */
     /* margin-top: 91px; */
@@ -44,7 +45,7 @@
     grid-template-columns: 1fr;
     text-align: center;
     grid-template-rows: repeat(5, auto);
-    margin-top: 114px;
+    margin-top: 153px;
   }
 }
 
@@ -71,13 +72,14 @@
 .footer__link {
   color: #000;
   margin: 0;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 9px;
 }
 
 @media screen and (max-width: 768px) {
   .footer__link {
     margin-top: 22px;
+    margin-right: 5px;
   }
 }
 
@@ -90,14 +92,14 @@
 
 .footer__title {
   margin: 0;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 9px;
 }
 
 @media screen and (max-width: 768px) {
   .footer__title {
     margin-top: 22px;
-    margin-left: 14px;
+    margin-left: 6px;
   }
 }
 
