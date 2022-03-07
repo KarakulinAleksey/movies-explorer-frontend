@@ -1,4 +1,7 @@
-.App {
+.app {
+  display: grid;
+  grid-template-columns: 100%;
+  /* grid-template-rows: 100%; */
   background-color: #fff;
   font-family: 'Inter' , sans-serif , Arial;
   height: 100%;

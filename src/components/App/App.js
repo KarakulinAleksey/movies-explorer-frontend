@@ -1,9 +1,14 @@
 import React from 'react';
-import './App.css';
+import './app.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from "../Profile/Profile";
+import Register from "../Register/Register";
+import Login from "../Login/Login";
+import PageError from "../PageError/PageError";
+import Navigation from "../Navigation/Navigation";
 import Footer from '../Footer/Footer';
 import {Route, Switch, withRouter} from 'react-router-dom';
 
@@ -26,19 +31,24 @@ function App() {
  
   
   return (
-    <div className="App" ref={ref}>
+    <div className="app" ref={ref}>
       
-      <Header
-        size={size}
-        />
-      {/* <Main/> */}
-      {/* <Movies
+      {/* <Header
         size={size}
         /> */}
-      <SavedMovies
+      {/* <Main/> */}
+      <Movies
         size={size}
         />
-      <Footer/>
+      {/* <SavedMovies
+        size={size}
+        /> */}
+      {/* <Profile/> */}
+      {/* <Register /> */}
+      {/* <Login /> */}
+      {/* <PageError /> */}
+      <Navigation />
+      {/* <Footer/> */}
     </div>
   );
 }
