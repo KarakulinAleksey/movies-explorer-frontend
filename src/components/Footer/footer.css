@@ -13,17 +13,11 @@
   grid-template-rows: repeat(2, auto);
   grid-column-gap: 20px;
   width: 89%;
-  /* grid-template-columns: repeat(auto-fit, 90px); */
-  /* grid-gap: 10px; */
-  /* grid-column-gap: 10px; */
-  /* align-content: center; */
   justify-content: center;
   max-width: 1140px;
   margin-top: 162px;
   margin-left: auto;
   margin-right: auto;
-  /* flex-direction: column;
-  align-items: center; */
   background-color: #fff;
 }
 
@@ -32,11 +26,6 @@
     margin-top: 160px;
     width: 94%;
     grid-column-gap: 17px;
-    /* grid-template-columns: 77% 1fr 1fr 1fr; */
-    /* width: 87%; */
-    /* margin-top: 91px; */
-    /* grid-template-columns: 75% ; */
-    /* grid-template-rows: repeat(5, auto); */
   }
 }
 

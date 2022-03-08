@@ -1,5 +1,4 @@
 .login {
-  /* width: 396px; */
   display: grid;
   grid-template-columns: 1fr;
   max-width: 396px;
@@ -8,39 +7,25 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 768px) {
-  .login {
-    /* width: 92%; */
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .login {
-    /* margin-top: 5px;
-      margin-bottom: 5px;
-      width: 94%; */
-  }
-}
-
-.login__image-link{
+.login__image-link {
   margin-top: 70px;
 }
 
 @media screen and (max-width: 768px) {
-  .login__image-link{
+  .login__image-link {
     margin-top: 232px;
   }
 }
 
 @media screen and (max-width: 420px) {
-  .login__image-link{
+  .login__image-link {
     margin-left: auto;
     margin-right: auto;
     margin-top: 56px;
   }
 }
 
-.login__image{
+.login__image {
   width: 38px;
   height: 38px;
 }
@@ -56,13 +41,6 @@
   margin-bottom: 20px;
 }
 
-@media screen and (max-width: 768px) {
-  .login__title {
-    /* margin-top: 232px;
-    margin-bottom: 80px; */
-  }
-}
-
 @media screen and (max-width: 420px) {
   .login__title {
     margin-left: auto;
@@ -72,8 +50,7 @@
   }
 }
 
-.login__input-title{
- 
+.login__input-title {
   margin-top: 20px;
   margin-bottom: 0px;
   font-family: Inter;
@@ -81,13 +58,12 @@
   font-weight: normal;
   font-size: 10px;
   line-height: 12px;
-  color:#a0a0a0
+  color: #a0a0a0;
 }
 
 @media screen and (max-width: 420px) {
   .login__input-title {
     margin-left: 30px;
-    
   }
 }
 
@@ -95,8 +71,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  /* padding-top: 20px; */
-  /* padding-bottom: 10px; */
   padding: 0;
   padding-left: 15px;
   padding-right: 15px;
@@ -114,7 +88,7 @@
 
 @media screen and (max-width: 420px) {
   .login__input {
-    width: 260px; 
+    width: 260px;
   }
 }
 
@@ -134,12 +108,6 @@
   margin-right: auto;
 }
 
-@media screen and (max-width: 768px) {
-  .login__button {
-    /* margin-top: 193px; */
-  }
-}
-
 @media screen and (max-width: 420px) {
   .login__button {
     width: 260px;
@@ -149,7 +117,7 @@
   }
 }
 
-.login__title-input{
+.login__title-input {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -179,7 +147,7 @@
   color: #3456f3;
 }
 
-.login__error{
+.login__error {
   margin-top: 10px;
   margin-bottom: 0px;
   font-family: Inter;
@@ -192,9 +160,6 @@
 
 @media screen and (max-width: 420px) {
   .login__error {
-   margin-left: 30px;
+    margin-left: 30px;
   }
 }
-
-
-

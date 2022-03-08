@@ -21,12 +21,20 @@ export default function AboutMe(props) {
             заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <div className="aboutMe__blocks-title-link">
-            <NavLink className="aboutMe__block-title-link" to="/sign-in">Facebook</NavLink>
-            <NavLink className="aboutMe__block-title-link" to="/sign-in">Github</NavLink>
-          </div>         
+            <NavLink className="aboutMe__block-title-link" to="/sign-in">
+              Facebook
+            </NavLink>
+            <NavLink className="aboutMe__block-title-link" to="/sign-in">
+              Github
+            </NavLink>
+          </div>
         </div>
-        	
-        <img  className="aboutMe__block-title-image" src={fotoMe} alt="фото студента"/>
+
+        <img
+          className="aboutMe__block-title-image"
+          src={fotoMe}
+          alt="фото студента"
+        />
       </li>
     </ul>
   );

@@ -1,9 +1,6 @@
 .aboutProject {
-  /* width: 98%; */
   display: flex;
   flex-direction: column;
-  /* grid-template-columns:  100%; */
-  /* justify-content: center; */
   align-items: center;
   max-width: 100%;
   background-color: #fff;
@@ -14,7 +11,6 @@
 
 .aboutProject__heading {
   width: 89%;
-  /* max-width: 1140px; */
   height: 50px;
   font-family: Inter;
   font-style: normal;
@@ -52,21 +48,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr minmax(min-content, max-content); */
   color: #000;
   flex-wrap: wrap;
-  /* max-width: 1140px; */
-
   margin-top: 28px;
-
-  /* grid-template-columns: repeat(auto-fit, 550px); */
-  /* grid-row-gap: 20px; */
-  /* grid-column-gap: 17px; */
-  /* justify-content: center; */
-  /* list-style-type: none; */
-  /* margin: 0; */
-  /* padding: 0; */
 }
 
 .aboutProject__blocks-title div:last-of-type {
@@ -87,8 +71,6 @@
 }
 
 .aboutProject__block-title {
-  /* max-width: 550px;
-  min-width: 284px; */
   width: 42%;
   margin-right: 100px;
 }
@@ -162,14 +144,14 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutProject__timeLine  {
-  margin-top: 80px;
+  .aboutProject__timeLine {
+    margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__timeLine  {
-  margin-top: 22px;
+  .aboutProject__timeLine {
+    margin-top: 22px;
   }
 }
 
@@ -179,7 +161,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__timeLine-backend  {
+  .aboutProject__timeLine-backend {
     width: 35%;
   }
 }
@@ -217,6 +199,6 @@
   background-color: #fff;
 }
 
-.editMargin{
+.editMargin {
   margin-top: 4px;
 }

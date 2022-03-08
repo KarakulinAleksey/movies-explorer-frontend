@@ -1,16 +1,16 @@
-import React from 'react';
-import './app.css';
-import Header from '../Header/Header';
-import Main from '../Main/Main';
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
+import React from "react";
+import "./app.css";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageError from "../PageError/PageError";
 import Navigation from "../Navigation/Navigation";
-import Footer from '../Footer/Footer';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import Footer from "../Footer/Footer";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 function App() {
   const [size, setSize] = React.useState({}); // ширина окна
@@ -28,18 +28,14 @@ function App() {
       window.removeEventListener("resize", resizeHandler);
     };
   }, []);
- 
-  
+
   return (
     <div className="app" ref={ref}>
-      
-      {/* <Header
+      {/* { <Header
         size={size}
-        /> */}
+        /> } */}
       {/* <Main/> */}
-      <Movies
-        size={size}
-        />
+      <Movies size={size} />
       {/* <SavedMovies
         size={size}
         /> */}
