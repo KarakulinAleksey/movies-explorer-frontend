@@ -1,7 +1,8 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
+  width: 100%;
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
@@ -13,6 +14,10 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .header_back-color-movie {
@@ -62,6 +67,14 @@
 .header__signup-block {
   display: flex;
   align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.header__signup-block_active{
+  font-weight: 500;
 }
 
 .header__signup-block a:last-of-type {

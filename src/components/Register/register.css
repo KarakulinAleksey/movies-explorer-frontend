@@ -1,25 +1,10 @@
 .register {
-  /* width: 396px; */
   display: grid;
   grid-template-columns: 1fr;
   max-width: 396px;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-}
-
-@media screen and (max-width: 768px) {
-  .register {
-    /* width: 92%; */
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .register {
-    /* margin-top: 5px;
-      margin-bottom: 5px;
-      width: 94%; */
-  }
 }
 
 .register__image-link{
@@ -56,13 +41,6 @@
   margin-bottom: 20px;
 }
 
-@media screen and (max-width: 768px) {
-  .register__title {
-    /* margin-top: 232px;
-    margin-bottom: 80px; */
-  }
-}
-
 @media screen and (max-width: 420px) {
   .register__title {
     margin-left: auto;
@@ -95,8 +73,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  /* padding-top: 20px; */
-  /* padding-bottom: 10px; */
   padding: 0;
   padding-left: 15px;
   padding-right: 15px;
@@ -132,12 +108,6 @@
   border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media screen and (max-width: 768px) {
-  .register__button {
-    /* margin-top: 193px; */
-  }
 }
 
 @media screen and (max-width: 420px) {

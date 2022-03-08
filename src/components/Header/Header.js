@@ -15,16 +15,26 @@ export default function Header(props) {
   function navLink() {
     if (
       location.pathname === "/movies" ||
-      location.pathname === "/saved-movies"
+      location.pathname === "/saved-movies" ||
+      location.pathname === "/profile"
     ) {
       if (props.size.clientWidth > 768) {
         return (
           <>
             <div className="header__signup-block">
-              <NavLink className="header__link-movies" to="/movies">
+              <NavLink
+                exact
+                to="/movies"
+                activeClassName="header__signup-block_active"
+                className="header__link-movies"
+              >
                 Фильмы
               </NavLink>
-              <NavLink className="header__link-movies" to="/saved-movies">
+              <NavLink
+                to="/saved-movies"
+                activeClassName="header__signup-block_active"
+                className="header__link-movies"
+              >
                 Сохраненные фильмы
               </NavLink>
             </div>
@@ -62,10 +72,10 @@ export default function Header(props) {
         //   Выйти
         // </button>
         <div className="header__signup-block">
-          <NavLink className="header__signup" to="/sign-up">
+          <NavLink to="/signup" className="header__signup">
             Регистрация
           </NavLink>
-          <NavLink className="header__button" to="/sign-in">
+          <NavLink to="/signin" className="header__button">
             Войти
           </NavLink>
         </div>
@@ -76,7 +86,8 @@ export default function Header(props) {
   function backGroundColor() {
     if (
       location.pathname === "/movies" ||
-      location.pathname === "/saved-movies"
+      location.pathname === "/saved-movies" ||
+      location.pathname === "/profile"
     ) {
       return "  header_back-color-movie";
     } else if (location.pathname === "/") {

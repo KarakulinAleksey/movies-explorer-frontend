@@ -1,8 +1,9 @@
 .app {
-  display: grid;
-  grid-template-columns: 100%;
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
   background-color: #fff;
   font-family: "Inter", sans-serif, Arial;
-  height: 100%;
-  min-height: 100vh;
+  
+  /* height: 100%; */
+  /* min-height: 100vh; */
 }

@@ -11,7 +11,6 @@ export default function login(props) {
       <NavLink className="pageError__link" to="/">
         Назад
       </NavLink>
-      
     </div>
   );
 }

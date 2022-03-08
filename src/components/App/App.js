@@ -31,20 +31,40 @@ function App() {
 
   return (
     <div className="app" ref={ref}>
-      {/* { <Header
-        size={size}
-        /> } */}
-      {/* <Main/> */}
-      <Movies size={size} />
-      {/* <SavedMovies
-        size={size}
-        /> */}
-      {/* <Profile/> */}
-      {/* <Register /> */}
-      {/* <Login /> */}
+      <Switch>
+        <Route exact path="/">
+          {<Header size={size} />}
+          <Main />
+          <Footer />
+        </Route>
+
+        <Route exact path="/movies">
+          {<Header size={size} />}
+          <Movies size={size} />
+          <Footer />
+        </Route>
+
+        <Route exact path="/saved-movies">
+          {<Header size={size} />}
+          <SavedMovies size={size} />
+          <Footer />
+        </Route>
+
+        <Route exact path="/profile">
+          {<Header size={size} />}
+          <Profile />
+        </Route>
+
+        <Route exact path="/signin">
+          <Login />
+        </Route>
+
+        <Route exact path="/signup">
+          <Register />
+        </Route>
+      </Switch>
       {/* <PageError /> */}
-      <Navigation />
-      {/* <Footer/> */}
+      {/* <Navigation /> */}
     </div>
   );
 }

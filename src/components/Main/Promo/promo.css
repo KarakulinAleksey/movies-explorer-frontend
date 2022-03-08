@@ -1,5 +1,4 @@
 .promo {
-  /* width: 98%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,8 +25,8 @@
 }
 
 .promo__title {
-  width: 730px;
-  height: 116px;
+  max-width: 730px;
+  /* height: 116px; */
   font-family: Inter;
   font-style: normal;
   font-weight: normal;

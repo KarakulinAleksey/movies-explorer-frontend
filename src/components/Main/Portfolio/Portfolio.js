@@ -10,15 +10,15 @@ export default function Portfolio(props) {
 
       <NavLink className="portfolio__link" to="/sign-in">
         <p className="portfolio__link-title">Статичный сайт</p>
-        <img  className="portfolio__image" src={linkImage} alt="ссылка"/>
+        <img className="portfolio__image" src={linkImage} alt="ссылка" />
       </NavLink>
       <NavLink className="portfolio__link" to="/sign-in">
         <p className="portfolio__link-title">Адаптивный сайт</p>
-        <img  className="portfolio__image" src={linkImage} alt="ссылка"/>
+        <img className="portfolio__image" src={linkImage} alt="ссылка" />
       </NavLink>
       <NavLink className="portfolio__link" to="/sign-in">
         <p className="portfolio__link-title">Одностраничное приложение</p>
-        <img  className="portfolio__image" src={linkImage} alt="ссылка"/>
+        <img className="portfolio__image" src={linkImage} alt="ссылка" />
       </NavLink>
     </div>
   );

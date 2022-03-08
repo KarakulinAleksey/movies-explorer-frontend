@@ -12,7 +12,11 @@ export default function MoviesCard(props) {
       <div className="moviesCard">
         <p className="moviesCard__title">33 слова о дизайне</p>
         <p className="moviesCard__duration">1ч 42м</p>
-        <img className="moviesCard__like" src={deleteButton} alt="кнопка лайк" />
+        <img
+          className="moviesCard__like"
+          src={deleteButton}
+          alt="кнопка лайк"
+        />
         <img
           className="moviesCard__thumbnail"
           src={miniPoster_1}
@@ -22,7 +26,11 @@ export default function MoviesCard(props) {
       <div className="moviesCard">
         <p className="moviesCard__title">33 слова о дизайне</p>
         <p className="moviesCard__duration">1ч 42м</p>
-        <img className="moviesCard__like" src={deleteButton} alt="кнопка лайк" />
+        <img
+          className="moviesCard__like"
+          src={deleteButton}
+          alt="кнопка лайк"
+        />
         <img
           className="moviesCard__thumbnail"
           src={miniPoster_1}
@@ -32,14 +40,17 @@ export default function MoviesCard(props) {
       <div className="moviesCard">
         <p className="moviesCard__title">33 слова о дизайне</p>
         <p className="moviesCard__duration">1ч 42м</p>
-        <img className="moviesCard__like" src={deleteButton} alt="кнопка лайк" />
+        <img
+          className="moviesCard__like"
+          src={deleteButton}
+          alt="кнопка лайк"
+        />
         <img
           className="moviesCard__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />
       </div>
-   
     </>
   );
 }
