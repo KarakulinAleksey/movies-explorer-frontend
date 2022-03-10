@@ -1,5 +1,5 @@
 import React from "react";
-import "./filterCheckbox.css";
+import "./filter-checkbox.css";
 import filterCheckboxImageOn from "../../../images/smalltumb.svg";
 import filterCheckboxImageOff from "../../../images/smalltumboff.svg";
 
@@ -20,14 +20,14 @@ export default function FilterCheckbox(props) {
   }
 
   return (
-    <div className="filterCheckbox">
+    <div className="filter-checkbox">
       <img
-        className="filterCheckbox__button"
+        className="filter-checkbox__button"
         onClick={hendelFilterCheckboxImage}
         src={isfilterCheckboxImage}
         alt="кнопка короткометражек"
       />
-      <p className="filterCheckbox__title">Короткометражки</p>
+      <p className="filter-checkbox__title">Короткометражки</p>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./savedMovies.css";
+import "./saved-movies.css";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import FilterCheckbox from "../Movies/FilterCheckbox/FilterCheckbox";
 import MovaviesCardList from "./MoviesCardList/MoviesCardList";
@@ -9,7 +9,7 @@ import MovaviesCardList from "./MoviesCardList/MoviesCardList";
 
 export default function SavedMovies(props) {
   return (
-    <main className="savedMovies">
+    <main className="saved-movies">
       <SearchForm size={props.size} />
       <FilterCheckbox />
       <MovaviesCardList />

@@ -10,11 +10,12 @@ import Login from "../Login/Login";
 import PageError from "../PageError/PageError";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 
 function App() {
   const [size, setSize] = React.useState({}); // ширина окна
   const ref = React.useRef(); // рэф App ширина окна
+  const [navigationOpen, setNavigationOpen] = React.useState(false); //
 
   // определяем ширину App
   const resizeHandler = () => {
@@ -29,29 +30,38 @@ function App() {
     };
   }, []);
 
+  // открыть панель навигации Navigation
+  function handlerNavigationOpen() {
+    if (navigationOpen) {
+      setNavigationOpen(false);
+    } else if (!navigationOpen) {
+      setNavigationOpen(true);
+    }
+  }
+
   return (
     <div className="app" ref={ref}>
       <Switch>
         <Route exact path="/">
-          {<Header size={size} />}
+          <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
           <Main />
           <Footer />
         </Route>
 
         <Route path="/movies">
-          {<Header size={size} />}
+          <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
           <Movies size={size} />
           <Footer />
         </Route>
 
         <Route path="/saved-movies">
-          {<Header size={size} />}
+          <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
           <SavedMovies size={size} />
           <Footer />
         </Route>
 
         <Route path="/profile">
-          {<Header size={size} />}
+          <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
           <Profile />
         </Route>
 
@@ -66,9 +76,12 @@ function App() {
         <Route path="/page-error">
           <PageError />
         </Route>
-
       </Switch>
-      <Navigation />
+
+      <Navigation
+        navigationOpen={navigationOpen}
+        handlerNavigationOpen={handlerNavigationOpen}
+      />
     </div>
   );
 }

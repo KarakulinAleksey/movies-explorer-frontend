@@ -5,6 +5,9 @@ import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Register(props) {
+  function onChange(){
+
+  }
   return (
     <div className="register">
       <NavLink className="register__image-link" to="/">
@@ -17,8 +20,9 @@ export default function Register(props) {
         name="name"
         placeholder="Имя"
         type="text"
-        class="register__input"
+        className="register__input"
         value={"Виталий"}
+        onChange={onChange}
       />
       {/* <span class="register__error">Что-то пошло не так ...</span> */}
       <p className="register__input-title">E-mail</p>
@@ -26,8 +30,9 @@ export default function Register(props) {
         name="email"
         placeholder="email"
         type="text"
-        class="register__input"
+        className="register__input"
         value={"pochta@yandex.ru"}
+        onChange={onChange}
       />
       {/* <span class="register__error">Что-то пошло не так ...</span> */}
       <p className="register__input-title">Пароль</p>
@@ -35,10 +40,11 @@ export default function Register(props) {
         name="password"
         placeholder="password"
         type="text"
-        class="register__input"
+        className="register__input"
         value={"**********"}
+        onChange={onChange}
       />
-      <span class="register__error">Что-то пошло не так ...</span>
+      <span className="register__error">Что-то пошло не так ...</span>
       {/* </div> */}
       <button type="submit" className="register__button">
         Зарегистрироваться

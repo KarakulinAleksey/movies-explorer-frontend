@@ -1,4 +1,4 @@
-.aboutMe {
+.about-me {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-.aboutMe__heading {
+.about-me__heading {
   width: 89%;
   height: 50px;
   font-family: Inter;
@@ -27,14 +27,14 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__heading {
+  .about-me__heading {
     width: 87%;
     margin-top: 182px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__heading {
+  .about-me__heading {
     width: 91%;
     margin-top: 142px;
     font-size: 18px;
@@ -43,7 +43,7 @@
   }
 }
 
-.aboutMe__blocks-title {
+.about-me__blocks-title {
   width: 89%;
   display: flex;
   align-items: center;
@@ -55,31 +55,31 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__blocks-title {
+  .about-me__blocks-title {
     width: 87%;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__blocks-title {
+  .about-me__blocks-title {
     width: 91%;
     margin-top: 19px;
   }
 }
 
-.aboutMe__block-title {
+.about-me__block-title {
   width: 52%;
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__block-title {
+  .about-me__block-title {
     width: 53%;
     margin-right: 44px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__block-title {
+  .about-me__block-title {
     order: 1;
     width: 89%;
     min-width: 284px;
@@ -87,7 +87,7 @@
   }
 }
 
-.aboutMe__block-title-heading {
+.about-me__block-title-heading {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -98,21 +98,21 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__block-title-heading {
+  .about-me__block-title-heading {
     font-size: 40px;
     line-height: 40px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__block-title-heading {
+  .about-me__block-title-heading {
     font-size: 30px;
     line-height: 36px;
     margin-top: 40px;
   }
 }
 
-.aboutMe__block-title-subtitle {
+.about-me__block-title-subtitle {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -123,20 +123,20 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__block-title-subtitle {
+  .about-me__block-title-subtitle {
     font-size: 12px;
     line-height: 18px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__block-title-subtitle {
+  .about-me__block-title-subtitle {
     font-size: 11px;
     line-height: 16px;
   }
 }
 
-.aboutMe__block-title-title {
+.about-me__block-title-title {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -146,7 +146,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__block-title-title {
+  .about-me__block-title-title {
     font-size: 12px;
     line-height: 18px;
     margin-top: 20px;
@@ -154,7 +154,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__block-title-title {
+  .about-me__block-title-title {
     font-size: 11px;
     line-height: 16px;
     margin-top: 22px;
@@ -163,27 +163,32 @@
   }
 }
 
-.aboutMe__blocks-title-link {
+.about-me__blocks-title-link {
   margin-top: 100px;
 }
 
-.aboutMe__blocks-title-link a:last-of-type {
+.about-me__blocks-title-link :hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.about-me__blocks-title-link a:last-of-type {
   margin-right: 0px;
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__blocks-title-link {
+  .about-me__blocks-title-link {
     margin-top: 85px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__blocks-title-link {
+  .about-me__blocks-title-link {
     margin-top: 37px;
   }
 }
 
-.aboutMe__block-title-link {
+.about-me__block-title-link {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -195,7 +200,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__block-title-link {
+  .about-me__block-title-link {
     font-size: 14px;
     line-height: 17px;
     margin-top: 20px;
@@ -203,7 +208,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__block-title-link {
+  .about-me__block-title-link {
     font-size: 14px;
     line-height: 17px;
     margin-top: 15px;
@@ -212,20 +217,20 @@
   }
 }
 
-.aboutMe__block-title-image {
+.about-me__block-title-image {
   width: 270px;
   height: 327px;
 }
 
 @media screen and (max-width: 768px) {
-  .aboutMe__block-title-image {
+  .about-me__block-title-image {
     width: 255px;
     height: 307px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe__block-title-image {
+  .about-me__block-title-image {
     order: 0;
     width: 292px;
     height: 352px;

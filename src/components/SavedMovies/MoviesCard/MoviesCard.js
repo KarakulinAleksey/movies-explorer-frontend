@@ -1,5 +1,5 @@
 import React from "react";
-import "./moviesCard.css";
+import "./movies-card.css";
 import deleteButton from "../../../images/deleteButton.svg";
 import miniPoster_1 from "../../../images/miniPoster_1.png";
 
@@ -9,44 +9,44 @@ import miniPoster_1 from "../../../images/miniPoster_1.png";
 export default function MoviesCard(props) {
   return (
     <>
-      <div className="moviesCard">
-        <p className="moviesCard__title">33 слова о дизайне</p>
-        <p className="moviesCard__duration">1ч 42м</p>
+      <div className="movies-card">
+        <p className="movies-card__title">33 слова о дизайне</p>
+        <p className="movies-card__duration">1ч 42м</p>
         <img
-          className="moviesCard__like"
+          className="movies-card__like"
           src={deleteButton}
           alt="кнопка лайк"
         />
         <img
-          className="moviesCard__thumbnail"
+          className="movies-card__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />
       </div>
-      <div className="moviesCard">
-        <p className="moviesCard__title">33 слова о дизайне</p>
-        <p className="moviesCard__duration">1ч 42м</p>
+      <div className="movies-card">
+        <p className="movies-card__title">33 слова о дизайне</p>
+        <p className="movies-card__duration">1ч 42м</p>
         <img
-          className="moviesCard__like"
+          className="movies-card__like"
           src={deleteButton}
           alt="кнопка лайк"
         />
         <img
-          className="moviesCard__thumbnail"
+          className="movies-card__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />
       </div>
-      <div className="moviesCard">
-        <p className="moviesCard__title">33 слова о дизайне</p>
-        <p className="moviesCard__duration">1ч 42м</p>
+      <div className="movies-card">
+        <p className="movies-card__title">33 слова о дизайне</p>
+        <p className="movies-card__duration">1ч 42м</p>
         <img
-          className="moviesCard__like"
+          className="movies-card__like"
           src={deleteButton}
           alt="кнопка лайк"
         />
         <img
-          className="moviesCard__thumbnail"
+          className="movies-card__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />

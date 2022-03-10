@@ -1,4 +1,4 @@
-.filterCheckbox {
+.filter-checkbox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,12 +8,12 @@
 }
 
 @media screen and (max-width: 500px) {
-  .filterCheckbox {
+  .filter-checkbox {
     margin-top: 45px;
   }
 }
 
-.filterCheckbox__title {
+.filter-checkbox__title {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -25,13 +25,13 @@
 }
 
 @media screen and (max-width: 500px) {
-  .filterCheckbox__title {
+  .filter-checkbox__title {
     font-size: 11px;
     line-height: 18px;
   }
 }
 
-.filterCheckbox__button {
-  /* width: 36px; */
-  /* height: 20px; */
+.filter-checkbox__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }

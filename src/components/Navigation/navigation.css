@@ -16,14 +16,20 @@
   grid-row-start: 1;
   grid-row-end: 2; */
   transition: all 0.3s ease;
-	opacity: 1;
-	visibility: visible;
+	opacity: 0;
+	visibility: hidden;
 }
 
 @media screen and (max-width: 420px) {
   .navigation {
     grid-template-columns: 0 100%;
   }
+}
+
+.navigation__show{
+  transition: all 0.3s ease;
+	opacity: 1;
+	visibility: visible;
 }
 
 .navigation__cover {
@@ -34,10 +40,10 @@
   grid-row-end: 2;
 }
 
-.navigationMenu {
+.navigation-menu {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 57px 126px 8px 40px 8px 40px 8px 665px;
+  grid-template-rows: 57px 126px 50px 50px 673px;
   align-items: flex-end;
   justify-items: center;
   background-color: #fff;
@@ -51,12 +57,12 @@
 }
 
 @media screen and (max-width: 420px) {
-  .navigationMenu {
-    grid-template-rows: 48px 119px 8px 38px 8px 38px 8px 487px;
+  .navigation-menu {
+    grid-template-rows: 48px 119px 48px 45px 494px;
   }
 }
 
-.navigationMenu__exit {
+.navigation-menu__exit {
   justify-self: end;
   border: none;
   background-color: #fff;
@@ -64,17 +70,22 @@
 }
 
 @media screen and (max-width: 420px) {
-  .navigationMenu__exit {
+  .navigation-menu__exit {
     margin-right: 8px;
   }
 }
 
-.navigationMenu__imageExit {
+.navigation-menu__imageExit {
   width: 30px;
   height: 30px;
 }
 
-.navigationMenu__link {
+.navigation-menu__imageExit:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.navigation-menu__link {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -84,24 +95,34 @@
   margin-right: auto;
   text-decoration: none;
   color: #000;
+
 }
 
-.navigationMenu__imageProfile {
+.navigation-menu__link:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.navigation-menu__link-active {
+  border-bottom: 2px solid #000 ;
+}
+
+.navigation-menu__imageProfile {
   width: 128px;
   height: 58px;
 }
 
-.navigationMenu__border-bottom-main {
+.navigation-menu__border-bottom-main {
   width: 58px;
   border-bottom: 2px solid #000;
 }
 
-.navigationMenu__border-bottom-movies {
+.navigation-menu__border-bottom-movies {
   width: 70px;
   border-bottom: 2px solid #000;
 }
 
-.navigationMenu__border-bottom-savemovies {
+.navigation-menu__border-bottom-savemovies {
   width: 196px;
   border-bottom: 2px solid #000;
 }

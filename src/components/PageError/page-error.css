@@ -1,4 +1,4 @@
-.pageError {
+.page-error {
   display: grid;
   grid-template-columns: 1fr;
   max-width: 396px;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.pageError__title {
+.page-error__title {
   text-align: center;
   font-family: Inter;
   font-style: normal;
@@ -19,20 +19,20 @@
 }
 
 @media screen and (max-width: 768px) {
-  .pageError__title {
+  .page-error__title {
     margin-top: 408px;
   }
 }
 
 @media screen and (max-width: 420px) {
-  .pageError__title {
+  .page-error__title {
     font-size: 80px;
     line-height: 97px;
     margin-top: 329px;
   }
 }
 
-.pageError__title-error {
+.page-error__title-error {
   text-align: left;
   font-family: Inter;
   font-style: normal;
@@ -45,20 +45,20 @@
 }
 
 @media screen and (max-width: 768px) {
-  .pageError__title-error {
+  .page-error__title-error {
     margin-top: 5px;
   }
 }
 
 @media screen and (max-width: 420px) {
-  .pageError__title-error {
+  .page-error__title-error {
     font-size: 12px;
     line-height: 15px;
     margin-top: 10px;
   }
 }
 
-.pageError__link {
+.page-error__link {
   margin-top: 168px;
   font-family: Inter;
   font-style: normal;
@@ -72,7 +72,7 @@
 }
 
 @media screen and (max-width: 420px) {
-  .pageError__link {
+  .page-error__link {
     font-size: 12px;
     line-height: 15px;
     margin-top: 273px;

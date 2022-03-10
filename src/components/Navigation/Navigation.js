@@ -2,34 +2,60 @@ import React from "react";
 import "./navigation.css";
 import imageExit from "../../images/deleteButton.svg";
 import imageProfile from "../../images/profile.svg";
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Navigation(props) {
   return (
     <>
-      <div className="navigation">
+      <div
+        className={`navigation ${
+          props.navigationOpen ? "navigation__show" : ""
+        }`}
+      >
         <div className="navigation__cover"></div>
-        <div className="navigationMenu">
-          <button className="navigationMenu__exit">
-            <img className="navigationMenu__imageExit" src={imageExit}></img>
+        <div className="navigation-menu">
+          <button
+            className="navigation-menu__exit"
+            type="button"
+            onClick={props.handlerNavigationOpen}
+          >
+            <img
+              className="navigation-menu__imageExit"
+              src={imageExit}
+              alt="кнопка выход"
+            ></img>
           </button>
-          <NavLink className="navigationMenu__link" to="/">
+          <NavLink
+            exact
+            className="navigation-menu__link"
+            activeClassName="navigation-menu__link-active"
+            to="/"
+          >
             Главная
           </NavLink>
-          <div className="navigationMenu__border-bottom-main"></div>
-          <NavLink className="navigationMenu__link" to="/movies">
+
+          <NavLink
+            className="navigation-menu__link"
+            activeClassName="navigation-menu__link-active"
+            to="/movies"
+          >
             Фильмы
           </NavLink>
-          <div className="navigationMenu__border-bottom-movies"></div>
-          <NavLink className="navigationMenu__link" to="/saved-movies">
+
+          <NavLink
+            className="navigation-menu__link"
+            activeClassName="navigation-menu__link-active"
+            to="/saved-movies"
+          >
             Сохранённые фильмы
           </NavLink>
-          <div className="navigationMenu__border-bottom-savemovies"></div>
-          <NavLink className="navigationMenu__link" to="/profile">
+
+          <NavLink className="navigation-menu__link" to="/profile">
             <img
-              className="navigationMenu__imageProfile"
+              className="navigation-menu__imageProfile"
               src={imageProfile}
+              alt="кнопка профиля"
             ></img>
           </NavLink>
         </div>

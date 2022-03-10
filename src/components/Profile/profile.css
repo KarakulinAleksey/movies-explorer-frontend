@@ -72,6 +72,11 @@
   line-height: 15.73px;
 }
 
+.profile__button-edit:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .profile__button-edit {
     margin-top: 193px;
@@ -93,4 +98,9 @@
   font-size: 13px;
   line-height: 15.73px;
   color: #ff3055;
+}
+
+.profile__button-output:hover{
+  opacity: 0.6;
+  cursor: pointer;
 }

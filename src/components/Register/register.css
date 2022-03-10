@@ -30,6 +30,11 @@
   height: 38px;
 }
 
+.register__image:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 .register__title {
   text-align: left;
   font-family: Inter;
@@ -51,7 +56,6 @@
 }
 
 .register__input-title{
- 
   margin-top: 20px;
   margin-bottom: 0px;
   font-family: Inter;
@@ -110,6 +114,11 @@
   margin-right: auto;
 }
 
+.register__button:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 420px) {
   .register__button {
     width: 260px;
@@ -139,15 +148,16 @@
 }
 
 .register__link-input {
-  /* border: none; */
-  /* background-color: #fff; */
-  /* margin-top: 14px;
-  margin-bottom: 10px; */
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   color: #3456f3;
   text-decoration: none;
+}
+
+.register__link-input:hover{
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .register__error{

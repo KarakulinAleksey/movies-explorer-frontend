@@ -59,6 +59,11 @@
   border-bottom: 1px solid #000;
 }
 
+.portfolio__link:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .portfolio__link {
     width: 87%;

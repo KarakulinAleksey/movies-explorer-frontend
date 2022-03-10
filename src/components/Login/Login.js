@@ -5,6 +5,9 @@ import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function login(props) {
+  function onChange(){
+
+  }
   return (
     <div className="login">
       <NavLink className="login__image-link" to="/">
@@ -17,8 +20,9 @@ export default function login(props) {
         name="email"
         placeholder="email"
         type="text"
-        class="login__input"
+        className="login__input"
         value={"pochta@yandex.ru"}
+        onChange={onChange}
       />
       {/* <span class="login__error">Что-то пошло не так ...</span> */}
       <p className="login__input-title">Пароль</p>
@@ -26,8 +30,9 @@ export default function login(props) {
         name="password"
         placeholder="password"
         type="text"
-        class="login__input"
-        value={"**********"}
+        className="login__input"
+        // value={"password"}
+        onChange={onChange}
       />
       {/* <span class="login__error">Что-то пошло не так ...</span> */}
       {/* </div> */}

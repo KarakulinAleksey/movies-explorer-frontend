@@ -1,4 +1,4 @@
-.savedMovies {
+.saved-movies {
   width: 89%;
   max-width: 1140px;
   margin-left: auto;
@@ -6,13 +6,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .savedMovies {
+  .saved-movies {
     width: 92%;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .savedMovies {
+  .saved-movies {
     margin-top: 5px;
     margin-bottom: 5px;
     width: 94%;

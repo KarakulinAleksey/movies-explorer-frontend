@@ -13,6 +13,7 @@ export default function Footer(props) {
       <a
         className="footer__link footer__text"
         href="https://practicum.yandex.ru"
+        rel="noreferrer"
         target="_blank"
       >
         Яндекс.Практикум
@@ -20,6 +21,7 @@ export default function Footer(props) {
       <a
         className="footer__link footer__text"
         href="https://www.github.com/"
+        rel="noreferrer"
         target="_blank"
       >
         Github
@@ -27,6 +29,7 @@ export default function Footer(props) {
       <a
         className="footer__link footer__text"
         href="https://www.facebook.com/"
+        rel="noreferrer"
         target="_blank"
       >
         Facebook

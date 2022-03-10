@@ -11,6 +11,12 @@
   margin-top: 70px;
 }
 
+.login__image-link:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+
 @media screen and (max-width: 768px) {
   .login__image-link {
     margin-top: 232px;
@@ -108,6 +114,11 @@
   margin-right: auto;
 }
 
+.login__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 420px) {
   .login__button {
     width: 260px;
@@ -137,16 +148,17 @@
 }
 
 .login__link-input {
-  /* border: none;
-  background-color: #fff; */
-  /* margin-top: 14px;
-  margin-bottom: 10px; */
   text-decoration: none;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   color: #3456f3;
 
+}
+
+.login__link-input:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .login__error {

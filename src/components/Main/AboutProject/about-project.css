@@ -1,4 +1,4 @@
-.aboutProject {
+.about-project {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-.aboutProject__heading {
+.about-project__heading {
   width: 89%;
   height: 50px;
   font-family: Inter;
@@ -27,14 +27,14 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutProject__heading {
+  .about-project__heading {
     width: 87%;
     margin-top: 92px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__heading {
+  .about-project__heading {
     width: 89%;
     margin-top: 73px;
     font-size: 18px;
@@ -43,7 +43,7 @@
   }
 }
 
-.aboutProject__blocks-title {
+.about-project__blocks-title {
   width: 89%;
   display: flex;
   align-items: center;
@@ -53,44 +53,44 @@
   margin-top: 28px;
 }
 
-.aboutProject__blocks-title div:last-of-type {
+.about-project__blocks-title div:last-of-type {
   margin-right: 0px;
 }
 
 @media screen and (max-width: 768px) {
-  .aboutProject__blocks-title {
+  .about-project__blocks-title {
     width: 87%;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__blocks-title {
+  .about-project__blocks-title {
     width: 89%;
     margin-top: 19px;
   }
 }
 
-.aboutProject__block-title {
+.about-project__block-title {
   width: 42%;
   margin-right: 100px;
 }
 
 @media screen and (max-width: 768px) {
-  .aboutProject__block-title {
+  .about-project__block-title {
     width: 42%;
     margin-right: 66px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__block-title {
+  .about-project__block-title {
     width: 89%;
     min-width: 284px;
     margin-right: 0;
   }
 }
 
-.aboutProject__block-title-heading {
+.about-project__block-title-heading {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -102,13 +102,13 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__block-title-heading {
+  .about-project__block-title-heading {
     font-size: 18px;
     line-height: 22px;
   }
 }
 
-.aboutProject__block-title-title {
+.about-project__block-title-title {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -118,7 +118,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutProject__block-title-title {
+  .about-project__block-title-title {
     font-size: 12px;
     line-height: 18px;
     margin-top: 20px;
@@ -126,7 +126,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__block-title-title {
+  .about-project__block-title-title {
     font-size: 11px;
     line-height: 16px;
     margin-top: 15px;
@@ -134,7 +134,7 @@
   }
 }
 
-.aboutProject__timeLine {
+.about-project__timeline {
   width: 89%;
   display: flex;
   align-items: center;
@@ -144,40 +144,40 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aboutProject__timeLine {
+  .about-project__timeline {
     margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__timeLine {
+  .about-project__timeline {
     margin-top: 22px;
   }
 }
 
-.aboutProject__timeLine-backend {
+.about-project__timeline-backend {
   width: 20%;
   background-color: #2be080;
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__timeLine-backend {
+  .about-project__timeline-backend {
     width: 35%;
   }
 }
 
-.aboutProject__timeLine-frontend {
+.about-project__timeline-frontend {
   width: 80%;
   background-color: #f2f2f2;
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__timeLine-frontend {
+  .about-project__timeline-frontend {
     width: 65%;
   }
 }
 
-.aboutProject__timeLine-title {
+.about-project__timeline-title {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -189,16 +189,16 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__timeLine-title {
+  .about-project__timeline-title {
     font-size: 11px;
     line-height: 13.3px;
   }
 }
 
-.whiteBackground {
+.white-background {
   background-color: #fff;
 }
 
-.editMargin {
+.edit-margin {
   margin-top: 4px;
 }

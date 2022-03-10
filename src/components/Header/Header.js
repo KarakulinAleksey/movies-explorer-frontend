@@ -1,13 +1,13 @@
+import React from "react";
 import logo from "../../images/logo.svg";
 import profile from "../../images/profile.svg";
 import iconMenu from "../../images/icon-main-768.svg";
-import React from "react";
+
 import "./header.css";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Header(props) {
-  // console.log(props.size.clientWidth);
   // const history = useHistory();
   const location = useLocation();
   let className = "header header__section";
@@ -50,27 +50,21 @@ export default function Header(props) {
         );
       } else {
         return (
-          <>
-            {/* <div className="header__signup-block">
-                    <NavLink className="header__link-movies" to="/movies">Фильмы</NavLink>
-                    <NavLink className="header__link-movies" to="/saved-movies">Сохраненные фильмы</NavLink>
-                </div>  */}
-
-            <NavLink className="header__logo" to="/navigation">
+            <button 
+            type="button"
+            className="header__button-menu" 
+            onClick={props.handlerNavigationOpen}
+            aria-label="кнопка открытия формы меню">
               <img
                 className="header__signin"
                 src={iconMenu}
                 alt="кнопка меню"
               />
-            </NavLink>
-          </>
+            </button>
         );
       }
     } else if (location.pathname === "/") {
       return (
-        // <button className="header__button" onClick={'onSingOut'}>
-        //   Выйти
-        // </button>
         <div className="header__signup-block">
           <NavLink to="/signup" className="header__signup">
             Регистрация
@@ -97,9 +91,6 @@ export default function Header(props) {
 
   return (
     <header className={(className += backGroundColor())}>
-      {/* <div>
-                     clientHeight: {props.size.clientHeight}, clientWidth:{props.size.clientWidth}
-                </div> */}
 
       <NavLink className="header__logo" to="/">
         <img className="header__image" src={logo} alt="логотип" />

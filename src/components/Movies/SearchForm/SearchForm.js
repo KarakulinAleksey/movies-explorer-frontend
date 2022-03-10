@@ -1,5 +1,5 @@
 import React from "react";
-import "./searchForm.css";
+import "./search-form.css";
 import searchFormIcon from "../../../images/iconSearchform.svg";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
@@ -10,7 +10,7 @@ export default function SearchForm(props) {
     if (props.size.clientWidth > 500) {
       return (
         <img
-          className="searchForm__icon"
+          className="search-form__icon"
           src={searchFormIcon}
           alt="иконка поиска"
         />
@@ -19,10 +19,10 @@ export default function SearchForm(props) {
   }
 
   return (
-    <div className="searchForm">
+    <div className="search-form">
       {searchFormIconElement()}
-      <p className="searchForm__title">Фильм</p>
-      <div className="searchForm__button">Найти</div>
+      <p className="search-form__title">Фильм</p>
+      <div className="search-form__button">Найти</div>
     </div>
   );
 }
