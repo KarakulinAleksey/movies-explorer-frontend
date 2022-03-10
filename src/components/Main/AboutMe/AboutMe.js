@@ -5,7 +5,7 @@ import fotoMe from "../../../images/aboutMe.png";
 
 export default function AboutMe(props) {
   return (
-    <ul className="aboutMe">
+    <ul className="aboutMe" id="aboutMe">
       <h2 className="aboutMe__heading">Студент</h2>
       <li className="aboutMe__blocks-title">
         <div className="aboutMe__block-title">
@@ -21,12 +21,20 @@ export default function AboutMe(props) {
             заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <div className="aboutMe__blocks-title-link">
-            <NavLink className="aboutMe__block-title-link" to="/sign-in">
+            <a
+              className="aboutMe__block-title-link"
+              href="https://www.facebook.com/"
+              target="_blank"
+            >
               Facebook
-            </NavLink>
-            <NavLink className="aboutMe__block-title-link" to="/sign-in">
+            </a>
+            <a
+              className="aboutMe__block-title-link"
+              href="https://www.github.com/"
+              target="_blank"
+            >
               Github
-            </NavLink>
+            </a>
           </div>
         </div>
 

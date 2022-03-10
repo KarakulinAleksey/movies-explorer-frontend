@@ -10,15 +10,27 @@ export default function Footer(props) {
       </h2>
       <p className="footer__title footer__text">&copy; 2022</p>
 
-      <NavLink className="footer__link footer__text" to="/sign-in">
+      <a
+        className="footer__link footer__text"
+        href="https://practicum.yandex.ru"
+        target="_blank"
+      >
         Яндекс.Практикум
-      </NavLink>
-      <NavLink className="footer__link footer__text" to="/sign-in">
+      </a>
+      <a
+        className="footer__link footer__text"
+        href="https://www.github.com/"
+        target="_blank"
+      >
         Github
-      </NavLink>
-      <NavLink className="footer__link footer__text" to="/sign-in">
+      </a>
+      <a
+        className="footer__link footer__text"
+        href="https://www.facebook.com/"
+        target="_blank"
+      >
         Facebook
-      </NavLink>
+      </a>
     </div>
   );
 }

@@ -7,11 +7,17 @@
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* z-index: 1;
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
-  grid-row-end: 2;
+  grid-row-end: 2; */
+  transition: all 0.3s ease;
+	opacity: 1;
+	visibility: visible;
 }
 
 @media screen and (max-width: 420px) {

@@ -127,7 +127,7 @@
   line-height: 17px;
   color: #a0a0a0;
   text-align: center;
-  margin-top: 0px;
+  margin-top: 16px;
   margin-bottom: 0px;
 }
 
@@ -138,15 +138,16 @@
   }
 }
 
-.register__button-input {
-  border: none;
-  background-color: #fff;
-  margin-top: 14px;
-  margin-bottom: 10px;
+.register__link-input {
+  /* border: none; */
+  /* background-color: #fff; */
+  /* margin-top: 14px;
+  margin-bottom: 10px; */
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   color: #3456f3;
+  text-decoration: none;
 }
 
 .register__error{

@@ -18,15 +18,15 @@ export default function Navigation(props) {
             Главная
           </NavLink>
           <div className="navigationMenu__border-bottom-main"></div>
-          <NavLink className="navigationMenu__link" to="/">
+          <NavLink className="navigationMenu__link" to="/movies">
             Фильмы
           </NavLink>
           <div className="navigationMenu__border-bottom-movies"></div>
-          <NavLink className="navigationMenu__link" to="/">
+          <NavLink className="navigationMenu__link" to="/saved-movies">
             Сохранённые фильмы
           </NavLink>
           <div className="navigationMenu__border-bottom-savemovies"></div>
-          <NavLink className="navigationMenu__link" to="/">
+          <NavLink className="navigationMenu__link" to="/profile">
             <img
               className="navigationMenu__imageProfile"
               src={imageProfile}

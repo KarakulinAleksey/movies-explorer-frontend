@@ -1,20 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./navtab.css";
+import {HashLink as Link} from "react-router-hash-link";
 
 export default function NavTab(props) {
   return (
-    <div className="navtab">
-      <NavLink className="navtab__link" to="/movies">
+    <nav className="navtab">
+      <Link className="navtab__link" to='/#aboutProject'>
         О проекте
-      </NavLink>{" "}
-      {/* // поправить ссылки  */}
-      <NavLink className="navtab__link" to="/movies">
+      </Link>
+      <Link className="navtab__link" to="/#techs">
         Технологии
-      </NavLink>
-      <NavLink className="navtab__link" to="/movies">
+      </Link>
+      <Link className="navtab__link" to="/#aboutMe">
         Студент
-      </NavLink>
-    </div>
+      </Link>
+    </nav>
   );
 }

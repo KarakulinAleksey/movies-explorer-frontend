@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   max-width: 1140px;
-  margin-top: 30px;
+  margin-top: 26px;
 }
 
 @media screen and (max-width: 500px) {
@@ -32,6 +32,6 @@
 }
 
 .filterCheckbox__button {
-  width: 36px;
-  height: 20px;
+  /* width: 36px; */
+  /* height: 20px; */
 }

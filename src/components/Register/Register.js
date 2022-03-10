@@ -1,7 +1,7 @@
 import React from "react";
 import "./register.css";
 import logo from "../../images/logo.svg";
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Register(props) {
@@ -45,9 +45,9 @@ export default function Register(props) {
       </button>
       <p className="register__title-input">
         Уже зарегистрированны?
-        <button type="submit" className="register__button-input">
-          Выйти
-        </button>
+        <Link className="register__link-input" to="/signin">
+          Войти
+        </Link>
       </p>
     </div>
   );

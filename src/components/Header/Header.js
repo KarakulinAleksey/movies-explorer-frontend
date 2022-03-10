@@ -39,7 +39,7 @@ export default function Header(props) {
               </NavLink>
             </div>
 
-            <NavLink className="header__signin-link" to="/">
+            <NavLink className="header__signin-link" to="/profile">
               <img
                 className="header__signin"
                 src={profile}
@@ -56,7 +56,7 @@ export default function Header(props) {
                     <NavLink className="header__link-movies" to="/saved-movies">Сохраненные фильмы</NavLink>
                 </div>  */}
 
-            <NavLink className="header__logo" to="/">
+            <NavLink className="header__logo" to="/navigation">
               <img
                 className="header__signin"
                 src={iconMenu}

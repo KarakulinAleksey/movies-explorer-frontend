@@ -3,7 +3,7 @@ import "./techs.css";
 
 export default function Techs(props) {
   return (
-    <ul className="techs">
+    <ul className="techs" id="techs">
       <h2 className="techs__heading">Технологии</h2>
       <li className="techs__blocks-title">
         {/* <div className="techs__block-title"> */}

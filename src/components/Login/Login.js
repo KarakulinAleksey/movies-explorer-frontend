@@ -1,7 +1,7 @@
 import React from "react";
 import "./login.css";
 import logo from "../../images/logo.svg";
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function login(props) {
@@ -36,9 +36,9 @@ export default function login(props) {
       </button>
       <p className="login__title-input">
         Ещё не зарегистрированны?
-        <button type="submit" className="login__button-input">
+        <Link className="login__link-input" to="/signup" >
           Регистрация
-        </button>
+        </Link>
       </p>
     </div>
   );

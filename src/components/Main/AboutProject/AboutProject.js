@@ -1,9 +1,12 @@
 import React from "react";
 import "./aboutProject.css";
 
+
 export default function AboutProject(props) {
-  return (
-    <ul className="aboutProject">
+
+
+  return ( 
+    <ul className="aboutProject" id="aboutProject">
       <h2 className="aboutProject__heading">О проекте</h2>
       <li className="aboutProject__blocks-title">
         <div className="aboutProject__block-title">

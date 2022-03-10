@@ -125,7 +125,7 @@
   line-height: 17px;
   color: #a0a0a0;
   text-align: center;
-  margin-top: 0px;
+  margin-top: 16px;
   margin-bottom: 0px;
 }
 
@@ -136,15 +136,17 @@
   }
 }
 
-.login__button-input {
-  border: none;
-  background-color: #fff;
-  margin-top: 14px;
-  margin-bottom: 10px;
+.login__link-input {
+  /* border: none;
+  background-color: #fff; */
+  /* margin-top: 14px;
+  margin-bottom: 10px; */
+  text-decoration: none;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   color: #3456f3;
+
 }
 
 .login__error {

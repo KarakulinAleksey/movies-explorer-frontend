@@ -38,33 +38,37 @@ function App() {
           <Footer />
         </Route>
 
-        <Route exact path="/movies">
+        <Route path="/movies">
           {<Header size={size} />}
           <Movies size={size} />
           <Footer />
         </Route>
 
-        <Route exact path="/saved-movies">
+        <Route path="/saved-movies">
           {<Header size={size} />}
           <SavedMovies size={size} />
           <Footer />
         </Route>
 
-        <Route exact path="/profile">
+        <Route path="/profile">
           {<Header size={size} />}
           <Profile />
         </Route>
 
-        <Route exact path="/signin">
+        <Route path="/signin">
           <Login />
         </Route>
 
-        <Route exact path="/signup">
+        <Route path="/signup">
           <Register />
         </Route>
+
+        <Route path="/page-error">
+          <PageError />
+        </Route>
+
       </Switch>
-      {/* <PageError /> */}
-      {/* <Navigation /> */}
+      <Navigation />
     </div>
   );
 }
