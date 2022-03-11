@@ -1,6 +1,7 @@
 import React from "react";
 import "./search-form.css";
 import searchFormIcon from "../../../images/iconSearchform.svg";
+import { moviesApi } from "../../../utils/MoviesApi";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
@@ -18,11 +19,22 @@ export default function SearchForm(props) {
     }
   }
 
+  function handleGetAllMovies(){
+    const addMovies = moviesApi.getAllMovies();
+    addMovies
+      .then((allMovies) => {
+        console.log(allMovies);
+      })
+      .catch((err) => {
+        console.log("Запрос на добавления всех фильмов " + err);
+      });
+  }
+
   return (
     <div className="search-form">
       {searchFormIconElement()}
       <p className="search-form__title">Фильм</p>
-      <div className="search-form__button">Найти</div>
+      <div type='button' onClick={moviesApi.getAllMovies} className="search-form__button">Найти</div>
     </div>
   );
 }
