@@ -14,19 +14,12 @@ class MoviesApi {
 
   //---------метод запроса всех фильмов-------//
   getAllMovies() {
-    return fetch("https://api.nomoreparties.co/beatfilm-movies", {
+    return fetch(this._baseUrl, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     })
-    // .then(this._checkResponse)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err.status());
-      });
+    .then(this._checkResponse)
+      
   }
 }
 
