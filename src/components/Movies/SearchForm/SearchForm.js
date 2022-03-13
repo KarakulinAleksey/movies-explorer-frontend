@@ -6,6 +6,7 @@ import searchFormIcon from "../../../images/iconSearchform.svg";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function SearchForm(props) {
+  //---функция возвращает иконку поиск в зависимости от ширины экрана-------//
   function searchFormIconElement() {
     if (props.size.clientWidth > 500) {
       return (
@@ -18,15 +19,11 @@ export default function SearchForm(props) {
     }
   }
 
-  function handleGetMovies(){
-    console.log('нажата кнопка поиска фильмов')
-  }
-
   return (
     <div className="search-form">
       {searchFormIconElement()}
       <p className="search-form__title">Фильм</p>
-      <div type='button' onClick={handleGetMovies} className="search-form__button">Найти</div>
+      <div type='button' onClick={props.getAllMovies} className="search-form__button">Найти</div>
     </div>
   );
 }
