@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .promo {
     background-position-y: 141px;
     background-size: 248px 248px;
@@ -47,7 +47,16 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
+  .promo__title {
+  
+    font-size: 40px;
+    line-height: 39px;
+  
+  }
+}
+
+@media screen and (max-width: 400px) {
   .promo__title {
     width: 300px;
     height: 117px;

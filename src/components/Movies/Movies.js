@@ -2,7 +2,7 @@ import React from "react";
 import "./movies.css";
 import SearchForm from "./SearchForm/SearchForm";
 import FilterCheckbox from "./FilterCheckbox/FilterCheckbox";
-import MovaviesCardList from "./MoviesCardList/MoviesCardList";
+import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import { moviesApi } from "../../utils/MoviesApi";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
@@ -48,7 +48,7 @@ export default function Movies(props) {
         getAllMovies={getAllMovies}
        />
       <FilterCheckbox />
-      <MovaviesCardList />
+      <MoviesCardList />
     </main>
   );
 }

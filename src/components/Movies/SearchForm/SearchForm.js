@@ -19,10 +19,21 @@ export default function SearchForm(props) {
     }
   }
 
+  function onChange(){
+
+  }
+
   return (
     <div className="search-form">
       {searchFormIconElement()}
-      <p className="search-form__title">Фильм</p>
+      <input
+        name="search-input"
+        placeholder="Фильм"
+        type="text"
+        className="search-form__search-input"
+        value={""}
+        onChange={onChange}
+      />
       <div type='button' onClick={props.getAllMovies} className="search-form__button">Найти</div>
     </div>
   );

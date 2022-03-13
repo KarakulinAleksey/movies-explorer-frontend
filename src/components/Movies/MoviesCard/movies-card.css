@@ -35,6 +35,7 @@
   margin-right: 6px;
 }
 
+/* ширина карточки */
 @media screen and (max-width: 500px) {
   .movies-card__thumbnail {
     grid-row-start: 1;
@@ -42,8 +43,9 @@
     grid-column-start: 1;
     grid-column-end: 3;
     margin-right: 0;
-    width: 300px;
-    height: 168px;
+    margin-bottom: 9px;
+    width: 99.75%;
+    height: 93%;
   }
 }
 
@@ -91,17 +93,35 @@
   }
 }
 
-.movies-card__like {
+.movies-card__buttom-like{
+  border: none;
+  padding: 0;
+  background-color: inherit ;
   width: 14px;
   height: 12px;
   margin-left: 22px;
   margin-top: 11px;
-  margin-bottom: 0;
 }
 
+
 @media screen and (max-width: 500px) {
-  .movies-card__like {
+  .movies-card__buttom-like {
     margin-left: 18px;
     margin-top: 10px;
   }
 }
+
+.movies-card__like {
+  width: 14px;
+  height: 12px;
+  /* margin-left: 22px;
+  margin-top: 11px; */
+  margin-bottom: 0;
+}
+
+/* @media screen and (max-width: 500px) {
+  .movies-card__like {
+    margin-left: 18px;
+    margin-top: 10px;
+  }
+} */

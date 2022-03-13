@@ -12,13 +12,14 @@
 @media screen and (max-width: 768px) {
   .movies {
     width: 92%;
+    margin-bottom: 155px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .movies {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 149px;
     width: 94%;
   }
 }

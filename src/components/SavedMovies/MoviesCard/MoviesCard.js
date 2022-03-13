@@ -9,44 +9,65 @@ import miniPoster_1 from "../../../images/miniPoster_1.png";
 export default function MoviesCard(props) {
   return (
     <>
-      <div className="movies-card">
-        <p className="movies-card__title">33 слова о дизайне</p>
-        <p className="movies-card__duration">1ч 42м</p>
-        <img
-          className="movies-card__like"
-          src={deleteButton}
-          alt="кнопка лайк"
+      <div className="saved-movies-card">
+        <p className="saved-movies-card__title">33 слова о дизайне</p>
+        <p className="saved-movies-card__duration">1ч 42м</p>
+        <button
+          className="saved-movies-card__delete-button"
+          type="button"
+          onClick={"deleteMovies"}
+          aria-label="кнопка удаления фильма"
+         >
+            <img
+              className="saved-movies-card__like"
+              src={deleteButton}
+              alt="кнопка удаления фильма"
         />
+         </button>
         <img
-          className="movies-card__thumbnail"
+          className="saved-movies-card__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />
       </div>
-      <div className="movies-card">
-        <p className="movies-card__title">33 слова о дизайне</p>
-        <p className="movies-card__duration">1ч 42м</p>
-        <img
-          className="movies-card__like"
-          src={deleteButton}
-          alt="кнопка лайк"
+      <div className="saved-movies-card">
+        <p className="saved-movies-card__title">33 слова о дизайне</p>
+        <p className="saved-movies-card__duration">1ч 42м</p>
+        <button
+          className="saved-movies-card__delete-button"
+          type="button"
+          onClick={"deleteMovies"}
+          aria-label="кнопка удаления фильма"
+         >
+            <img
+              className="saved-movies-card__like"
+              src={deleteButton}
+              alt="кнопка удаления фильма"
         />
+         </button>
         <img
-          className="movies-card__thumbnail"
+          className="saved-movies-card__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />
       </div>
-      <div className="movies-card">
-        <p className="movies-card__title">33 слова о дизайне</p>
-        <p className="movies-card__duration">1ч 42м</p>
-        <img
-          className="movies-card__like"
-          src={deleteButton}
-          alt="кнопка лайк"
+      <div className="saved-movies-card">
+        <p className="saved-movies-card__title">33 слова о дизайне</p>
+        <p className="saved-movies-card__duration">1ч 42м</p>
+        <button
+          className="saved-movies-card__delete-button"
+          type="button"
+          onClick={"deleteMovies"}
+          aria-label="кнопка удаления фильма"
+         >
+            <img
+              className="saved-movies-card__like"
+              src={deleteButton}
+              alt="кнопка удаления фильма"
         />
+         </button>
         <img
-          className="movies-card__thumbnail"
+          className="saved-movies-card__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />

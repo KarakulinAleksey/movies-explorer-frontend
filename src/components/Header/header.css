@@ -3,6 +3,7 @@
   justify-content: space-between;
   width: 100%;
   max-width: 1280px;
+  min-width: 320px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 70px;
@@ -30,7 +31,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .header {
     padding-left: 14px;
     padding-right: 14px;
@@ -53,7 +54,7 @@
   width: 76px;
   height: 32px;
   background-color: #2be080;
-  color: white;
+  color: #000;
   align-items: center;
   border-radius: 2px;
   text-decoration: none;
@@ -65,7 +66,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .header__button {
     width: 56px;
     height: 26px;
@@ -77,6 +78,7 @@
 .header__button-menu{
   border: none;
   background-color: #fff;
+  padding: 0;
 }
 
 .header__button-menu:hover {
@@ -114,7 +116,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .header__signup {
     margin-right: 14px;
     font-size: 10px;

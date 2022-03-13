@@ -3,12 +3,17 @@
   flex-direction: column;
   align-items: center;
   max-width: 100%;
-  background-color: #fff;
+  background-color: #f5f5f5;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
+@media screen and (max-width: 320px) {
+  .techs {
+    background-color: #fff;
+  }
+}
 .techs__heading {
   width: 89%;
   height: 50px;
@@ -21,7 +26,7 @@
   text-align: left;
   color: #000;
   margin: 0;
-  margin-top: 200px;
+  margin-top: 100px;
   margin-bottom: 23px;
   border-bottom: 1px solid #000;
 }
@@ -29,14 +34,14 @@
 @media screen and (max-width: 768px) {
   .techs__heading {
     width: 87%;
-    margin-top: 170px;
+    margin-top: 90px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 410px) {
   .techs__heading {
     width: 89%;
-    margin-top: 126px;
+    margin-top: 70px;
     font-size: 18px;
     line-height: 22px;
     letter-spacing: -1px;
@@ -102,7 +107,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 410px) {
   .techs__block-title-heading {
     font-size: 30px;
     line-height: 36px;
@@ -149,11 +154,13 @@
   justify-content: center;
   color: #000;
   margin-top: 85px;
+  margin-bottom: 100px;
 }
 
 @media screen and (max-width: 768px) {
   .techs__block {
     margin-top: 65px;
+    margin-bottom: 93px;
     grid-gap: 4px;
   }
 }

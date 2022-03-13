@@ -1,4 +1,4 @@
-.movies-card {
+.saved-movies-card {
   display: grid;
   grid-template-columns: 5fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -11,19 +11,19 @@
 }
 
 @media screen and (max-width: 768px) {
-  .movies-card {
+  .saved-movies-card {
     margin-bottom: 42px;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .movies-card {
+  .saved-movies-card {
     grid-template-rows: 6fr 1fr 1fr;
     margin-bottom: 14px;
   }
 }
 
-.movies-card__thumbnail {
+.saved-movies-card__thumbnail {
   width: 220px;
   height: 122px;
   grid-row-start: 1;
@@ -35,19 +35,21 @@
   margin-right: 6px;
 }
 
+/* ширина карточки */
 @media screen and (max-width: 500px) {
-  .movies-card__thumbnail {
+  .saved-movies-card__thumbnail {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 3;
     margin-right: 0;
-    width: 300px;
-    height: 168px;
+    margin-bottom: 9px;
+    width: 99.75%;
+    height: 93%;
   }
 }
 
-.movies-card__title {
+.saved-movies-card__title {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -60,7 +62,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .movies-card__title {
+  .saved-movies-card__title {
     font-size: 12px;
     line-height: 15px;
     margin-left: 14px;
@@ -68,7 +70,7 @@
   }
 }
 
-.movies-card__duration {
+.saved-movies-card__duration {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -81,7 +83,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .movies-card__duration {
+  .saved-movies-card__duration {
     grid-row-start: 3;
     grid-row-end: 4;
     grid-column-start: 1;
@@ -91,16 +93,33 @@
   }
 }
 
-.movies-card__like {
+.saved-movies-card__like {
   width: 14px;
   height: 12px;
-  margin-left: 22px;
-  margin-top: 11px;
+  /* margin-left: 22px;
+  margin-top: 11px; */
   margin-bottom: 0;
 }
 
+/* @media screen and (max-width: 500px) {
+  .saved-movies-card__like {
+    margin-left: 18px;
+    margin-top: 10px;
+  }
+} */
+
+.saved-movies-card__delete-button{
+  margin-left: 22px;
+  margin-top: 11px;
+  border: none;
+  padding: 0;
+  background-color: inherit ;
+  width: 14px;
+  height: 12px;
+}
+
 @media screen and (max-width: 500px) {
-  .movies-card__like {
+  .saved-movies-card__delete-button {
     margin-left: 18px;
     margin-top: 10px;
   }

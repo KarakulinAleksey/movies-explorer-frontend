@@ -21,7 +21,7 @@
   text-align: left;
   color: #000;
   margin: 0;
-  margin-top: 212px;
+  margin-top: 110px;
   margin-bottom: 23px;
   border-bottom: 1px solid #000;
 }
@@ -29,14 +29,14 @@
 @media screen and (max-width: 768px) {
   .about-me__heading {
     width: 87%;
-    margin-top: 182px;
+    margin-top: 90px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .about-me__heading {
     width: 91%;
-    margin-top: 142px;
+    margin-top: 48px;
     font-size: 18px;
     line-height: 22px;
     letter-spacing: -1px;
@@ -49,7 +49,7 @@
   align-items: center;
   justify-content: space-between;
   color: #000;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   margin-top: 42px;
   align-items: stretch;
 }
@@ -60,10 +60,12 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 562px) {
   .about-me__blocks-title {
     width: 91%;
     margin-top: 19px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -78,7 +80,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 562px) {
   .about-me__block-title {
     order: 1;
     width: 89%;
@@ -104,7 +106,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 562px) {
   .about-me__block-title-heading {
     font-size: 30px;
     line-height: 36px;
@@ -129,7 +131,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 562px) {
   .about-me__block-title-subtitle {
     font-size: 11px;
     line-height: 16px;
@@ -229,7 +231,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 562px) {
   .about-me__block-title-image {
     order: 0;
     width: 292px;

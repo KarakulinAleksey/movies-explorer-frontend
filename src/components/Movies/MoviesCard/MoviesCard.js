@@ -12,7 +12,14 @@ export default function MoviesCard(props) {
       <div className="movies-card">
         <p className="movies-card__title">33 слова о дизайне</p>
         <p className="movies-card__duration">1ч 42м</p>
-        <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        <button
+          className="movies-card__buttom-like"
+          type="button"
+          onClick={"setLike"}
+          aria-label="кнопка лайк"
+         >
+            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        </button>
         <img
           className="movies-card__thumbnail"
           src={miniPoster_1}
@@ -22,7 +29,14 @@ export default function MoviesCard(props) {
       <div className="movies-card">
         <p className="movies-card__title">33 слова о дизайне</p>
         <p className="movies-card__duration">1ч 42м</p>
-        <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        <button
+          className="movies-card__buttom-like"
+          type="button"
+          onClick={"setLike"}
+          aria-label="кнопка лайк"
+         >
+            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        </button>
         <img
           className="movies-card__thumbnail"
           src={miniPoster_1}
@@ -32,7 +46,14 @@ export default function MoviesCard(props) {
       <div className="movies-card">
         <p className="movies-card__title">33 слова о дизайне</p>
         <p className="movies-card__duration">1ч 42м</p>
-        <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        <button
+          className="movies-card__buttom-like"
+          type="button"
+          onClick={"setLike"}
+          aria-label="кнопка лайк"
+         >
+            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        </button>
         <img
           className="movies-card__thumbnail"
           src={miniPoster_1}
@@ -42,7 +63,14 @@ export default function MoviesCard(props) {
       <div className="movies-card">
         <p className="movies-card__title">33 слова о дизайне</p>
         <p className="movies-card__duration">1ч 42м</p>
-        <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        <button
+          className="movies-card__buttom-like"
+          type="button"
+          onClick={"setLike"}
+          aria-label="кнопка лайк"
+         >
+            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        </button>
         <img
           className="movies-card__thumbnail"
           src={miniPoster_1}
@@ -52,7 +80,14 @@ export default function MoviesCard(props) {
       <div className="movies-card">
         <p className="movies-card__title">33 слова о дизайне</p>
         <p className="movies-card__duration">1ч 42м</p>
-        <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        <button
+          className="movies-card__buttom-like"
+          type="button"
+          onClick={"setLike"}
+          aria-label="кнопка лайк"
+         >
+            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        </button>
         <img
           className="movies-card__thumbnail"
           src={miniPoster_1}
@@ -62,7 +97,14 @@ export default function MoviesCard(props) {
       <div className="movies-card">
         <p className="movies-card__title">33 слова о дизайне</p>
         <p className="movies-card__duration">1ч 42м</p>
-        <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        <button
+          className="movies-card__buttom-like"
+          type="button"
+          onClick={"setLike"}
+          aria-label="кнопка лайк"
+         >
+            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        </button>
         <img
           className="movies-card__thumbnail"
           src={miniPoster_1}
@@ -72,13 +114,22 @@ export default function MoviesCard(props) {
       <div className="movies-card">
         <p className="movies-card__title">33 слова о дизайне</p>
         <p className="movies-card__duration">1ч 42м</p>
-        <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        <button
+          className="movies-card__buttom-like"
+          type="button"
+          onClick={"setLike"}
+          aria-label="кнопка лайк"
+         >
+            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+        </button>
         <img
           className="movies-card__thumbnail"
           src={miniPoster_1}
           alt="минипостер"
         />
       </div>
+      
+  
     </>
   );
 }
