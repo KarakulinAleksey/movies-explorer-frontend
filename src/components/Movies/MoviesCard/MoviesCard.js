@@ -7,6 +7,9 @@ import miniPoster_1 from "../../../images/miniPoster_1.png";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function MoviesCard(props) {
+  function onClickLike(){
+    console.log("Нажата кнопка Like");
+  }
   return (
     <>
       <div className="movies-card">
@@ -15,7 +18,7 @@ export default function MoviesCard(props) {
         <button
           className="movies-card__buttom-like"
           type="button"
-          onClick={"setLike"}
+          onClick={onClickLike}
           aria-label="кнопка лайк"
          >
             <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
@@ -32,7 +35,7 @@ export default function MoviesCard(props) {
         <button
           className="movies-card__buttom-like"
           type="button"
-          onClick={"setLike"}
+          onClick={onClickLike}
           aria-label="кнопка лайк"
          >
             <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
@@ -49,7 +52,7 @@ export default function MoviesCard(props) {
         <button
           className="movies-card__buttom-like"
           type="button"
-          onClick={"setLike"}
+          onClick={onClickLike}
           aria-label="кнопка лайк"
          >
             <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
@@ -66,7 +69,7 @@ export default function MoviesCard(props) {
         <button
           className="movies-card__buttom-like"
           type="button"
-          onClick={"setLike"}
+          onClick={onClickLike}
           aria-label="кнопка лайк"
          >
             <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
@@ -83,7 +86,7 @@ export default function MoviesCard(props) {
         <button
           className="movies-card__buttom-like"
           type="button"
-          onClick={"setLike"}
+          onClick={onClickLike}
           aria-label="кнопка лайк"
          >
             <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
@@ -100,7 +103,7 @@ export default function MoviesCard(props) {
         <button
           className="movies-card__buttom-like"
           type="button"
-          onClick={"setLike"}
+          onClick={onClickLike}
           aria-label="кнопка лайк"
          >
             <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
@@ -117,7 +120,7 @@ export default function MoviesCard(props) {
         <button
           className="movies-card__buttom-like"
           type="button"
-          onClick={"setLike"}
+          onClick={onClickLike}
           aria-label="кнопка лайк"
          >
             <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />

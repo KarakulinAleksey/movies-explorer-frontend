@@ -7,6 +7,9 @@ import miniPoster_1 from "../../../images/miniPoster_1.png";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function MoviesCard(props) {
+  function onClickLike(){
+    console.log("Нажата кнопка Like");
+  }
   return (
     <>
       <div className="saved-movies-card">
@@ -15,7 +18,7 @@ export default function MoviesCard(props) {
         <button
           className="saved-movies-card__delete-button"
           type="button"
-          onClick={"deleteMovies"}
+          onClick={onClickLike}
           aria-label="кнопка удаления фильма"
          >
             <img
@@ -36,7 +39,7 @@ export default function MoviesCard(props) {
         <button
           className="saved-movies-card__delete-button"
           type="button"
-          onClick={"deleteMovies"}
+          onClick={onClickLike}
           aria-label="кнопка удаления фильма"
          >
             <img
@@ -57,7 +60,7 @@ export default function MoviesCard(props) {
         <button
           className="saved-movies-card__delete-button"
           type="button"
-          onClick={"deleteMovies"}
+          onClick={onClickLike}
           aria-label="кнопка удаления фильма"
          >
             <img
