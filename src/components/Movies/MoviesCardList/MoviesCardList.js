@@ -6,10 +6,21 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function MoviesCardList(props) {
+  console.log(props.searchMovies);
+ 
+
+
   return (
     <div className="movies-cardlist">
       <div className="movies-cardlist__list">
-        <MoviesCard />
+        {
+          // props.searchMovies.foreach((element) => {
+            <MoviesCard
+              movies={props.searchMovies}
+            />
+          // })
+        }
+       
       </div>
       <div className="movies-cardlist__button">Ещё</div>
     </div>

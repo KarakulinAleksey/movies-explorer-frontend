@@ -10,8 +10,8 @@ import SearchingMovies from "../../utils/SearchMovies";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Movies(props) {
-  const [allMovies, setAllMovies] = React.useState([]); //--стейт всех фильмов--
-
+  const [allMovies, setAllMovies] = React.useState([]); //--стейт всех фильмов--//
+  const [searchMovies, setSearchMovies] = React.useState([]); //--стейт отфильтрованных фильмов по ключевому слову--//
   //---Запрос всех фильмов ------//
   function getAllMovies() {
     const getAllMovies = moviesApi.getAllMovies();
@@ -33,14 +33,19 @@ export default function Movies(props) {
 
   useEffect(() => {
     console.log(allMovies);
-    console.log(SearchingMovies(allMovies, "Hit So Hard"));
+    setSearchMovies(SearchingMovies(allMovies, "2010"));
   }, [allMovies]);
 
   return (
     <main className="movies">
-      <SearchForm size={props.size} getAllMovies={getAllMovies} />
+      <SearchForm
+        size={props.size}
+        getAllMovies={getAllMovies}
+      />
       <FilterCheckbox />
-      <MoviesCardList />
+      <MoviesCardList
+        searchMovies={searchMovies}
+      />
     </main>
   );
 }
