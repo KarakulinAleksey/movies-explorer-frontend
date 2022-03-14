@@ -23,6 +23,8 @@ export default function SearchForm(props) {
 
   }
 
+  
+
   return (
     <div className="search-form">
       {searchFormIconElement()}
