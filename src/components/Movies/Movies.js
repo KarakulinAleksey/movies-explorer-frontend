@@ -27,24 +27,41 @@ export default function Movies(props) {
       });
   }
 
+  //---запишем массив всех фильмов в стейт перемную allMovies--//
   function SetAllMovies(allMovies) {
     setAllMovies(allMovies);
   }
 
-  useEffect(() => {
-    console.log(allMovies);
-    setSearchMovies(SearchingMovies(allMovies, "2010"));
-  }, [allMovies]);
+  //---записываю массив отфильтрованных фильмов по ключевому 
+  //---слову в стейт переменную searchMovies--/  
+  function SetSearchMovies(searchMovies){
+    setSearchMovies(searchMovies);
+  }
+
+  function getMoviesKey(){
+    getAllMovies();
+    SetSearchMovies(SearchingMovies(allMovies, "2010"));
+    localStorage.setItem('searchMovies', JSON.stringify(searchMovies));
+  }
+
+  // useEffect(() => {
+  //   SetSearchMovies(SearchingMovies(allMovies, "2010"));
+  // }, [allMovies]);
+
+  // useEffect(()=>{
+    // localStorage.setItem('searchMovies', JSON.stringify(searchMovies));
+ // },[searchMovies]);
 
   return (
     <main className="movies">
       <SearchForm
         size={props.size}
-        getAllMovies={getAllMovies}
+        getAllMovies={getMoviesKey}
       />
       <FilterCheckbox />
       <MoviesCardList
         searchMovies={searchMovies}
+        setSearchMovies={SetSearchMovies}
       />
     </main>
   );

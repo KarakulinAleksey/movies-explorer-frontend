@@ -8,8 +8,8 @@ import miniPoster_1 from "../../../images/miniPoster_1.png";
 
 export default function MoviesCard(props) {
 
-console.log(props.movies[0]);
-console.log(props.movies[0].image.url);
+// console.log(props.movies[0]);
+// console.log(props.movies[0].image.url);
 
   function onClickLike(){
     console.log("Нажата кнопка Like");
@@ -18,8 +18,8 @@ console.log(props.movies[0].image.url);
   return (
     <>
       <div className="movies-card">
-        <p className="movies-card__title">{props.movies[0].nameRU}</p>
-        <p className="movies-card__duration">{`${Math.floor(props.movies[0].duration/60)}ч ${props.movies[0].duration%60}м`}</p>
+        <p className="movies-card__title">{props.movie.nameRU}</p>
+        <p className="movies-card__duration">{`${Math.floor(props.movie.duration/60)}ч ${props.movie.duration%60}м`}</p>
         <button
           className="movies-card__buttom-like"
           type="button"
@@ -30,7 +30,7 @@ console.log(props.movies[0].image.url);
         </button>
         <img
           className="movies-card__thumbnail"
-          src={`https://api.nomoreparties.co/${props.movies[0].image.url}`}
+          src={`https://api.nomoreparties.co/${props.movie.image.url}`}
           alt="минипостер"
         />
       </div>

@@ -6,19 +6,31 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function MoviesCardList(props) {
-  console.log(props.searchMovies);
- 
+  // console.log(props.searchMovies);
+ function sliceMass(mass){
+   const newMass = mass;
+   console.log(newMass);
+  //  localStorage.removeItem('searchMovies');
+   const cliseMass = newMass.slice(0,7);
+   console.log(cliseMass);
+   localStorage.setItem('searchMovies', JSON.stringify(newMass.splice(0,7)));
+   console.log(JSON.parse(localStorage.getItem('searchMovies')));
+   return cliseMass;
+ }
 
+  // sliceMass(props.searchMovies);
+//  console.log(sliceMass());
 
   return (
     <div className="movies-cardlist">
       <div className="movies-cardlist__list">
         {
-          // props.searchMovies.foreach((element) => {
+          props.searchMovies.map((element) => (
             <MoviesCard
-              movies={props.searchMovies}
+              key={element.id}
+              movie={element}
             />
-          // })
+          ))
         }
        
       </div>
