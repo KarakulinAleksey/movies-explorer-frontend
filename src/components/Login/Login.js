@@ -1,15 +1,45 @@
 import React from "react";
 import "./login.css";
 import logo from "../../images/logo.svg";
+import * as auth from "../../utils/auth"
 import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function login(props) {
-  function onChange(){
+export default function Login(props) {
+  const history = useHistory();
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
+  function handleChangeEmail(e){
+    setEmail(e.target.value);
   }
+
+  function handleChangePassword(e){
+    setPassword(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    auth
+      .authorize(password, email)
+      .then((res) => {
+        console.log(res);
+       // if (res.data) {
+        // if (!(typeof res === "undefined")) { // 15
+        //   openInfoTooltipPopup(true);
+          history.push("/movies");
+        // } else {
+        //   openInfoTooltipPopup(false);
+        // }
+      })
+      .catch((err) => {
+        console.log("Ошибка входа ", err);
+        // openInfoTooltipPopup(false);
+      });
+  }
+
   return (
-    <div className="login">
+    <form onSubmit={handleSubmit} className="login">
       <NavLink className="login__image-link" to="/">
         <img className="login__image" src={logo} alt="логотип" />
       </NavLink>
@@ -21,8 +51,8 @@ export default function login(props) {
         placeholder="email"
         type="text"
         className="login__input"
-        value={"pochta@yandex.ru"}
-        onChange={onChange}
+        value={email}
+        onChange={handleChangeEmail}
       />
       {/* <span class="login__error">Что-то пошло не так ...</span> */}
       <p className="login__input-title">Пароль</p>
@@ -31,8 +61,8 @@ export default function login(props) {
         placeholder="password"
         type="text"
         className="login__input"
-        // value={"password"}
-        onChange={onChange}
+        value={password}
+        onChange={handleChangePassword}
       />
       {/* <span class="login__error">Что-то пошло не так ...</span> */}
       {/* </div> */}
@@ -45,6 +75,6 @@ export default function login(props) {
           Регистрация
         </Link>
       </p>
-    </div>
+    </form>
   );
 }

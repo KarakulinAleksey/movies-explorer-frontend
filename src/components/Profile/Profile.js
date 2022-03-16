@@ -1,20 +1,64 @@
 import React from "react";
 import "./profile.css";
+import * as auth from "../../utils/auth";
+import {mainApi} from "../../utils/MainApi";
 
-// import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { NavLink, useHistory} from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Profile(props) {
   let userName = "Виталий";
-  function onChange(){
+  const history = useHistory();
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
 
+  function handleChangeName(e) {
+    setName(e.target.value);
   }
 
+  function handleChangeEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function onSignout(){
+    auth
+     .signout()
+      .then((res) => {
+        console.log(res);
+        history.push("/");
+    })
+    .catch((err) => {
+      console.log("Ошибка выхода ", err);
+    });
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    mainApi
+    .updateProfileUser(name, email)
+     .then((res) => {
+       console.log(res);
+      //  history.push("/");
+   })
+   .catch((err) => {
+     console.log("Ошибка обновления данных пользователя ", err);
+   });
+ }
+
+  
+
   return (
-    <main className="profile">
+    <form onSubmit={handleSubmit} className="profile">
       <p className="profile__title">Привет, {userName}!</p>
       {/* <div class="profile__container-input"> */}
-      <input name="name" placeholder="Имя" type="text" className="profile__input" />
+      <input
+        name="name"
+        placeholder="Имя"
+        type="text"
+        className="profile__input"
+        onChange={handleChangeName}
+        value={name}
+      />
       {/* <span class="name-input-error"></span> */}
       <div className="borderLine"></div>
       <input
@@ -22,16 +66,17 @@ export default function Profile(props) {
         placeholder="email"
         type="text"
         className="profile__input"
-        onChange={onChange}
+        onChange={handleChangeEmail}
+        value={email}
       />
       {/* <span class="email-input-error"></span> */}
       {/* </div> */}
       <button type="submit" className="profile__button-edit">
         Редактировать
       </button>
-      <button type="submit" className="profile__button-output">
+      <button type="button" className="profile__button-output" onClick={onSignout}>
         Выйти из аккаунта
       </button>
-    </main>
+    </form>
   );
 }

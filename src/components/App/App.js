@@ -1,5 +1,6 @@
 import React from "react";
 import "./app.css";
+import { СurrentUserContext } from "../../context/CurrentUserContext";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -16,6 +17,7 @@ function App() {
   const [size, setSize] = React.useState({}); // ширина окна
   const ref = React.useRef(); // рэф App ширина окна
   const [navigationOpen, setNavigationOpen] = React.useState(false); //
+  const [currentUser, setCurrentUser] = React.useState({});
 
   // определяем ширину App
   const resizeHandler = () => {
@@ -40,6 +42,7 @@ function App() {
   }
 
   return (
+    <СurrentUserContext.Provider value={currentUser}>
     <div className="app" ref={ref}>
       <Switch>
         <Route exact path="/">
@@ -50,7 +53,10 @@ function App() {
 
         <Route path="/movies">
           <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
-          <Movies size={size} />
+          <Movies
+           size={size}
+    
+          />
           <Footer />
         </Route>
 
@@ -83,6 +89,7 @@ function App() {
         handlerNavigationOpen={handlerNavigationOpen}
       />
     </div>
+    </СurrentUserContext.Provider>
   );
 }
 

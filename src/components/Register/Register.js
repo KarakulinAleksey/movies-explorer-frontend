@@ -3,13 +3,48 @@ import "./register.css";
 import logo from "../../images/logo.svg";
 import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import * as auth from "../../utils/auth";
 
 export default function Register(props) {
-  function onChange(){
+  const history = useHistory();
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
+  function handleChangeName(e){
+    setName(e.target.value);
   }
+
+  function handleChangeEmail(e){
+    setEmail(e.target.value);
+  }
+
+  function handleChangePassword(e){
+    setPassword(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    auth
+      .register(name, password, email)
+      .then((res) => {
+        console.log(res);
+       // if (res.data) {
+        // if (!(typeof res === "undefined")) { // 15
+        //   openInfoTooltipPopup(true);
+          history.push("/signin");
+        // } else {
+        //   openInfoTooltipPopup(false);
+        // }
+      })
+      .catch((err) => {
+        console.log("Ошибка регистрации ", err);
+        // openInfoTooltipPopup(false);
+      });
+  }
+
   return (
-    <div className="register">
+    <form className="register" onSubmit={handleSubmit}>
       <NavLink className="register__image-link" to="/">
         <img className="register__image" src={logo} alt="логотип" />
       </NavLink>
@@ -21,8 +56,8 @@ export default function Register(props) {
         placeholder="Имя"
         type="text"
         className="register__input"
-        value={"Виталий"}
-        onChange={onChange}
+        value={name}
+        onChange={handleChangeName}
       />
       {/* <span class="register__error">Что-то пошло не так ...</span> */}
       <p className="register__input-title">E-mail</p>
@@ -31,8 +66,8 @@ export default function Register(props) {
         placeholder="email"
         type="text"
         className="register__input"
-        value={"pochta@yandex.ru"}
-        onChange={onChange}
+        value={email}
+        onChange={handleChangeEmail}
       />
       {/* <span class="register__error">Что-то пошло не так ...</span> */}
       <p className="register__input-title">Пароль</p>
@@ -41,8 +76,8 @@ export default function Register(props) {
         placeholder="password"
         type="text"
         className="register__input"
-        value={"**********"}
-        onChange={onChange}
+        value={password}
+        onChange={handleChangePassword}
       />
       <span className="register__error">Что-то пошло не так ...</span>
       {/* </div> */}
@@ -55,6 +90,6 @@ export default function Register(props) {
           Войти
         </Link>
       </p>
-    </div>
+    </form>
   );
 }

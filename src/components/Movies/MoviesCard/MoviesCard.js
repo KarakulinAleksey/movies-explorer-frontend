@@ -1,15 +1,11 @@
 import React from "react";
 import "./movies-card.css";
 import heartRed from "../../../images/heartRed.svg";
-import miniPoster_1 from "../../../images/miniPoster_1.png";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function MoviesCard(props) {
-
-// console.log(props.movies[0]);
-// console.log(props.movies[0].image.url);
+export default function MoviesCard({movie}) {
 
   function onClickLike(){
     console.log("Нажата кнопка Like");
@@ -18,8 +14,8 @@ export default function MoviesCard(props) {
   return (
     <>
       <div className="movies-card">
-        <p className="movies-card__title">{props.movie.nameRU}</p>
-        <p className="movies-card__duration">{`${Math.floor(props.movie.duration/60)}ч ${props.movie.duration%60}м`}</p>
+        <p className="movies-card__title">{movie.nameRU}</p>
+        <p className="movies-card__duration">{`${Math.floor(movie.duration/60)}ч ${movie.duration%60}м`}</p>
         <button
           className="movies-card__buttom-like"
           type="button"
@@ -30,7 +26,7 @@ export default function MoviesCard(props) {
         </button>
         <img
           className="movies-card__thumbnail"
-          src={`https://api.nomoreparties.co/${props.movie.image.url}`}
+          src={`https://api.nomoreparties.co/${movie.image.url}`}
           alt="минипостер"
         />
       </div>

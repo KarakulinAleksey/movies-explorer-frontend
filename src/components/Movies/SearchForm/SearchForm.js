@@ -5,10 +5,13 @@ import searchFormIcon from "../../../images/iconSearchform.svg";
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function SearchForm(props) {
+export default function SearchForm({size, setKeyWord}) {
+
+const [searchWord, setSearchWord] = React.useState(''); //--переменная ключевого слова поиска--//
+
   //---функция возвращает иконку поиск в зависимости от ширины экрана-------//
   function searchFormIconElement() {
-    if (props.size.clientWidth > 500) {
+    if (size.clientWidth > 500) {
       return (
         <img
           className="search-form__icon"
@@ -19,11 +22,13 @@ export default function SearchForm(props) {
     }
   }
 
-  function onChange(){
-
+  function handleChangeKeyWord(item) {
+    setSearchWord(item.target.value);
   }
-
   
+  function handleKeyWord (){
+    setKeyWord(searchWord);
+  };
 
   return (
     <div className="search-form">
@@ -33,10 +38,18 @@ export default function SearchForm(props) {
         placeholder="Фильм"
         type="text"
         className="search-form__search-input"
-        value={""}
-        onChange={onChange}
+        value={searchWord}
+        onChange={handleChangeKeyWord}
       />
-      <div type='button' onClick={props.getAllMovies} className="search-form__button">Найти</div>
+      <div
+        type="button"
+        onClick={
+          handleKeyWord
+        }
+        className="search-form__button"
+      >
+        Найти
+      </div>
     </div>
   );
 }
