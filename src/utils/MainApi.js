@@ -11,7 +11,7 @@ class MainApi {
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     }
-  
+    //--метод обновление данных пользователя---//
     updateProfileUser(name, email){
       return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
@@ -28,8 +28,20 @@ class MainApi {
         }) 
     };
 
+    //--метод получения данных пользователя---//
+    getAuthUser(){
+      return fetch(`${this._baseUrl}/users/me`, {
+        method: "GET",
+        credentials: 'include',
+        headers: this._headers,
+      })
+      .then(this._checkResponse)
+        
+    };
+    
+
     //---------метод запроса всех фильмов из сохраненных-------//
-    getAllMovies() {
+    getAllMovies(){
       return fetch(`${this._baseUrl}/movies/`, {
         method: "GET",
         credentials: 'include',

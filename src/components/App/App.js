@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch} from "react-router-dom";
 import "./app.css";
 import { СurrentUserContext } from "../../context/CurrentUserContext";
 import Header from "../Header/Header";
@@ -11,13 +12,16 @@ import Login from "../Login/Login";
 import PageError from "../PageError/PageError";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
-import { Route, Switch} from "react-router-dom";
+import {mainApi} from "../../utils/MainApi"
+
 
 function App() {
   const [size, setSize] = React.useState({}); // ширина окна
   const ref = React.useRef(); // рэф App ширина окна
   const [navigationOpen, setNavigationOpen] = React.useState(false); //
   const [currentUser, setCurrentUser] = React.useState({});
+  const [onLogin, setOnLogin] = React.useState(false);
+  
 
   // определяем ширину App
   const resizeHandler = () => {
@@ -31,6 +35,26 @@ function App() {
       window.removeEventListener("resize", resizeHandler);
     };
   }, []);
+
+  React.useEffect(() => {
+    const getAuthUser = mainApi.getAuthUser();
+    console.log(onLogin);
+    getAuthUser
+     .then((user)=>{
+        console.log(user);
+        setCurrentUser(user);
+     })
+     .catch((err)=>{
+       console.log("Ошибка при получении данных пользователя ", err);
+     });
+     
+  },[onLogin]);
+
+
+
+  function SetOnLogin(param){
+    setOnLogin(param);
+  };
 
   // открыть панель навигации Navigation
   function handlerNavigationOpen() {
@@ -68,11 +92,15 @@ function App() {
 
         <Route path="/profile">
           <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
-          <Profile />
+          <Profile
+            setOnLogin={SetOnLogin}
+          />
         </Route>
 
         <Route path="/signin">
-          <Login />
+          <Login
+            setOnlogin={SetOnLogin}
+          />
         </Route>
 
         <Route path="/signup">

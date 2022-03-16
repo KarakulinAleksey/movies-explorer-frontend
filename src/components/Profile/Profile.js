@@ -2,15 +2,16 @@ import React from "react";
 import "./profile.css";
 import * as auth from "../../utils/auth";
 import {mainApi} from "../../utils/MainApi";
-
 import { NavLink, useHistory} from "react-router-dom";
-// import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import {СurrentUserContext} from "../../context/CurrentUserContext";
 
-export default function Profile(props) {
-  let userName = "Виталий";
+export default function Profile({setOnLogin}) {
+  const currentUser = React.useContext(СurrentUserContext);
   const history = useHistory();
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
+
+  console.log(currentUser);
 
   function handleChangeName(e) {
     setName(e.target.value);
@@ -25,6 +26,7 @@ export default function Profile(props) {
      .signout()
       .then((res) => {
         console.log(res);
+        setOnLogin(false);
         history.push("/");
     })
     .catch((err) => {
@@ -49,7 +51,7 @@ export default function Profile(props) {
 
   return (
     <form onSubmit={handleSubmit} className="profile">
-      <p className="profile__title">Привет, {userName}!</p>
+      <p className="profile__title">Привет, {currentUser.name}!</p>
       {/* <div class="profile__container-input"> */}
       <input
         name="name"
