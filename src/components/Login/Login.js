@@ -5,7 +5,7 @@ import * as auth from "../../utils/auth"
 import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function Login(props) {
+export default function Login({setOnlogin}) {
   const history = useHistory();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -28,6 +28,7 @@ export default function Login(props) {
         // if (!(typeof res === "undefined")) { // 15
         //   openInfoTooltipPopup(true);
           history.push("/movies");
+          setOnlogin(true);
         // } else {
         //   openInfoTooltipPopup(false);
         // }
