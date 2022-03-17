@@ -1,6 +1,7 @@
 import React from "react";
 import "./movies-card.css";
 import heartRed from "../../../images/heartRed.svg";
+import { mainApi } from "../../../utils/MainApi";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
@@ -8,7 +9,28 @@ import heartRed from "../../../images/heartRed.svg";
 export default function MoviesCard({movie}) {
 
   function onClickLike(){
-    console.log("Нажата кнопка Like");
+    console.log(movie);
+    const addMovie = mainApi.addMovie(
+      movie.country,
+      movie.director,
+      movie.duration,
+      movie.year,
+      movie.description,
+      `https://api.nomoreparties.co${movie.image.url}`,
+      movie.trailerLink,
+      `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
+      movie.id,
+      movie.nameRU,
+      movie.nameEN,
+      );
+  
+    addMovie
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log('Запрос на добавление фильма', err);
+      })
   }
 
   return (

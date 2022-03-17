@@ -6,10 +6,19 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function SavedMoviesCardList(props) {
+  console.log('cardList', props.allMovies);
   return (
     <div className="saved-movies-cardlist">
       <div className="saved-movies-cardlist__list">
-        <MoviesCard />
+        {
+         props.allMovies.map((element) => (
+          <MoviesCard
+            key={element._id}
+            movie={element}
+          />
+        ))
+        }
+        
       </div>
     </div>
   );
