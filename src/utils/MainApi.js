@@ -104,7 +104,7 @@ class MainApi {
     //--метод запроса на удаление фильма--//
     deleteMovie(idMovie) {
       this._idMovie = idMovie;
-      return fetch(`${this._baseUrl}/cards/${idMovie}`, {
+      return fetch(`${this._baseUrl}/movies/${idMovie}`, {
         method: 'DELETE',
         credentials: 'include',
         headers: this._headers

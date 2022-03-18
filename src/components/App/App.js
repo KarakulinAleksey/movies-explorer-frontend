@@ -50,8 +50,6 @@ function App() {
      
   },[onLogin]);
 
-
-
   function SetOnLogin(param){
     setOnLogin(param);
   };

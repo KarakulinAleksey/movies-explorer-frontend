@@ -5,7 +5,7 @@ import searchFormIcon from "../../../images/iconSearchform.svg";
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function SearchForm({size, setKeyWord}) {
+export default function SearchForm({size, setKeyWord, setSearchOn}) {
 
 const [searchWord, setSearchWord] = React.useState(''); //--переменная ключевого слова поиска--//
 
@@ -28,6 +28,7 @@ const [searchWord, setSearchWord] = React.useState(''); //--переменная
   
   function handleKeyWord (){
     setKeyWord(searchWord);
+    setSearchOn();
   };
 
   return (

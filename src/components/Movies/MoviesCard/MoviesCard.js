@@ -1,6 +1,7 @@
 import React from "react";
 import "./movies-card.css";
 import heartRed from "../../../images/heartRed.svg";
+import heartWhite from "../../../images/heartWhite.svg";
 import { mainApi } from "../../../utils/MainApi";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
@@ -44,7 +45,7 @@ export default function MoviesCard({movie}) {
           onClick={onClickLike}
           aria-label="кнопка лайк"
          >
-            <img className="movies-card__like" src={heartRed} alt="кнопка лайк" />
+            <img className="movies-card__like" src={heartWhite} alt="кнопка лайк" />
         </button>
         <img
           className="movies-card__thumbnail"

@@ -2,13 +2,26 @@ import React from "react";
 import "./movies-card.css";
 import deleteButton from "../../../images/deleteButton.svg";
 import miniPoster_1 from "../../../images/miniPoster_1.png";
+import { mainApi } from "../../../utils/MainApi"
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function MoviesCard({movie}) {
+export default function MoviesCard({ movie, setAllMoviesSaveMovie, setDeleteMovie }) {
+
+
   function onClickLike(){
-    console.log("Нажата кнопка Like");
+    console.log("Нажата кнопка DeleteSavedMovies");
+    const deleteMovie = mainApi.deleteMovie(movie._id);
+    deleteMovie
+      .then((deleteMovie)=>{
+        console.log(deleteMovie);
+        setAllMoviesSaveMovie((state) => state.filter((c) => c._id !== deleteMovie._id));
+        setDeleteMovie();
+      })
+      .catch((err)=>{
+        console.log('Ошибка при запросе на удаление фильма ', err);
+      })
   }
   return (
     <>

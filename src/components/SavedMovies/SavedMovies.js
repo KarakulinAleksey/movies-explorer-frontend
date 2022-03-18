@@ -8,15 +8,28 @@ import { mainApi } from "../../utils/MainApi";
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function SavedMovies(props) {
-  const [allMovies, setAllMovies] = React.useState([]); //--стейт всех фильмов--//
+export default function SavedMovies({size}) {
+  const [allMovies, setAllMoviesSaveMovie] = React.useState([]); //--стейт всех сохраненных фильмов--//
+  const [deleteMovie, setDeleteMovie] = React.useState(false);
+
+  function SetDeleteMovie(){
+    if (deleteMovie) {
+      setDeleteMovie(false);
+    } else if (!deleteMovie) {
+      setDeleteMovie(true);
+    }
+  };
+
+  function SetAllMoviesSaveMovie(movies){
+    setAllMoviesSaveMovie(movies);
+  };
 
   //---Запрос всех фильмов ------//
   function getAllMovies() {
     const getAllMovies = mainApi.getAllMovies();
       getAllMovies
       .then((item) => {
-        setAllMovies(item);
+        SetAllMoviesSaveMovie(item);
       })
       .catch((err) => {
         console.log("Запрос на добавления всех фильмов " + err);
@@ -26,14 +39,16 @@ export default function SavedMovies(props) {
   //--запрос всех фильмов из базы при монтировании компонента---//
   useEffect(()=>{
     getAllMovies();
-  },[]);
+  },[deleteMovie]);
 
   return (
     <main className="saved-movies">
-      <SearchForm size={props.size} />
+      <SearchForm size={size} />
       <FilterCheckbox />
       <MoviesCardList
         allMovies={allMovies}
+        setAllMoviesSaveMovie={SetAllMoviesSaveMovie}
+        setDeleteMovie={SetDeleteMovie}
        />
     </main>
   );
