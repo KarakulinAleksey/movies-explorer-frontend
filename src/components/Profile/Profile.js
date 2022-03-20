@@ -27,6 +27,8 @@ export default function Profile({setOnLogin}) {
       .then((res) => {
         console.log(res);
         setOnLogin(false);
+        localStorage.removeItem('savedMovies');
+        localStorage.removeItem('searchMovies');
         history.push("/");
     })
     .catch((err) => {

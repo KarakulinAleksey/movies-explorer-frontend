@@ -5,9 +5,13 @@ import heartWhite from "../../../images/heartWhite.svg";
 import { mainApi } from "../../../utils/MainApi";
 
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
-// import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import {СurrentUserContext} from "../../../context/CurrentUserContext";
 
 export default function MoviesCard({movie}) {
+
+  const currentUser = React.useContext(СurrentUserContext);
+  
+  // const isLiked = movie.owner.some((i) => i === currentUser._id);
 
   function onClickLike(){
     console.log(movie);

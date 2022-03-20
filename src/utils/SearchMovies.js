@@ -1,4 +1,7 @@
 export default function searchingMovies(arrayAllMovies, keyword) {
+  console.log('searchingMovies-arrayAllMovies',arrayAllMovies);
+  console.log('searchingMovies-keyword',keyword);
+  
   //---массив объектов с одной строкой параметров --/
   const _unityPropertsOneLine = arrayAllMovies.map((movie) => {
     return {
@@ -18,9 +21,9 @@ export default function searchingMovies(arrayAllMovies, keyword) {
 
   //---массив объектов после сортировки по ключевому слову--/
   const _sortByKeyword = _unityPropertsOneLine.filter((movies) => {
-    return movies.oneString.includes(keyword.toLowerCase());
+    return movies.oneString.includes(keyword?keyword.toLowerCase():'');
   });
-
+  console.log('searchingMovies-_sortByKeyword',_sortByKeyword);
   //--массив отсортированных фильмов--//
   let _arraySortedMovies = [];
 

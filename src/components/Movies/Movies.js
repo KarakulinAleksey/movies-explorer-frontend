@@ -14,25 +14,53 @@ export default function Movies(props) {
   const [allMovies, setAllMovies] = React.useState([]); //--стейт всех фильмов
   const [allMoviesSaveMovie, SetAllMoviesSaveMovie] = React.useState([]); //--стейт всех фильмов сохраненных пользователем
   const [searchMovies, setSearchMovies] = React.useState([]); //--стейт отфильтрованных фильмов по ключевому слову
-  const [keyWord, setKeyWord] = React.useState(''); //--стейт ключевого слова поиска
-  const [searchOn, setSearchOn] = React.useState(false); //--стейт нажатия кнопки найти
+  const [keyWord, setKeyWord] = React.useState(""); //--стейт ключевого слова поиска
+  // const [searchOn, setSearchOn] = React.useState(false); //--стейт нажатия кнопки найти
 
+  // console.log('keyWord', keyWord);
+  // console.log('setSearchOn',searchOn);
+  // console.log('allMoviesSaveMovie', allMoviesSaveMovie);
+  // console.log('getLocalStorageSavedMovies', getLocalStorageSavedMovies());
+  console.log("searchMovies", searchMovies);
 
   //--Состояние кнопки найти--//
-  function SetSearchOn(){
-    if (searchOn) {
-      setSearchOn(false);
-    } else if (!searchOn) {
-      setSearchOn(true);
-    }
-  };
+  // function SetSearchOn(){
+  //   if (searchOn) {
+  //     setSearchOn(false);
+  //   } else if (!searchOn) {
+  //     setSearchOn(true);
+  //   }
+  // };
 
-  console.log('setSearchOn',searchOn);
+  //--запрос всех фильмов из базы при монтировании компонента---//
+  useEffect(() => {
+    // console.log(getLocalStorageMovies());
+    // setSearchMovies(getLocalStorageMovies()); //--записываю в стейт сохраненные фильмы из лок.переменной
+    getAllMovies(); //--запрос из общей базы
+    getAllSavedMovies(); //--запрос базы сохраненных пользователем фильмов
+  }, []);
+
+  //--при обновлении ключевого слова обновляем переменную
+  //--отфильтрованных фильмов--//
+  // useEffect(() => {
+  //   getSearchingMovies();
+  // }, [keyWord]);
+
+    //--сохраняем все отфильтрованные фильмы в локальное хранилище---//
+    // useEffect(() => {
+      // setLocalStorageSearchMovies();
+      // return setLocalStorageSearchMovies();
+    // }, [searchMovies]);
+
+  //--сохраняем все сохраненные фильмы в локальное хранилище---//
+  useEffect(() => {
+    setLocalStorageSavedMovies();
+  }, [allMoviesSaveMovie]);
 
   //---Запрос всех фильмов ------//
   function getAllMovies() {
     const getAllMovies = moviesApi.getAllMovies();
-      getAllMovies
+    getAllMovies
       .then((item) => {
         setAllMovies(item);
       })
@@ -44,7 +72,7 @@ export default function Movies(props) {
   //---Запрос всех фильмов сохраненных пользователем------//
   function getAllSavedMovies() {
     const getAllMovies = mainApi.getAllMovies();
-      getAllMovies
+    getAllMovies
       .then((item) => {
         SetAllMoviesSaveMovie(item);
       })
@@ -53,87 +81,59 @@ export default function Movies(props) {
       });
   }
 
-  //--запрос всех фильмов из базы при монтировании компонента---//
-  useEffect(()=>{
-    getAllMovies();
-    getAllSavedMovies();
-  },[]);
-
-  console.log('allMoviesSaveMovie', allMoviesSaveMovie);
-  console.log('getLocalStorageSavedMovies', getLocalStorageSavedMovies());
-
-//--сохраняем все сохраненные фильмы в локальное хранилище---//
-  useEffect(()=>{
-    setLocalStorageSavedMovies();
-  },[allMoviesSaveMovie]);
-
-  //--сохраняем все отфильтрованные фильмы в локальное хранилище---//
-  useEffect(()=>{
-    setLocalStorageSearchMovies()
-  },[searchOn]);
-
-  //--при обновлении ключевого слова обновляем переменную 
-  //--отфильтрованных фильмов--//
-  useEffect(()=>{
-    getSearchingMovies();
-  },[keyWord]);
-
-  
-
   //--читаем отфильтрованные значения из локальное хранилище--//
-  function getLocalStorageMovies(){
-   return JSON.parse(localStorage.getItem('searchMovies'));
+  function getLocalStorageMovies() {
+    return JSON.parse(localStorage.getItem("searchMovies"));
   }
 
   //--записываю отфильтрованные значения в локальное хранилище--//
-  function setLocalStorageSearchMovies(){
-    localStorage.setItem('searchMovies', JSON.stringify(searchMovies));
+  function setLocalStorageSearchMovies() {
+    localStorage.setItem("searchMovies", JSON.stringify(searchMovies));
   }
 
- //--записываю сохраненные фильмы в локальное хранилище--//
- function setLocalStorageSavedMovies(){
-  localStorage.setItem('savedMovies', JSON.stringify(allMoviesSaveMovie));
-}
+  //--записываю сохраненные фильмы в локальное хранилище--//
+  function setLocalStorageSavedMovies() {
+    localStorage.setItem("savedMovies", JSON.stringify(allMoviesSaveMovie));
+  }
 
- //--читаем сохраненные фильмы из локальное хранилище--//
- function getLocalStorageSavedMovies(){
-  return JSON.parse(localStorage.getItem('savedMovies'));
- }
+  //--читаем сохраненные фильмы из локальное хранилище--//
+  function getLocalStorageSavedMovies() {
+    return JSON.parse(localStorage.getItem("savedMovies"));
+  }
 
   //--записываю в стейт ключевое слово поиска--//
-  function SetKeyWord(enteredWord){
+  function SetKeyWord(enteredWord) {
     setKeyWord(enteredWord);
+
+    getSearchingMovies(allMovies, enteredWord);
+    setLocalStorageSearchMovies();
   }
 
   //---записываю массив отфильтрованных фильмов по ключевому слову
-  //--- в стейт переменную searchMovies--//  
-  function SetSearchMovies(searchMovies){
-    setSearchMovies(searchMovies);
-  }
+  //--- в стейт переменную searchMovies--//
+  // function SetSearchMovies(searchMovies){
+  //   setSearchMovies(searchMovies);
+  // }
 
   //--записываю массив отфильтрованных фильмов в стейт--//
-  function getSearchingMovies(){
-    SetSearchMovies(SearchingMovies(allMovies, keyWord));
+  function getSearchingMovies(allMovies, keyWord) {
+    setSearchMovies(SearchingMovies(allMovies, keyWord));
   }
 
-//   useEffect(()=>{
-//     setLocalStorageSearchMovies()
-//     return()=>{setLocalStorageSearchMovies()};
-//  });
+  //   useEffect(()=>{
+  //     setLocalStorageSearchMovies()
+  //     return()=>{setLocalStorageSearchMovies()};
+  //  });
 
   return (
     <main className="movies">
       <SearchForm
         size={props.size}
         setKeyWord={SetKeyWord}
-        setSearchOn={SetSearchOn}
-
+        // setSearchOn={SetSearchOn}
       />
       <FilterCheckbox />
-      <MoviesCardList
-        searchMovies={searchMovies}
-        
-      />
+      <MoviesCardList searchMovies={searchMovies} />
     </main>
   );
 }

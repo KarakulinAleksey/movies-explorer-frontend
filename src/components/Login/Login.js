@@ -5,7 +5,7 @@ import * as auth from "../../utils/auth"
 import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function Login({setOnlogin}) {
+export default function Login(/*{setOnlogin}*/props) {
   const history = useHistory();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -20,23 +20,27 @@ export default function Login({setOnlogin}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    auth
-      .authorize(password, email)
-      .then((res) => {
-        console.log(res);
-       // if (res.data) {
-        // if (!(typeof res === "undefined")) { // 15
-        //   openInfoTooltipPopup(true);
-          history.push("/movies");
-          setOnlogin(true);
-        // } else {
-        //   openInfoTooltipPopup(false);
-        // }
-      })
-      .catch((err) => {
-        console.log("Ошибка входа ", err);
-        // openInfoTooltipPopup(false);
-      });
+    if (!email || !password) {
+      return;
+    }
+    props.onLogin(password, email);
+    // auth
+    //   .authorize(password, email)
+    //   .then((res) => {
+    //     console.log(res);
+    //    // if (res.data) {
+    //     // if (!(typeof res === "undefined")) { // 15
+    //     //   openInfoTooltipPopup(true);
+    //       history.push("/movies");
+    //       setOnlogin(true);
+    //     // } else {
+    //     //   openInfoTooltipPopup(false);
+    //     // }
+    //   })
+    //   .catch((err) => {
+    //     console.log("Ошибка входа ", err);
+    //     // openInfoTooltipPopup(false);
+    //   });
   }
 
   return (

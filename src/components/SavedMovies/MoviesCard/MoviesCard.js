@@ -7,16 +7,16 @@ import { mainApi } from "../../../utils/MainApi"
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function MoviesCard({ movie, setAllMoviesSaveMovie, setDeleteMovie }) {
+export default function MoviesCard({ movie, setAllSaveMovies, setDeleteMovie }) {
 
 
-  function onClickLike(){
+  function onClickDelete(){
     console.log("Нажата кнопка DeleteSavedMovies");
     const deleteMovie = mainApi.deleteMovie(movie._id);
     deleteMovie
       .then((deleteMovie)=>{
         console.log(deleteMovie);
-        setAllMoviesSaveMovie((state) => state.filter((c) => c._id !== deleteMovie._id));
+        setAllSaveMovies((state) => state.filter((c) => c._id !== deleteMovie._id));
         setDeleteMovie();
       })
       .catch((err)=>{
@@ -31,7 +31,7 @@ export default function MoviesCard({ movie, setAllMoviesSaveMovie, setDeleteMovi
         <button
           className="saved-movies-card__delete-button"
           type="button"
-          onClick={onClickLike}
+          onClick={onClickDelete}
           aria-label="кнопка удаления фильма"
          >
             <img

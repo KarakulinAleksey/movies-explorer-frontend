@@ -25,22 +25,23 @@ export default function Register(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    auth
-      .register(name, password, email)
-      .then((res) => {
-        console.log(res);
-       // if (res.data) {
-        // if (!(typeof res === "undefined")) { // 15
-        //   openInfoTooltipPopup(true);
-          history.push("/signin");
-        // } else {
-        //   openInfoTooltipPopup(false);
-        // }
-      })
-      .catch((err) => {
-        console.log("Ошибка регистрации ", err);
-        // openInfoTooltipPopup(false);
-      });
+    props.onRegister(name, email, password);
+    // auth
+    //   .register(name, password, email)
+    //   .then((res) => {
+    //     console.log(res);
+    //    // if (res.data) {
+    //     // if (!(typeof res === "undefined")) { // 15
+    //     //   openInfoTooltipPopup(true);
+    //       history.push("/movies");
+    //     // } else {
+    //     //   openInfoTooltipPopup(false);
+    //     // }
+    //   })
+    //   .catch((err) => {
+    //     console.log("Ошибка регистрации ", err);
+    //     // openInfoTooltipPopup(false);
+    //   });
   }
 
   return (

@@ -5,17 +5,17 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function SavedMoviesCardList({allMovies, setAllMoviesSaveMovie, setDeleteMovie}) {
-  console.log('cardList', allMovies);
+export default function SavedMoviesCardList({allSaveMovies, setAllSaveMovies, setDeleteMovie}) {
+  console.log('cardList', allSaveMovies);
   return (
     <div className="saved-movies-cardlist">
       <div className="saved-movies-cardlist__list">
         {
-         allMovies.map((element) => (
+         allSaveMovies.map((element) => (
           <MoviesCard
             key={element._id}
             movie={element}
-            setAllMoviesSaveMovie={setAllMoviesSaveMovie}
+            setAllSaveMovies={setAllSaveMovies}
             setDeleteMovie={setDeleteMovie}
           />
         ))
