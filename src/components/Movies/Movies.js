@@ -130,10 +130,24 @@ export default function Movies(props) {
       <SearchForm
         size={props.size}
         setKeyWord={SetKeyWord}
+        onGetMovies={props.onGetMovies}
         // setSearchOn={SetSearchOn}
       />
-      <FilterCheckbox />
-      <MoviesCardList searchMovies={searchMovies} />
+      <FilterCheckbox 
+        onFilter={props.onFilter}
+        isShortMovie={props.isShortMovie}
+      />
+      <MoviesCardList
+       searchMovies={searchMovies} 
+       
+       movies={props.movies}
+       onGetMovies={props.handleGetMovies}
+       onAddMovie={props.onAddMovie}
+       isSavedMovies={false}
+       message={props.message}
+       savedMovies={props.savedMovies}
+       likedMovies={props.likedMovies}
+       />
     </main>
   );
 }

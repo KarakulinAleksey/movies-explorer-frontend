@@ -5,7 +5,7 @@ import {mainApi} from "../../utils/MainApi";
 import { NavLink, useHistory} from "react-router-dom";
 import {СurrentUserContext} from "../../context/CurrentUserContext";
 
-export default function Profile({setOnLogin}) {
+export default function Profile(/*{setOnLogin}*/props) {
   const currentUser = React.useContext(СurrentUserContext);
   const history = useHistory();
   const [name, setName] = React.useState('');
@@ -26,7 +26,7 @@ export default function Profile({setOnLogin}) {
      .signout()
       .then((res) => {
         console.log(res);
-        setOnLogin(false);
+        // setOnLogin(false);
         localStorage.removeItem('savedMovies');
         localStorage.removeItem('searchMovies');
         history.push("/");
@@ -38,15 +38,16 @@ export default function Profile({setOnLogin}) {
 
   function handleSubmit(e){
     e.preventDefault();
-    mainApi
-    .updateProfileUser(name, email)
-     .then((res) => {
-       console.log(res);
-      //  history.push("/");
-   })
-   .catch((err) => {
-     console.log("Ошибка обновления данных пользователя ", err);
-   });
+    props.onEditUser(name, email);
+  //   mainApi
+  //   .updateProfileUser(name, email)
+  //    .then((res) => {
+  //      console.log(res);
+  //     //  history.push("/");
+  //  })
+  //  .catch((err) => {
+  //    console.log("Ошибка обновления данных пользователя ", err);
+  //  });
  }
 
   
@@ -78,7 +79,7 @@ export default function Profile({setOnLogin}) {
       <button type="submit" className="profile__button-edit">
         Редактировать
       </button>
-      <button type="button" className="profile__button-output" onClick={onSignout}>
+      <button type="button" className="profile__button-output" onClick={props.onSignOut}>
         Выйти из аккаунта
       </button>
     </form>

@@ -5,13 +5,13 @@ import searchFormIcon from "../../../images/iconSearchform.svg";
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function SearchForm({size, setKeyWord, /*setSearchOn*/}) {
+export default function SearchForm(props/*, {size, setKeyWord, /*setSearchOn}*/) {
 
 const [searchWord, setSearchWord] = React.useState(''); //--переменная ключевого слова поиска--//
 
   //---функция возвращает иконку поиск в зависимости от ширины экрана-------//
   function searchFormIconElement() {
-    if (size.clientWidth > 500) {
+    if (props.size.clientWidth > 500) {
       return (
         <img
           className="search-form__icon"
@@ -27,8 +27,9 @@ const [searchWord, setSearchWord] = React.useState(''); //--переменная
   }
   
   function handleKeyWord (){
-    setKeyWord(searchWord);
+    // setKeyWord(searchWord);
     // setSearchOn();
+    props.onGetMovies(searchWord);
   };
 
   return (

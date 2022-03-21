@@ -35,5 +35,6 @@ export default function searchingMovies(arrayAllMovies, keyword) {
     });
   });
 
+  localStorage.setItem("sortedMovies", JSON.stringify(_arraySortedMovies));
   return _arraySortedMovies;
 }

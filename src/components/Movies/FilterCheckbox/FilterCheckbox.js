@@ -12,6 +12,7 @@ export default function FilterCheckbox(props) {
   );
 
   function hendelFilterCheckboxImage() {
+    props.isShortMovie();
     if (isfilterCheckboxImage === filterCheckboxImageOn) {
       setfilterCheckboxImage(filterCheckboxImageOff) ;
     } else if (isfilterCheckboxImage === filterCheckboxImageOff) {
