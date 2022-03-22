@@ -1,7 +1,7 @@
 export const BASE_URL = "http://localhost:3001";
 
 //--регистрация--//
-export const register = (name, password, email) => {
+export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     credentials: 'include',
@@ -22,7 +22,7 @@ export const register = (name, password, email) => {
 };
 
 //--авторизация-----//
-export const authorize = (password, email) => {
+export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     credentials: 'include',

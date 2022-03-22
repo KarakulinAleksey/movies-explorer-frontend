@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, useLocation, useHistory } from "react-router-dom";
 import "./app.css";
+
 import { СurrentUserContext } from "../../context/CurrentUserContext";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -28,7 +29,7 @@ function App() {
   const [userMovies, setUserMovies] = React.useState([]);
   const [sortedMovies, setSortedMovies] = React.useState([]);
   const [movies, setMovies] = React.useState([]);
-  const [keyWord, setKeyWord] = React.useState([]);
+  // const [keyWord, setKeyWord] = React.useState([]);
   const [moviesMessage, setMoviesMessage] = React.useState("");
   const [shortMovies, setShortMovies] = React.useState(false);
 
@@ -89,43 +90,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => {
-    Promise.all([mainApi.getAuthUser(), mainApi.getAllMovies()])
-      .then(([userData, savedMovies]) => {
-        localStorage.setItem("currentUser", JSON.stringify(userData));
-        setCurrentUser(userData);
-
-        const savedMoviesList = savedMovies.filter(
-          (item) => item.owner._id === userData._id
-        );
-        localStorage.setItem("userMovies", JSON.stringify(savedMoviesList));
-        setUserMovies(savedMoviesList);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [loggedIn]);
-
-  React.useEffect(() => {
-    checkSavedMovie(sortedMovies);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userMovies]);
-
-  React.useEffect(() => {
-    moviesApi
-      .getAllMovies()
-      .then((allMovies) => {
-        setMovies(allMovies);
-        localStorage.setItem("movies", JSON.stringify(allMovies));
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-        localStorage.removeItem("movies");
-      });
-  }, [currentUser]);
-
-  function handleRegister(name, password, email) {
-    console.log(email);
+  function handleRegister(name, email, password) {
     auth
       .register(name, email, password)
       .then((res) => {
@@ -206,16 +171,13 @@ function App() {
     history.push("/");
   };
 
-  function onSignout() {
-    auth
-      .signout()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log("Ошибка выхода ", err);
-      });
-  }
+  // function handleMenu() {
+  //   setIsMenuOpen(!isMenuOpen);
+  // }
+
+  // function closeMenu() {
+  //   setIsMenuOpen();
+  // }
 
   function handleGetMovies(keyword) {
     setMoviesMessage("");
@@ -248,30 +210,20 @@ function App() {
   }
 
   function handleLikeClick(movie) {
-    // console.log(movie);
+    console.log('handleLikeClick',movie);
     mainApi
-      .addMovie(
-        movie.country,
-        movie.director,
-        movie.duration,
-        movie.year,
-        movie.description,
-        `https://api.nomoreparties.co${movie.image.url}`,
-        movie.trailer,
-        `https://api.nomoreparties.co${movie.thumbnail}`,
-        movie.movieId,
-        movie.nameRU,
-        movie.nameEN
-      )
+      .addMovie(movie)
       .then((newMovie) => {
+        
         if (!newMovie) {
           throw new Error("При добавлении фильма произошла ошибка");
         } else {
+          console.log('newMovie', newMovie);
           localStorage.setItem(
             "userMovies",
             JSON.stringify((newMovie = [newMovie.movie, ...userMovies]))
           );
-          console.log('newMovie', newMovie);
+          
           setUserMovies(newMovie);
         }
       })
@@ -324,13 +276,63 @@ function App() {
     }
   }
 
+  React.useEffect(() => {
+    Promise.all([mainApi.getAuthUser(), mainApi.getAllMovies()])
+      .then(([userData, savedMovies]) => {
+        localStorage.setItem("currentUser", JSON.stringify(userData));
+        setCurrentUser(userData);
+
+        const savedMoviesList = savedMovies.filter(
+          (item) => item.owner._id === userData._id
+        );
+        localStorage.setItem("userMovies", JSON.stringify(savedMoviesList));
+        setUserMovies(savedMoviesList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [loggedIn]);
+
+  React.useEffect(() => {
+    checkSavedMovie(sortedMovies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userMovies]);
+
+  React.useEffect(() => {
+    moviesApi
+      .getAllMovies()
+      .then((allMovies) => {
+        setMovies(allMovies);
+        localStorage.setItem("movies", JSON.stringify(allMovies));
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+        localStorage.removeItem("movies");
+      });
+  }, [currentUser]);
+
+
+
+  function onSignout() {
+    auth
+      .signout()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log("Ошибка выхода ", err);
+      });
+  }
+
+
   function checkSavedMovie(movie) {
-    console.log(movie);
-    console.log(userMovies);
+    // console.log(movie);
+    console.log('checkSavedMovie-userMovies', userMovies);
     return (movie.isSaved = userMovies.some(
       (userMovie) => userMovie.movieId === movie.id
     ));
   }
+
   // function SetOnLogin(param){
   //   setOnLogin(param);
   // };
@@ -375,8 +377,22 @@ function App() {
           </Route>
 
           <Route path="/saved-movies">
-            <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
-            <SavedMovies size={size} />
+            <Header
+             size={size}
+             handlerNavigationOpen={handlerNavigationOpen}
+              />
+            <SavedMovies
+             size={size}
+             movies={filterShortMovies(userMovies)}
+             onGetMovies={handleGetSavedMovies}
+             loggedIn={loggedIn}
+             onDelete={handleMovieDeleteButton}
+             isShortMovie={shortMovies}
+             onFilter={handleCheckBox}
+             message={moviesMessage}
+             isSavedMovies={true}
+             onSignOut={handleSignOut}
+              />
             <Footer />
           </Route>
 
@@ -386,18 +402,25 @@ function App() {
               // setOnLogin={SetOnLogin}
               onEditUser={handleUpdateUser}
               onSignOut={handleSignOut}
+              loggedIn={loggedIn}
+              message={message}
             />
           </Route>
 
           <Route path="/signin">
             <Login
               onLogin={handleLogin}
+              loggedIn={loggedIn}
+              message={message}
               // setOnlogin={SetOnLogin}
             />
           </Route>
 
           <Route path="/signup">
-            <Register onRegister={handleRegister} />
+            <Register
+             onRegister={handleRegister}
+             message={message}
+              />
           </Route>
 
           <Route path="/page-error">

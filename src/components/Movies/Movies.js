@@ -21,7 +21,7 @@ export default function Movies(props) {
   // console.log('setSearchOn',searchOn);
   // console.log('allMoviesSaveMovie', allMoviesSaveMovie);
   // console.log('getLocalStorageSavedMovies', getLocalStorageSavedMovies());
-  console.log("searchMovies", searchMovies);
+  // console.log("searchMovies", searchMovies);
 
   //--Состояние кнопки найти--//
   // function SetSearchOn(){
@@ -139,7 +139,7 @@ export default function Movies(props) {
       />
       <MoviesCardList
        searchMovies={searchMovies} 
-       
+       onDelete={props.onDelete}
        movies={props.movies}
        onGetMovies={props.handleGetMovies}
        onAddMovie={props.onAddMovie}

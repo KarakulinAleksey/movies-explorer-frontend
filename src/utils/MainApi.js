@@ -54,52 +54,75 @@ class MainApi {
 
 
      //---------метод запроса на добавление фильма в сохраненные-------//
-     addMovie(
-      country,
-      director,
-      duration,
-      year,
-      description,
-      image,
-      trailerLink,
-      thumbnail,
-      movieId,
-      nameRU,
-      nameEN,
-     ){
-      this._country = country;
-      this._director = director;
-      this._duration = duration;
-      this._year = year;
-      this._description = description;
-      this._image = image;
-      this._trailerLink = trailerLink;
-      this._thumbnail = thumbnail;
-      this._movieId = movieId;
-      this._nameRU = nameRU;
-      this._nameEN = nameEN;
+    //  addMovie(
+    //   country,
+    //   director,
+    //   duration,
+    //   year,
+    //   description,
+    //   image,
+    //   trailerLink,
+    //   thumbnail,
+    //   movieId,
+    //   nameRU,
+    //   nameEN,
+    //  ){
+    //   this._country = country;
+    //   this._director = director;
+    //   this._duration = duration;
+    //   this._year = year;
+    //   this._description = description;
+    //   this._image = image;
+    //   this._trailerLink = trailerLink;
+    //   this._thumbnail = thumbnail;
+    //   this._movieId = movieId;
+    //   this._nameRU = nameRU;
+    //   this._nameEN = nameEN;
 
+    //   return fetch(`${this._baseUrl}/movies/`, {
+    //     method: "POST",
+    //     credentials: 'include',
+    //     headers: this._headers,
+    //     body: JSON.stringify({
+    //       "country": this._country,
+    //       "director": this._director,
+    //       "duration": this._duration,
+    //       "year": this._year,
+    //       "description": this._description,
+    //       "image": this._image,
+    //       "trailerLink": this._trailerLink,
+    //       "thumbnail": this._thumbnail,
+    //       "movieId": this._movieId,
+    //       "nameRU": this._nameRU,
+    //       "nameEN": this._nameEN,
+    //     })
+    //   })
+    //   .then(this._checkResponse)
+        
+    // }
+
+    addMovie(movie) {
       return fetch(`${this._baseUrl}/movies/`, {
         method: "POST",
         credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
-          "country": this._country,
-          "director": this._director,
-          "duration": this._duration,
-          "year": this._year,
-          "description": this._description,
-          "image": this._image,
-          "trailerLink": this._trailerLink,
-          "thumbnail": this._thumbnail,
-          "movieId": this._movieId,
-          "nameRU": this._nameRU,
-          "nameEN": this._nameEN,
-        })
-      })
-      .then(this._checkResponse)
-        
+          country: movie.country,
+          director: movie.director,
+          duration: movie.duration,
+          year: movie.year,
+          description: movie.description,
+          image: movie.image,
+          trailerLink: movie.trailerLink,
+          thumbnail: movie.thumbnail,
+          movieId: movie.movieId,
+          nameRU: movie.nameRU,
+          nameEN: movie.nameEN,
+        }),
+      }).then(this._checkResponse);
     }
+
+
 
     //--метод запроса на удаление фильма--//
     deleteMovie(idMovie) {

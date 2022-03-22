@@ -23,7 +23,7 @@ export default function Login(/*{setOnlogin}*/props) {
     if (!email || !password) {
       return;
     }
-    props.onLogin(password, email);
+    props.onLogin(email, password);
     // auth
     //   .authorize(password, email)
     //   .then((res) => {

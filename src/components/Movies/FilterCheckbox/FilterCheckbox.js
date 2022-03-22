@@ -7,25 +7,25 @@ import filterCheckboxImageOff from "../../../images/smalltumboff.svg";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function FilterCheckbox(props) {
-  const [isfilterCheckboxImage, setfilterCheckboxImage] = React.useState(
-    filterCheckboxImageOff
-  );
+  // const [isfilterCheckboxImage, setfilterCheckboxImage] = React.useState(
+  //   filterCheckboxImageOff
+  // );
 
-  function hendelFilterCheckboxImage() {
-    props.isShortMovie();
-    if (isfilterCheckboxImage === filterCheckboxImageOn) {
-      setfilterCheckboxImage(filterCheckboxImageOff) ;
-    } else if (isfilterCheckboxImage === filterCheckboxImageOff) {
-      setfilterCheckboxImage(filterCheckboxImageOn) ;
-    }
-  }
+  // function hendelFilterCheckboxImage() {
+    
+  //   if (isfilterCheckboxImage === filterCheckboxImageOn) {
+  //     setfilterCheckboxImage(filterCheckboxImageOff) ;
+  //   } else if (isfilterCheckboxImage === filterCheckboxImageOff) {
+  //     setfilterCheckboxImage(filterCheckboxImageOn) ;
+  //   }
+  // }
 
   return (
     <div className="filter-checkbox">
       <img
         className="filter-checkbox__button"
-        onClick={hendelFilterCheckboxImage}
-        src={isfilterCheckboxImage}
+        onClick={props.onFilter}
+        src={props.isShortMovie?filterCheckboxImageOn:filterCheckboxImageOff}
         alt="кнопка короткометражек"
       />
       <p className="filter-checkbox__title">Короткометражки</p>

@@ -38,7 +38,10 @@ export default function MoviesCard(/*{movie}*/ props) {
   //     })
   // }
 
+  const isLiked = /*!props.isSavedMovies && */props.likedMovies(props.movie);
+
   function handleLikeClick() {
+    console.log('props.movie.id', props.movie.id);
     props.onAddMovie({
       country: props.movie.country,
       director: props.movie.director,
@@ -46,7 +49,7 @@ export default function MoviesCard(/*{movie}*/ props) {
       year: props.movie.year,
       description: props.movie.description,
       image: `${baseUrl}${props.movie.image ? props.movie.image.url : ""}`,
-      trailer: props.movie.trailerLink,
+      trailerLink: props.movie.trailerLink,
       thumbnail: `${baseUrl}${
         props.movie.image.formats.thumbnail
           ? props.movie.image.formats.thumbnail.url
@@ -57,6 +60,7 @@ export default function MoviesCard(/*{movie}*/ props) {
       nameEN: props.movie.nameEN,
       isSaved: props.movie.isSaved,
     });
+   
   }
 
   function handleDeleteClick() {
@@ -71,21 +75,21 @@ export default function MoviesCard(/*{movie}*/ props) {
           props.movie.duration / 60
         )}ч ${props.movie.duration % 60}м`}</p>
 
-        {props.isSavedMovies ? (
+        {/* {props.isSavedMovies ? ( */}
           <button
             className="movies-card__buttom-like"
             type="button"
-            onClick={handleDeleteClick}
+            onClick={isLiked?handleDeleteClick:handleLikeClick}
             aria-label="кнопка лайк"
           >
             <img
               className="movies-card__like"
-              src={heartWhite}
+              src={isLiked?heartRed:heartWhite}
               alt="кнопка лайк"
             />
           </button>
-        ) : (
-          <button
+        {/* ) : ( */}
+          {/* <button
             className="movies-card__buttom-like"
             type="button"
             onClick={handleLikeClick}
@@ -93,19 +97,20 @@ export default function MoviesCard(/*{movie}*/ props) {
           >
             <img
               className="movies-card__like"
-              src={heartRed}
+              src={heartWhite}
               alt="кнопка лайк"
             />
-          </button>
-        )}
+          </button> */}
+        {/* )} */}
 
         <img
           className="movies-card__thumbnail"
           // src={`https://api.nomoreparties.co/${movie.image.url}`}
           src={
-            props.isSavedMovies
-              ? props.movie.image
-              : `${baseUrl}${
+            // props.isSavedMovies
+              // ? props.movie.image
+              // : `${baseUrl}${
+                `${baseUrl}${
                   props.movie.image ? props.movie.image.url : props.image
                 }`
           }
