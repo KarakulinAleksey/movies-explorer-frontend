@@ -63,14 +63,14 @@ export default function MoviesCard(/*{movie}*/ props) {
    
   }
 
-  function handleDeleteClick() {
-    props.onDelete(props.movie);
-  }
+  // function handleDeleteClick() {
+  //   props.onDelete(props.movie);
+  // }
 
   return (
     <>
       <div className="movies-card">
-        <p className="movies-card__title">{props.name || props.movie.nameRU}</p>
+        <p className="movies-card__title">{/*props.name || */props.movie.nameRU}</p>
         <p className="movies-card__duration">{`${Math.floor(
           props.movie.duration / 60
         )}ч ${props.movie.duration % 60}м`}</p>
@@ -79,7 +79,7 @@ export default function MoviesCard(/*{movie}*/ props) {
           <button
             className="movies-card__buttom-like"
             type="button"
-            onClick={isLiked?handleDeleteClick:handleLikeClick}
+            onClick={handleLikeClick}
             aria-label="кнопка лайк"
           >
             <img
@@ -102,20 +102,26 @@ export default function MoviesCard(/*{movie}*/ props) {
             />
           </button> */}
         {/* )} */}
-
-        <img
+        <a
+          href={props.trailerLink /*|| props.trailer*/}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
           className="movies-card__thumbnail"
-          // src={`https://api.nomoreparties.co/${movie.image.url}`}
-          src={
-            // props.isSavedMovies
-              // ? props.movie.image
-              // : `${baseUrl}${
-                `${baseUrl}${
-                  props.movie.image ? props.movie.image.url : props.image
-                }`
-          }
-          alt={props.name}
-        />
+        >
+            <img
+              className="movies-card__thumbnail"
+              // src={`https://api.nomoreparties.co/${movie.image.url}`}
+              src={
+                // props.isSavedMovies
+                  // ? props.movie.image
+                  // : `${baseUrl}${
+                    `${baseUrl}${
+                      props.movie.image ? props.movie.image.url : props.image
+                    }`
+              }
+              alt={props.name}
+            />
+        </a>
       </div>
     </>
   );

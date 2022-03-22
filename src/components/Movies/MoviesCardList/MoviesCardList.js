@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "./movies-cardlist.css";
-import MoviesCard from "../MoviesCard/MoviesCard";
-
+import Preloader from "../../Movies/Preloader/Preloader";
+// import MoviesCard from "../MoviesCard/MoviesCard";
+const MoviesCard = React.lazy(() => import("../MoviesCard/MoviesCard"));
 // import { NavLink, useHistory, useLocation } from "react-router-dom";
 // import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
@@ -17,12 +18,24 @@ export default function MoviesCardList(props) {
   //    return cliseMass;
   //  }
 
+  const [counter, setCounter] = React.useState(4);
+
+  function showMoreMovies() {
+    setCounter(counter + 4);
+  }
+
   return (
     <div className="movies-cardlist">
       <div className="movies-cardlist__list">
-        {
+      <Suspense fallback={<Preloader />}>
+
+        {props.message ? (
+            <p className="movies-message">{props.message}</p>
+          ) : (
           // props.searchMovies.map((element) => (
-          props.movies.map((movie) => (
+          props.movies
+          .slice(0, counter)
+          .map((movie) => (
             <MoviesCard
               key={movie.id}
               movie={movie}
@@ -37,9 +50,25 @@ export default function MoviesCardList(props) {
               likedMovies={props.likedMovies}
             />
           ))
-        }
+          )}
+
+        </Suspense>
       </div>
-      <div className="movies-cardlist__button">Ещё</div>
+
+      {props.movies.length >= 4 &&
+      props.movies.length > counter &&
+      props.movies.length <= 100 &&
+      !props.message ? (
+				// <More showMoreMovies={showMoreMovies}  />
+        <button
+         className="movies-cardlist__button"
+         type="button"
+         onClick={showMoreMovies}
+         >Ещё</button>
+      ) : (
+        ""
+      )}
+     
     </div>
   );
 }
