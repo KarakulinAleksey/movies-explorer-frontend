@@ -29,7 +29,7 @@ export default function MoviesCardList(props) {
               name={movie.nameRU}
               duration={movie.duration}
               id={movie._id}
-              // {...movie}
+              {...movie}
               onAddMovie={props.onAddMovie}
               likedMovies={props.likedMovies}
             />

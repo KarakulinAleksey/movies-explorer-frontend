@@ -3,30 +3,35 @@ import "./saved-movies.css";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import FilterCheckbox from "../Movies/FilterCheckbox/FilterCheckbox";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 export default function SavedMovies(props) {
-
   return (
-    <main className="saved-movies">
-      <SearchForm
-       size={props.size}
-       onGetMovies={props.onGetMovies}
-        />
-      <FilterCheckbox
-         onFilter={props.onFilter}
-         isShortMovie={props.isShortMovie}
+    <>
+      <Header
+        size={props.size}
+        handlerNavigationOpen={props.handlerNavigationOpen}
       />
-    
-          {props.movies.length > 0 ? (
+      <main className="saved-movies">
+        <SearchForm size={props.size} onGetMovies={props.onGetMovies} />
+        <FilterCheckbox
+          onFilter={props.onFilter}
+          isShortMovie={props.isShortMovie}
+        />
+
+        {props.movies.length > 0 ? (
           <MoviesCardList
-					  movies={props.movies}
+            movies={props.movies}
             // onGetMovies={props.onGetMovies}
             onDelete={props.onDelete}
             message={props.message}
           />
-          ) : (
-            <p className="movies-message">У вас пока нет сохраненных фильмов</p>
-          )}
-    </main>
+        ) : (
+          <p className="movies-message">У вас пока нет сохраненных фильмов</p>
+        )}
+      </main>
+      <Footer />
+    </>
   );
 }

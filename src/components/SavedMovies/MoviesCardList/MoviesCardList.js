@@ -22,7 +22,7 @@ export default function SavedMoviesCardList(props) {
                   duration={movie.duration}
                   key={id}
                   id={movie._id}
-                  // {...movie}
+                  {...movie}
                   // onAddMovie={props.onAddMovie}
                   onDelete={props.onDelete}
                   // savedMovies={props.savedMovies}

@@ -17,6 +17,8 @@ import { mainApi } from "../../utils/MainApi";
 import { moviesApi } from "../../utils/MoviesApi";
 import * as auth from "../../utils/auth";
 
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+
 function App() {
   const [size, setSize] = React.useState({}); // ширина окна
   const ref = React.useRef(); // рэф App ширина окна
@@ -309,51 +311,51 @@ function App() {
             <Footer />
           </Route>
 
-          <Route path="/movies">
-            <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
-            <Movies
-              size={size}
-              movies={filterShortMovies(sortedMovies)}
-              onGetMovies={handleGetMovies}
-              loggedIn={loggedIn}
-              onAddMovie={handleLikeChange}
-              onFilter={handleCheckBox}
-              isShortMovie={shortMovies} //убрать показывает состояние
-              message={moviesMessage}
-              savedMovies={userMovies} //%%%%
-              onSignOut={handleSignOut}
-              likedMovies={checkSavedMovie}
-            />
-            <Footer />
-          </Route>
+          <ProtectedRoute
+            path="/movies"
+            size={size}
+            handlerNavigationOpen={handlerNavigationOpen}
+            component={Movies}
+            // size={size}
+            movies={filterShortMovies(sortedMovies)}
+            onGetMovies={handleGetMovies}
+            loggedIn={loggedIn}
+            onAddMovie={handleLikeChange}
+            onFilter={handleCheckBox}
+            isShortMovie={shortMovies}
+            message={moviesMessage}
+            // savedMovies={userMovies} //%%%%
+            // onSignOut={handleSignOut}
+            likedMovies={checkSavedMovie}
+          />
 
-          <Route path="/saved-movies">
-            <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
-            <SavedMovies
-              size={size}
-              movies={filterShortMovies(userMovies)}
-              onGetMovies={handleGetSavedMovies}
-              loggedIn={loggedIn}
-              onDelete={handleMovieDeleteButton}
-              isShortMovie={shortMovies}
-              onFilter={handleCheckBox}
-              message={moviesMessage}
-              //  isSavedMovies={true}
-              onSignOut={handleSignOut}
-            />
-            <Footer />
-          </Route>
+          <ProtectedRoute
+            path="/saved-movies"
+            size={size}
+            handlerNavigationOpen={handlerNavigationOpen}
+            component={SavedMovies}
+            movies={filterShortMovies(userMovies)}
+            onGetMovies={handleGetSavedMovies}
+            loggedIn={loggedIn}
+            onDelete={handleMovieDeleteButton}
+            isShortMovie={shortMovies}
+            onFilter={handleCheckBox}
+            message={moviesMessage}
+            //  isSavedMovies={true}
+            onSignOut={handleSignOut}
+          />
 
-          <Route path="/profile">
-            <Header size={size} handlerNavigationOpen={handlerNavigationOpen} />
-            <Profile
-              // setOnLogin={SetOnLogin}
-              onEditUser={handleUpdateUser}
-              onSignOut={handleSignOut}
-              loggedIn={loggedIn}
-              message={message}
-            />
-          </Route>
+          <ProtectedRoute
+            path="/profile"
+            component={Profile}
+            // setOnLogin={SetOnLogin}
+            onEditUser={handleUpdateUser}
+            onSignOut={handleSignOut}
+            loggedIn={loggedIn}
+            message={message}
+            size={size}
+            handlerNavigationOpen={handlerNavigationOpen}
+          />
 
           <Route path="/signin">
             <Login
@@ -368,15 +370,17 @@ function App() {
             <Register onRegister={handleRegister} message={message} />
           </Route>
 
-          <Route path="/page-error">
+          <Route path="*">
             <PageError />
           </Route>
+
         </Switch>
 
         <Navigation
           navigationOpen={navigationOpen}
           handlerNavigationOpen={handlerNavigationOpen}
         />
+        
       </div>
     </СurrentUserContext.Provider>
   );
