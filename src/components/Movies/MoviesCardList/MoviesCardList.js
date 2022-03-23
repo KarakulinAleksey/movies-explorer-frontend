@@ -1,27 +1,15 @@
 import React, { Suspense } from "react";
 import "./movies-cardlist.css";
 import Preloader from "../../Movies/Preloader/Preloader";
-// import MoviesCard from "../MoviesCard/MoviesCard";
 const MoviesCard = React.lazy(() => import("../MoviesCard/MoviesCard"));
-// import { NavLink, useHistory, useLocation } from "react-router-dom";
-// import {CurrentUserContext} from "../contexts/CurrentUserContext";
+
 
 export default function MoviesCardList(props) {
-  //  function sliceMass(mass){
-  //    const newMass = mass;
-  //    console.log(newMass);
-  //    localStorage.removeItem('searchMovies');
-  //    const cliseMass = newMass.slice(0,7);
-  //    console.log(cliseMass);
-  //    localStorage.setItem('searchMovies', JSON.stringify(newMass.splice(0,7)));
-  //    console.log(JSON.parse(localStorage.getItem('searchMovies')));
-  //    return cliseMass;
-  //  }
 
-  const [counter, setCounter] = React.useState(4);
+  const [counter, setCounter] = React.useState(7);
 
   function showMoreMovies() {
-    setCounter(counter + 4);
+    setCounter(counter + 7);
   }
 
   return (
@@ -32,7 +20,6 @@ export default function MoviesCardList(props) {
         {props.message ? (
             <p className="movies-message">{props.message}</p>
           ) : (
-          // props.searchMovies.map((element) => (
           props.movies
           .slice(0, counter)
           .map((movie) => (
@@ -42,11 +29,8 @@ export default function MoviesCardList(props) {
               name={movie.nameRU}
               duration={movie.duration}
               id={movie._id}
-              {...movie}
-              isSavedMovies={props.isSavedMovies}
+              // {...movie}
               onAddMovie={props.onAddMovie}
-              onDelete={props.onDelete}
-              savedMovies={props.savedMovies}
               likedMovies={props.likedMovies}
             />
           ))
@@ -55,11 +39,10 @@ export default function MoviesCardList(props) {
         </Suspense>
       </div>
 
-      {props.movies.length >= 4 &&
+      {props.movies.length >= 7 &&
       props.movies.length > counter &&
       props.movies.length <= 100 &&
       !props.message ? (
-				// <More showMoreMovies={showMoreMovies}  />
         <button
          className="movies-cardlist__button"
          type="button"

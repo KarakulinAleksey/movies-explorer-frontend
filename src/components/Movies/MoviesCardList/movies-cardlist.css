@@ -38,6 +38,7 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 21px;
+  background: transparent;
 }
 
 .movies-cardlist__button:hover{
@@ -62,4 +63,16 @@
 
 .movies-cardlist__list {
   width: 100%;
+}
+
+.movies-message {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  margin: 0 auto 20px;
+  text-align: center;
+	flex: auto;
 }

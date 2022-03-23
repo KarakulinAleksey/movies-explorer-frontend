@@ -24,40 +24,18 @@
   }
 }
 
-/* .saved-movies-cardlist__button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 320px;
-  height: 30px;
-  border: 1px solid #e8e8e8;
-  border-radius: 2px;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  color: #000;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 21px;
-}
-
-@media screen and (max-width: 768px) {
-  .saved-movies-cardlist__button {
-    margin-top: 44px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .saved-movies-cardlist__button {
-    width: 240px;
-    height: 36px;
-    margin-top: 56px;
-    margin-bottom: 5px;
-  }
-} */
-
 .saved-movies-cardlist__list {
   width: 100%;
+}
+
+.movies-message {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  margin: 0 auto 20px;
+  text-align: center;
+	flex: auto;
 }
