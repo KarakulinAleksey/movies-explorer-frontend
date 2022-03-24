@@ -128,6 +128,11 @@
   }
 }
 
+.register__button-disabled{
+  color: #c2c2c2;
+  background: #f8f8f8;
+}
+
 .register__title-input{
   font-family: Inter;
   font-style: normal;
@@ -145,6 +150,17 @@
     font-size: 12px;
     line-height: 14.52px;
   }
+}
+
+.register__input_green:focus {
+  outline: none;
+  border-bottom: 1px solid #2be080;
+}
+
+.register__input-error{
+  outline: 0;
+  border-bottom: 1px solid #ff004c;
+  color: #ee3465;
 }
 
 .register__link-input {

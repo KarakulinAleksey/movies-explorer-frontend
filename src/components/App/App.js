@@ -71,11 +71,16 @@ function App() {
     auth
       .register(name, email, password)
       .then((res) => {
+        console.log('handleRegister', res);
         if (res) {
           setMessage("");
           handleLogin(email, password);
           setLoggedIn(true);
-          setCurrentUser(res);
+          setCurrentUser(
+            { "name": name, 
+              "email" : res.email,
+              "_id" : res._id}
+            );
         }
       })
       .catch((err) => {
@@ -91,6 +96,7 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
+        console.log('handleLogin', data);
         if (!data) {
           setMessage("При автоизации произошла ошибка");
           return false;

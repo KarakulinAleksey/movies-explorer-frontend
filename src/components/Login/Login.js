@@ -1,20 +1,35 @@
 import React from "react";
 import "./login.css";
 import logo from "../../images/logo.svg";
-import * as auth from "../../utils/auth"
-import { NavLink, Link, useHistory, useLocation } from "react-router-dom";
-// import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-export default function Login(/*{setOnlogin}*/props) {
-  const history = useHistory();
+import { NavLink, Link} from "react-router-dom";
+
+export default function Login(props) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [emailError, setEmailError] = React.useState("");
+  const [passwordError, setPasswordError] = React.useState("");
+  const [formValid, setFormValid] = React.useState(false);
 
   function handleChangeEmail(e){
+    const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
+      e.target.value
+    );
+
+    if (!validEmail) {
+      setEmailError("Неверный формат почты");
+    } else {
+      setEmailError("");
+    }
     setEmail(e.target.value);
   }
 
   function handleChangePassword(e){
+    if (e.target.value.length < 8) {
+      setPasswordError("Пароль должен быть не менее 8 символов");
+    } else {
+      setPasswordError("");
+    }
     setPassword(e.target.value);
   }
 
@@ -23,25 +38,23 @@ export default function Login(/*{setOnlogin}*/props) {
     if (!email || !password) {
       return;
     }
-    props.onLogin(email, password);
-    // auth
-    //   .authorize(password, email)
-    //   .then((res) => {
-    //     console.log(res);
-    //    // if (res.data) {
-    //     // if (!(typeof res === "undefined")) { // 15
-    //     //   openInfoTooltipPopup(true);
-    //       history.push("/movies");
-    //       setOnlogin(true);
-    //     // } else {
-    //     //   openInfoTooltipPopup(false);
-    //     // }
-    //   })
-    //   .catch((err) => {
-    //     console.log("Ошибка входа ", err);
-    //     // openInfoTooltipPopup(false);
-    //   });
+    props.onLogin(email, password); 
   }
+
+  React.useEffect(() => {
+    if (props.loggedIn) {
+      setEmail("");
+      setPassword("");
+    }
+  }, [props.loggedIn]);
+
+  React.useEffect(() => {
+    if (email && password && !emailError && !passwordError) {
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+    }
+  }, [email, password, emailError, passwordError]);
 
   return (
     <form onSubmit={handleSubmit} className="login">
@@ -54,24 +67,38 @@ export default function Login(/*{setOnlogin}*/props) {
       <input
         name="email"
         placeholder="email"
-        type="text"
-        className="login__input"
+        type="email"
+        className={`login__input  ${
+          emailError ? "login__input-error" : "login__input_green"
+        }`}
         value={email}
         onChange={handleChangeEmail}
+        required
       />
-      {/* <span class="login__error">Что-то пошло не так ...</span> */}
+      <span className="login__error">{emailError}</span>
       <p className="login__input-title">Пароль</p>
       <input
         name="password"
         placeholder="password"
-        type="text"
-        className="login__input"
+        type="password"
+        className={`login__input 
+        ${passwordError ? "login__input-error" : "login__input_green"}`}
         value={password}
         onChange={handleChangePassword}
+        required
       />
-      {/* <span class="login__error">Что-то пошло не так ...</span> */}
+      <span className="login__error">{passwordError}</span>
       {/* </div> */}
-      <button type="submit" className="login__button">
+      <div className="form__item-error form__item-response">
+            {props.message}
+          </div>
+      <button
+       type="submit"
+       className={`login__button ${
+        !formValid ? "login__button_disabled" : ""
+      }`}
+       disabled={!formValid}
+       >
         Войти
       </button>
       <p className="login__title-input">

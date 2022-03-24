@@ -50,6 +50,15 @@
   }
 }
 
+.profile__input_error{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #ff004c;
+}
+
 .borderLine {
   width: 410px;
   border-bottom: 1px solid #e8e8e8;
@@ -103,4 +112,14 @@
 .profile__button-output:hover{
   opacity: 0.6;
   cursor: pointer;
+}
+
+.profile__input-error{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #ff004c;
+  margin-bottom: 10px;
 }

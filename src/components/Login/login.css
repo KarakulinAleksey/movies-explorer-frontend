@@ -98,6 +98,17 @@
   }
 }
 
+.login__input-error{
+  outline: 0;
+  border-bottom: 1px solid #ff004c;
+  color: #ee3465;
+}
+
+.login__input_green:focus {
+  outline: none;
+  border-bottom: 1px solid #2be080;
+}
+
 .login__button {
   border: none;
   background-color: #3456f3;
@@ -126,6 +137,11 @@
     font-size: 12px;
     line-height: 14.52px;
   }
+}
+
+.login__button_disabled {
+  color: #c2c2c2;
+  background: #f8f8f8;
 }
 
 .login__title-input {

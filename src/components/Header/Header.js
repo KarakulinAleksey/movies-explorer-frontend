@@ -4,16 +4,15 @@ import profile from "../../images/profile.svg";
 import iconMenu from "../../images/icon-main-768.svg";
 
 import "./header.css";
-import { NavLink, useHistory, useLocation } from "react-router-dom";
-// import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Header(props) {
-  // const history = useHistory();
   const location = useLocation();
   let className = "header header__section";
 
   function navLink() {
     if (
+      (location.pathname === "/" && false) ||
       location.pathname === "/movies" ||
       location.pathname === "/saved-movies" ||
       location.pathname === "/profile"
