@@ -50,20 +50,17 @@ export default function SearchForm(props) {
     <div className="search-form">
       {searchFormIconElement()}
       <form className="search-form__form" onSubmit={handleSubmit}>
-      
-          <input
-            name="search-input"
-            placeholder={`${error}?${error}:Фильм`.slice(2,29)}
-            type="text"
-            className="search-form__search-input"
-            minLength="2"
-            maxLength="40"
-            value={searchWord}
-            onChange={handleChangeKeyWord}
-            required
-            
-          />
-        
+        <input
+          name="search-input"
+          placeholder={`${error}?${error}:Фильм`.slice(2, 29)}
+          type="text"
+          className="search-form__search-input"
+          minLength="2"
+          maxLength="40"
+          value={searchWord}
+          onChange={handleChangeKeyWord}
+          required
+        />
       </form>
       <button
         type="button"
@@ -73,7 +70,6 @@ export default function SearchForm(props) {
       >
         Найти
       </button>
-     
     </div>
   );
 }

@@ -23,12 +23,13 @@ export default function SavedMovies(props) {
         {props.movies.length > 0 ? (
           <MoviesCardList
             movies={props.movies}
-            // onGetMovies={props.onGetMovies}
             onDelete={props.onDelete}
             message={props.message}
           />
         ) : (
-          <p className="saved-movies__message">У вас пока нет сохраненных фильмов</p>
+          <p className="saved-movies__message">
+            У вас пока нет сохраненных фильмов
+          </p>
         )}
       </main>
       <Footer />

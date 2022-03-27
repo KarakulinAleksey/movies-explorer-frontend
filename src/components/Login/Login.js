@@ -2,16 +2,16 @@ import React from "react";
 import "./login.css";
 import logo from "../../images/logo.svg";
 
-import { NavLink, Link} from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Login(props) {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
   const [passwordError, setPasswordError] = React.useState("");
   const [formValid, setFormValid] = React.useState(false);
 
-  function handleChangeEmail(e){
+  function handleChangeEmail(e) {
     const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
       e.target.value
     );
@@ -24,7 +24,7 @@ export default function Login(props) {
     setEmail(e.target.value);
   }
 
-  function handleChangePassword(e){
+  function handleChangePassword(e) {
     if (e.target.value.length < 8) {
       setPasswordError("Пароль должен быть не менее 8 символов");
     } else {
@@ -38,7 +38,7 @@ export default function Login(props) {
     if (!email || !password) {
       return;
     }
-    props.onLogin(email, password); 
+    props.onLogin(email, password);
   }
 
   React.useEffect(() => {
@@ -92,20 +92,20 @@ export default function Login(props) {
       <span className="login__error">{passwordError}</span>
       {/* </div> */}
       <div className="form__item-error form__item-response">
-            {props.message}
-          </div>
+        {props.message}
+      </div>
       <button
-       type="submit"
-       className={`login__button ${
-        !formValid ? "login__button_disabled" : ""
-      }`}
-       disabled={!formValid}
-       >
+        type="submit"
+        className={`login__button ${
+          !formValid ? "login__button_disabled" : ""
+        }`}
+        disabled={!formValid}
+      >
         Войти
       </button>
       <p className="login__title-input">
         Ещё не зарегистрированны?
-        <Link className="login__link-input" to="/signup" >
+        <Link className="login__link-input" to="/signup">
           Регистрация
         </Link>
       </p>

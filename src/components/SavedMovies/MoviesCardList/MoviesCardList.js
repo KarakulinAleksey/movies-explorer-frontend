@@ -1,4 +1,3 @@
-
 import React, { Suspense } from "react";
 import "./movies-cardlist.css";
 import Preloader from "../../Movies/Preloader/Preloader";
@@ -23,10 +22,7 @@ export default function SavedMoviesCardList(props) {
                   key={id}
                   id={movie._id}
                   {...movie}
-                  // onAddMovie={props.onAddMovie}
                   onDelete={props.onDelete}
-                  // savedMovies={props.savedMovies}
-                  // likedMovies={props.likedMovies}
                 />
               ))
           )}

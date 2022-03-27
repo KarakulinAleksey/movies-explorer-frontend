@@ -1,6 +1,5 @@
 import React from "react";
 import "./about-me.css";
-// import { NavLink } from "react-router-dom";
 import fotoMe from "../../../images/aboutMe.png";
 
 export default function AboutMe(props) {

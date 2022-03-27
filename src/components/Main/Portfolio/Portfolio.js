@@ -1,7 +1,6 @@
 import React from "react";
 import "./portfolio.css";
 import linkImage from "../../../images/link-image.svg";
-import { NavLink } from "react-router-dom";
 
 export default function Portfolio(props) {
   return (
@@ -12,6 +11,7 @@ export default function Portfolio(props) {
         className="portfolio__link"
         href="https://github.com/KarakulinAleksey/yet-another-project"
         target="_blank"
+        rel="noreferrer"
       >
         <p className="portfolio__link-title">Статичный сайт</p>
         <img className="portfolio__image" src={linkImage} alt="ссылка" />
@@ -20,6 +20,7 @@ export default function Portfolio(props) {
         className="portfolio__link"
         href="https://github.com/KarakulinAleksey/mesto"
         target="_blank"
+        rel="noreferrer"
       >
         <p className="portfolio__link-title">Адаптивный сайт</p>
         <img className="portfolio__image" src={linkImage} alt="ссылка" />
@@ -28,6 +29,7 @@ export default function Portfolio(props) {
         className="portfolio__link"
         href="https://github.com/KarakulinAleksey/movies-explorer-frontend"
         target="_blank"
+        rel="noreferrer"
       >
         <p className="portfolio__link-title">Одностраничное приложение</p>
         <img className="portfolio__image" src={linkImage} alt="ссылка" />

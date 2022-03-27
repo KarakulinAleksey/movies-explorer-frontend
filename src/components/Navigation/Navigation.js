@@ -3,7 +3,6 @@ import "./navigation.css";
 import imageExit from "../../images/deleteButton.svg";
 import imageProfile from "../../images/profile.svg";
 import { NavLink } from "react-router-dom";
-// import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function Navigation(props) {
   return (

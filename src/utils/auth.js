@@ -1,8 +1,8 @@
-export const BASE_URL = "http://localhost:3001";
+import { BASE_URL_AUTH } from "./config";
 
 //--регистрация--//
 export const register = (name, email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL_AUTH}/signup`, {
     method: "POST",
     credentials: 'include',
     headers: {
@@ -23,7 +23,7 @@ export const register = (name, email, password) => {
 
 //--авторизация-----//
 export const authorize = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${BASE_URL_AUTH}/signin`, {
     method: "POST",
     credentials: 'include',
     headers: {
@@ -43,7 +43,7 @@ export const authorize = (email, password) => {
 
 //---выход из аккаунта---//
 export const signout = () => {
-  return fetch(`${BASE_URL}/signout`, {
+  return fetch(`${BASE_URL_AUTH}/signout`, {
       method: 'GET',
       credentials: 'include'
   })

@@ -3,7 +3,6 @@ import "./register.css";
 import logo from "../../images/logo.svg";
 import { NavLink, Link} from "react-router-dom";
 
-
 export default function Register(props) {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');

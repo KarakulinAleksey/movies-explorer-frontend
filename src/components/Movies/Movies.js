@@ -20,11 +20,10 @@ export default function Movies(props) {
           isShortMovie={props.isShortMovie}
         />
         <MoviesCardList
+          size={props.size}
           movies={props.movies}
-          // onGetMovies={props.handleGetMovies}
           onAddMovie={props.onAddMovie}
           message={props.message}
-          //  savedMovies={props.savedMovies}
           likedMovies={props.likedMovies}
         />
       </main>

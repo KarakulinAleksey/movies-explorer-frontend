@@ -2,9 +2,9 @@ import React from "react";
 import "./movies-card.css";
 import heartRed from "../../../images/heartRed.svg";
 import heartWhite from "../../../images/heartWhite.svg";
+import { baseUrl } from "../../../utils/config";
 
 export default function MoviesCard(props) {
-  const baseUrl = "https://api.nomoreparties.co"; //перенести в конфиг
 
   const isLiked = props.likedMovies(props.movie);
 

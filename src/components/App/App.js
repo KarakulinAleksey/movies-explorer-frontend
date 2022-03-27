@@ -16,7 +16,7 @@ import Footer from "../Footer/Footer";
 import { mainApi } from "../../utils/MainApi";
 import { moviesApi } from "../../utils/MoviesApi";
 import * as auth from "../../utils/auth";
-
+import { MAX_DORATION } from "../../utils/config";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
@@ -49,52 +49,28 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    console.log('эффект 51');
-    // console.log(loggedIn);
-    // if (!(getLocalStorageCurrentUser()===null)){
-    //   console.log('getLocalStorageCurrentUser()===!null');
-    //   // setLoggedIn(true);
-    //   setMovies(getLocalStorageMovies())
-    //   setCurrentUser(getLocalStorageCurrentUser());
-    //   // setSortedMovies(getLocalStorageSortedMovies());
-    //   setUserMovies(getLocalStorageUserMovies());
-    // }
-    console.log('loggedIn', loggedIn);
-    if (loggedIn || !(getLocalStorageCurrentUser()===null)){
-
-    const path = location.pathname;
-    const getAuthUser = mainApi.getAuthUser();
+    if (loggedIn || !(getLocalStorageCurrentUser() === null)) {
+      const path = location.pathname;
+      const getAuthUser = mainApi.getAuthUser();
       getAuthUser
-      .then((res) => {
-        if (res) {
-          setLoggedIn(true);
-          setCurrentUser(res);
-          history.push(path);
-          // setMovies(getLocalStorageMovies());
-          // setSortedMovies(getLocalStorageSortedMovies());
-        }
-      })
-      .catch((err) => {
-        console.log("Ошибка при получении данных пользователя ", err);
-        history.push("/");
-      });
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            setCurrentUser(res);
+            history.push(path);
+          }
+        })
+        .catch((err) => {
+          console.log("Ошибка при получении данных пользователя ", err);
+          history.push("/");
+        });
     }
-    
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
-  function getLocalStorageSavedMovies() {
-    return JSON.parse(localStorage.getItem("savedMovies"));
-  }
-
   function getLocalStorageCurrentUser() {
     return JSON.parse(localStorage.getItem("currentUser"));
-  }
-
-  function getLocalStorageUserMovies() {
-    return JSON.parse(localStorage.getItem("userMovies"));
   }
 
   function getLocalStorageSortedMovies() {
@@ -105,20 +81,13 @@ function App() {
     return JSON.parse(localStorage.getItem("movies"));
   }
 
-  function getLocalStorageSearchWord() {
-    return JSON.parse(localStorage.getItem("searchWord"));
-  }
-  
-
   function handleRegister(name, email, password) {
-    console.log('функция handleRegister 111');
     auth
       .register(name, email, password)
       .then((res) => {
         if (res) {
           setMessage("");
           handleLogin(email, password);
-          // setLoggedIn(true);
           setCurrentUser(res);
         }
       })
@@ -132,7 +101,6 @@ function App() {
   }
 
   function handleLogin(email, password) {
-    console.log('функция handleLogin 132');
     auth
       .authorize(email, password)
       .then((data) => {
@@ -180,20 +148,16 @@ function App() {
     setCurrentUser({});
     setLoggedIn(false);
     setMessage("");
-    
+
     localStorage.removeItem("userMovies");
     localStorage.removeItem("sortedMovies");
     localStorage.removeItem("currentUser");
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("movies");
     localStorage.removeItem("searchWord");
-    // console.log('getLocalStorageMovies()',getLocalStorageMovies());
-    
-    // history.push("/");
   };
 
   function handleGetMovies(keyword) {
-    console.log('функция handleGetMovies 192');
     setMoviesMessage("");
     const key = new RegExp(keyword, "gi");
     const findedMovies = movies.filter(
@@ -264,7 +228,6 @@ function App() {
   }
 
   function handleGetSavedMovies(keyword) {
-    console.log('функция handleGetSavedMovies 263');
     setMoviesMessage("");
     const key = new RegExp(keyword, "gi");
     const findedMovies = userMovies.filter(
@@ -279,90 +242,74 @@ function App() {
   }
 
   function handleCheckBox() {
-    console.log('функция handleCheckBox 278');
+    console.log("функция handleCheckBox 278");
     setShortMovies(!shortMovies);
   }
 
   function filterShortMovies(arr) {
-    console.log('функция filterShortMovies 284');
-    // if (loggedIn){
-      if (arr.length !== 0 || arr !== "undefind") {
-        return arr.filter((movie) => (shortMovies ? movie.duration <= 40 : true));
-      }
-    // }
-   
+    if (arr.length !== 0 || arr !== "undefind") {
+      return arr.filter((movie) => (shortMovies ? movie.duration <= MAX_DORATION : true));
+    }
   }
 
   React.useEffect(() => {
-    console.log('эффект loggedIn 294');
-    if (loggedIn /*&& (getLocalStorageCurrentUser()===null)*/){
+    if (loggedIn) {
       Promise.all([mainApi.getAuthUser(), mainApi.getAllMovies()])
-      .then(([userData, savedMovies]) => {
-        localStorage.setItem("currentUser", JSON.stringify(userData));
-        setCurrentUser(userData);
-        const savedMoviesList = savedMovies.filter(
-          (item) => item.owner === userData._id
-        );
-        localStorage.setItem("userMovies", JSON.stringify(savedMoviesList));
-        setUserMovies(savedMoviesList);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then(([userData, savedMovies]) => {
+          localStorage.setItem("currentUser", JSON.stringify(userData));
+          setCurrentUser(userData);
+          const savedMoviesList = savedMovies.filter(
+            (item) => item.owner === userData._id
+          );
+          localStorage.setItem("userMovies", JSON.stringify(savedMoviesList));
+          setUserMovies(savedMoviesList);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
- 
   }, [loggedIn]);
 
   React.useEffect(() => {
-    console.log('эффект userMovies 314');
     checkSavedMovie(sortedMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userMovies]);
 
   React.useEffect(() => {
-    console.log('эффект curredUser 319');
-    // if (loggedIn&&(getLocalStorageMovies()===null)){
-      if (loggedIn && (getLocalStorageMovies()===null)){
+    if (loggedIn && getLocalStorageMovies() === null) {
       moviesApi
-      .getAllMovies()
-      .then((allMovies) => {
-        setMovies(allMovies);
-        localStorage.setItem("movies", JSON.stringify(allMovies));
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-        localStorage.removeItem("movies");
-      });
-    // // }
-    }else{
+        .getAllMovies()
+        .then((allMovies) => {
+          setMovies(allMovies);
+          localStorage.setItem("movies", JSON.stringify(allMovies));
+        })
+        .catch((err) => {
+          console.log(`Ошибка: ${err}`);
+          localStorage.removeItem("movies");
+        });
+    } else {
       setMovies(getLocalStorageMovies());
-     
-      if (getLocalStorageSortedMovies()){
+
+      if (getLocalStorageSortedMovies()) {
         setSortedMovies(getLocalStorageSortedMovies());
       }
-
     }
-   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   function onSignout() {
     auth
       .signout()
-      .then((res) => {
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log("Ошибка выхода ", err);
       });
   }
 
   function checkSavedMovie(movie) {
-    console.log('функция checkSaveMvie 352');
-    // if (loggedIn){
-      return (movie.isSaved = userMovies.some(
-        (userMovie) => userMovie.movieId === movie.id
-      ));
-    // }
-   
+    return (movie.isSaved = userMovies.some(
+      (userMovie) => userMovie.movieId === movie.id
+    ));
   }
 
   // открыть панель навигации Navigation
@@ -374,19 +321,16 @@ function App() {
     }
   }
 
-  console.log('loggedIn_All', loggedIn);
-  console.log('userMovie', userMovies);
-
   return (
     <СurrentUserContext.Provider value={currentUser}>
       <div className="app" ref={ref}>
         <Switch>
           <Route exact path="/">
             <Header
-             size={size}
-             handlerNavigationOpen={handlerNavigationOpen}
-             loggedIn={loggedIn}
-             />
+              size={size}
+              handlerNavigationOpen={handlerNavigationOpen}
+              loggedIn={loggedIn}
+            />
             <Main />
             <Footer />
           </Route>
@@ -396,7 +340,6 @@ function App() {
             size={size}
             handlerNavigationOpen={handlerNavigationOpen}
             component={Movies}
-            // size={size}
             movies={filterShortMovies(sortedMovies)}
             onGetMovies={handleGetMovies}
             loggedIn={loggedIn}
@@ -404,8 +347,6 @@ function App() {
             onFilter={handleCheckBox}
             isShortMovie={shortMovies}
             message={moviesMessage}
-            // savedMovies={userMovies} //%%%%
-            // onSignOut={handleSignOut}
             likedMovies={checkSavedMovie}
           />
 
@@ -421,14 +362,12 @@ function App() {
             isShortMovie={shortMovies}
             onFilter={handleCheckBox}
             message={moviesMessage}
-            //  isSavedMovies={true}
             onSignOut={handleSignOut}
           />
 
           <ProtectedRoute
             path="/profile"
             component={Profile}
-            // setOnLogin={SetOnLogin}
             onEditUser={handleUpdateUser}
             onSignOut={handleSignOut}
             loggedIn={loggedIn}
@@ -442,7 +381,6 @@ function App() {
               onLogin={handleLogin}
               loggedIn={loggedIn}
               message={message}
-              // setOnlogin={SetOnLogin}
             />
           </Route>
 
@@ -453,14 +391,12 @@ function App() {
           <Route path="*">
             <PageError />
           </Route>
-
         </Switch>
 
         <Navigation
           navigationOpen={navigationOpen}
           handlerNavigationOpen={handlerNavigationOpen}
         />
-        
       </div>
     </СurrentUserContext.Provider>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import "./page-error.css";
 import { NavLink} from "react-router-dom";
-// import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 export default function login(props) {
   return (
