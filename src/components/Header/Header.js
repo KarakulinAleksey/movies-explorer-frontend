@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../images/logo.svg";
 import profile from "../../images/profile.svg";
 import iconMenu from "../../images/icon-main-768.svg";
+import iconMenuWhite from "../../images/icon-main-768-white.svg";
 
 import "./header.css";
 import { NavLink, useLocation } from "react-router-dom";
@@ -12,7 +13,7 @@ export default function Header(props) {
 
   function navLink() {
     if (
-      (location.pathname === "/" && false) ||
+      (location.pathname === "/" && props.loggedIn) ||
       location.pathname === "/movies" ||
       location.pathname === "/saved-movies" ||
       location.pathname === "/profile"
@@ -25,14 +26,16 @@ export default function Header(props) {
                 exact
                 to="/movies"
                 activeClassName="header__signup-block_active"
-                className="header__link-movies"
+                className={`header__link-movies 
+                  ${props.loggedIn ? "header_singnup-block-text-main" : ""}`}
               >
                 Фильмы
               </NavLink>
               <NavLink
                 to="/saved-movies"
                 activeClassName="header__signup-block_active"
-                className="header__link-movies"
+                className={`header__link-movies
+                ${props.loggedIn ? "header_singnup-block-text-main" : ""}`}
               >
                 Сохраненные фильмы
               </NavLink>
@@ -48,18 +51,31 @@ export default function Header(props) {
           </>
         );
       } else {
-        return (
-            <button 
-            type="button"
-            className="header__button-menu" 
-            onClick={props.handlerNavigationOpen}
-            aria-label="кнопка открытия формы меню">
+        if (location.pathname === "/" && props.loggedIn) {
+          return (
+            <button
+              type="button"
+              className="header__button-menu-main"
+              onClick={props.handlerNavigationOpen}
+              aria-label="кнопка открытия формы меню"
+            >
               <img
                 className="header__signin"
-                src={iconMenu}
+                src={iconMenuWhite}
                 alt="кнопка меню"
               />
             </button>
+          );
+        }
+        return (
+          <button
+            type="button"
+            className="header__button-menu"
+            onClick={props.handlerNavigationOpen}
+            aria-label="кнопка открытия формы меню"
+          >
+            <img className="header__signin" src={iconMenu} alt="кнопка меню" />
+          </button>
         );
       }
     } else if (location.pathname === "/") {
@@ -90,7 +106,6 @@ export default function Header(props) {
 
   return (
     <header className={(className += backGroundColor())}>
-
       <NavLink className="header__logo" to="/">
         <img className="header__image" src={logo} alt="логотип" />
       </NavLink>

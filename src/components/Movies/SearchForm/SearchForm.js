@@ -31,6 +31,7 @@ export default function SearchForm(props) {
 
   function handleSubmit(item) {
     item.preventDefault();
+    localStorage.setItem("searchWord", JSON.stringify(searchWord));
     props.onGetMovies(searchWord);
     setError("");
     props.onGetMovies(searchWord);

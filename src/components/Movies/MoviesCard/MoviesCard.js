@@ -4,7 +4,7 @@ import heartRed from "../../../images/heartRed.svg";
 import heartWhite from "../../../images/heartWhite.svg";
 
 export default function MoviesCard(props) {
-  const baseUrl = "https://api.nomoreparties.co";
+  const baseUrl = "https://api.nomoreparties.co"; //перенести в конфиг
 
   const isLiked = props.likedMovies(props.movie);
 

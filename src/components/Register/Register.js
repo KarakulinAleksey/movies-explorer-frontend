@@ -42,8 +42,8 @@ export default function Register(props) {
   }
 
   function handleChangePassword(e){
-    if (e.target.value.length < 6) {
-      setPasswordError("Пароль должен быть не менее 6 символов");
+    if (e.target.value.length < 8) {
+      setPasswordError("Пароль должен быть не менее 8 символов");
     } else {
       setPasswordError("");
     }
@@ -85,7 +85,7 @@ export default function Register(props) {
         placeholder="Имя"
         type="text"
         className={`register__input ${nameError ? "register__input-error" : "register__input_green"}`}
-
+        autoComplete="on"
         value={name}
         onChange={handleChangeName}
         required
@@ -99,6 +99,7 @@ export default function Register(props) {
         type="text"
         className={`register__input ${emailError ? "register__input-error" : ''}`}
         value={email}
+        autoComplete="on"
         onChange={handleChangeEmail}
         required
       />
@@ -111,6 +112,7 @@ export default function Register(props) {
         type="text"
         className={`register__input ${passwordError ? "register__input-error" : ""}`}
         value={password}
+        autoComplete="on"
         onChange={handleChangePassword}
         required
       />

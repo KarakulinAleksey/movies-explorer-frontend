@@ -72,6 +72,7 @@ export default function Login(props) {
           emailError ? "login__input-error" : "login__input_green"
         }`}
         value={email}
+        autoComplete="on"
         onChange={handleChangeEmail}
         required
       />
@@ -83,6 +84,7 @@ export default function Login(props) {
         type="password"
         className={`login__input 
         ${passwordError ? "login__input-error" : "login__input_green"}`}
+        autoComplete="on"
         value={password}
         onChange={handleChangePassword}
         required

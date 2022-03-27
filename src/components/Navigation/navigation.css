@@ -4,6 +4,7 @@
   grid-template-rows: 100%;
   width: 100%;
   max-width: 1280px;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
@@ -43,7 +44,7 @@
 .navigation-menu {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 57px 126px 50px 50px 673px;
+  grid-template-rows: 57px 40px 50px 50px 5fr;
   align-items: flex-end;
   justify-items: center;
   background-color: #fff;
@@ -58,7 +59,7 @@
 
 @media screen and (max-width: 420px) {
   .navigation-menu {
-    grid-template-rows: 48px 119px 48px 45px 494px;
+    grid-template-rows: 48px 34px 48px 45px 494px;
   }
 }
 

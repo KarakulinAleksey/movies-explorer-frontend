@@ -81,6 +81,12 @@
   padding: 0;
 }
 
+.header__button-menu-main{
+  border: none;
+  background-color: #073042;
+  padding: 0;
+}
+
 .header__button-menu:hover {
   opacity: 0.6;
   cursor: pointer;
@@ -94,6 +100,8 @@
   font-size: 13px;
   line-height: 18px;
 }
+
+
 
 .header__signup-block_active{
   font-weight: 500;
@@ -153,4 +161,8 @@
 .header__signin-link:hover {
   opacity: 0.6;
   cursor: pointer;
+}
+
+.header_singnup-block-text-main{
+  color:#fff;
 }

@@ -28,7 +28,7 @@ export default function SavedMovies(props) {
             message={props.message}
           />
         ) : (
-          <p className="movies-message">У вас пока нет сохраненных фильмов</p>
+          <p className="saved-movies__message">У вас пока нет сохраненных фильмов</p>
         )}
       </main>
       <Footer />

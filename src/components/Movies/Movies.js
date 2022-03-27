@@ -21,7 +21,7 @@ export default function Movies(props) {
         />
         <MoviesCardList
           movies={props.movies}
-          onGetMovies={props.handleGetMovies}
+          // onGetMovies={props.handleGetMovies}
           onAddMovie={props.onAddMovie}
           message={props.message}
           //  savedMovies={props.savedMovies}

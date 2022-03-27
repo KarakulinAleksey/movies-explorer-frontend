@@ -4,7 +4,7 @@ import "./profile.css";
 import Header from "../Header/Header";
 import { СurrentUserContext } from "../../context/CurrentUserContext";
 
-export default function Profile(/*{setOnLogin}*/ props) {
+export default function Profile(props) {
   const currentUser = React.useContext(СurrentUserContext);
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -14,8 +14,6 @@ export default function Profile(/*{setOnLogin}*/ props) {
   const [emailError, setEmailError] = React.useState("");
   const [isInputDisabled, setIsInputDisabled] = React.useState(true);
   const [formValid, setFormValid] = React.useState(false);
-
-  console.log(currentUser);
 
   React.useEffect(() => {
     if (currentUser.name !== undefined) {
@@ -111,7 +109,7 @@ export default function Profile(/*{setOnLogin}*/ props) {
           name="email"
           placeholder="email"
           type="text"
-          className={`profile__input" ${
+          className={`profile__input ${
             changedEmail && emailError
               ? "profile__input_error"
               : ""
@@ -125,11 +123,11 @@ export default function Profile(/*{setOnLogin}*/ props) {
         <button
          type="submit"
          className="profile__button-edit"
-         disabled={!formValid || name < 2 || email < 2}
+         disabled={!formValid || nameError || emailError}
          onClick={changeInputDisabled}>
           Редактировать
         </button>
-        <div className="form__item-message">{props.message}</div>
+        <div className="profile__item-message">{props.message}</div>
         <Link
           to="/signin"
           className="profile__button-output"
