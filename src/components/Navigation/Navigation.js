@@ -20,7 +20,7 @@ export default function Navigation(props) {
             onClick={props.handlerNavigationOpen}
           >
             <img
-              className="navigation-menu__imageExit"
+              className="navigation-menu__image-exit"
               src={imageExit}
               alt="кнопка выход"
             ></img>
@@ -52,7 +52,7 @@ export default function Navigation(props) {
 
           <NavLink className="navigation-menu__link" to="/profile">
             <img
-              className="navigation-menu__imageProfile"
+              className="navigation-menu__image-profile"
               src={imageProfile}
               alt="кнопка профиля"
             ></img>
