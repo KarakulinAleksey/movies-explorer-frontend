@@ -14,7 +14,10 @@ export default function Movies(props) {
         handlerNavigationOpen={props.handlerNavigationOpen}
       />
       <main className="movies">
-        <SearchForm size={props.size} onGetMovies={props.onGetMovies} />
+        <SearchForm
+         size={props.size}
+         onGetMovies={props.onGetMovies}
+        />
         <FilterCheckbox
           onFilter={props.onFilter}
           isShortMovie={props.isShortMovie}

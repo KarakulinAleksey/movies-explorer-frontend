@@ -1,9 +1,9 @@
 export const baseUrl = "https://api.nomoreparties.co";
 export const BASE_URL = "https://api.nomoreparties.co/beatfilm-movies";
-export const BASE_URL_MAIN_API = "https://api.mov-exp.karakulin.nomoredomains.work";
-export const BASE_URL_AUTH ="https://api.mov-exp.karakulin.nomoredomains.work";
-// export const BASE_URL_MAIN_API = "http://localhost:3001/";
-// export const BASE_URL_AUTH ="http://localhost:3001";
+// export const BASE_URL_MAIN_API = "https://api.mov-exp.karakulin.nomoredomains.work";
+// export const BASE_URL_AUTH ="https://api.mov-exp.karakulin.nomoredomains.work";
+export const BASE_URL_MAIN_API = "http://localhost:3000";
+export const BASE_URL_AUTH ="http://localhost:3000";
 export const MAX_DORATION = 40;
 export const MIN_CARDS_MOBILE = 5;
 export const MIN_CARDS = 7;

@@ -18,6 +18,7 @@ import { moviesApi } from "../../utils/MoviesApi";
 import * as auth from "../../utils/auth";
 import { MAX_DORATION } from "../../utils/config";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ProtectedRouteAuth from "../ProtectedRoute/ProtectedRouteAuth";
 
 function App() {
   const [size, setSize] = React.useState({}); // ширина окна
@@ -31,6 +32,7 @@ function App() {
   const [movies, setMovies] = React.useState([]);
   const [moviesMessage, setMoviesMessage] = React.useState("");
   const [shortMovies, setShortMovies] = React.useState(false);
+  const [shortSavedMovies, setShortSavedMovies] = React.useState(false); //level-3
 
   const history = useHistory();
   let location = useLocation();
@@ -80,6 +82,10 @@ function App() {
   function getLocalStorageMovies() {
     return JSON.parse(localStorage.getItem("movies"));
   }
+
+  function getLocalStorageShortMovies() {
+    return JSON.parse(localStorage.getItem("shortMovies"));
+  }  // level-3
 
   function handleRegister(name, email, password) {
     auth
@@ -149,12 +155,13 @@ function App() {
     setLoggedIn(false);
     setMessage("");
 
-    localStorage.removeItem("userMovies");
+    // localStorage.removeItem("userMovies"); //level-3
     localStorage.removeItem("sortedMovies");
     localStorage.removeItem("currentUser");
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("movies");
     localStorage.removeItem("searchWord");
+    localStorage.removeItem("shortMovies"); //level-3
   };
 
   function handleGetMovies(keyword) {
@@ -236,19 +243,29 @@ function App() {
     if (findedMovies.length === 0) {
       setMoviesMessage("Ничего не найдено");
     } else {
-      setMoviesMessage("");
+      setMoviesMessage(""); 
       setUserMovies(findedMovies);
     }
   }
 
   function handleCheckBox() {
-    console.log("функция handleCheckBox 278");
     setShortMovies(!shortMovies);
+    localStorage.setItem("shortMovies", JSON.stringify(shortMovies));
+  }
+
+  function handleCheckBoxSavedMovies() {  //level-3
+    setShortSavedMovies(!shortSavedMovies);
   }
 
   function filterShortMovies(arr) {
     if (arr.length !== 0 || arr !== "undefind") {
       return arr.filter((movie) => (shortMovies ? movie.duration <= MAX_DORATION : true));
+    }
+  }
+
+  function filterShortSavedMovies(arr) { //level-3
+    if (arr.length !== 0 || arr !== "undefind") {
+      return arr.filter((movie) => (shortSavedMovies ? movie.duration <= MAX_DORATION : true));
     }
   }
 
@@ -261,7 +278,7 @@ function App() {
           const savedMoviesList = savedMovies.filter(
             (item) => item.owner === userData._id
           );
-          localStorage.setItem("userMovies", JSON.stringify(savedMoviesList));
+          // localStorage.setItem("userMovies", JSON.stringify(savedMoviesList)); //level-3
           setUserMovies(savedMoviesList);
         })
         .catch((err) => {
@@ -293,6 +310,12 @@ function App() {
       if (getLocalStorageSortedMovies()) {
         setSortedMovies(getLocalStorageSortedMovies());
       }
+
+      if (getLocalStorageShortMovies()) { //level-3
+        setShortMovies(getLocalStorageShortMovies());
+        handleCheckBox();
+      }
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
@@ -355,12 +378,12 @@ function App() {
             size={size}
             handlerNavigationOpen={handlerNavigationOpen}
             component={SavedMovies}
-            movies={filterShortMovies(userMovies)}
+            movies={filterShortSavedMovies(userMovies)}
             onGetMovies={handleGetSavedMovies}
             loggedIn={loggedIn}
             onDelete={handleMovieDeleteButton}
-            isShortMovie={shortMovies}
-            onFilter={handleCheckBox}
+            isShortMovie={shortSavedMovies}
+            onFilter={handleCheckBoxSavedMovies}
             message={moviesMessage}
             onSignOut={handleSignOut}
           />
@@ -376,17 +399,33 @@ function App() {
             handlerNavigationOpen={handlerNavigationOpen}
           />
 
-          <Route path="/signin">
+          {/* <Route path="/signin">
             <Login
               onLogin={handleLogin}
               loggedIn={loggedIn}
               message={message}
             />
-          </Route>
+          </Route> */}
 
-          <Route path="/signup">
+          <ProtectedRouteAuth // level-3
+            path="/signin"
+            component={Login}
+            onLogin={handleLogin}
+            loggedIn={loggedIn}
+            message={message}
+           />
+           
+          {/* <Route path="/signup">
             <Register onRegister={handleRegister} message={message} />
-          </Route>
+          </Route> */}
+
+          <ProtectedRouteAuth
+            path="/signup"
+            loggedIn={loggedIn}
+            component={Register}
+            onRegister={handleRegister}
+            message={message}
+          />
 
           <Route path="*">
             <PageError />

@@ -129,7 +129,7 @@ export default function Profile(props) {
         </button>
         <div className="profile__item-message">{props.message}</div>
         <Link
-          to="/signin"
+          to="/" //level-3
           className="profile__button-output"
           onClick={props.onSignOut}
         >

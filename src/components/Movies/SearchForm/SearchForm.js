@@ -34,8 +34,8 @@ export default function SearchForm(props) {
     localStorage.setItem("searchWord", JSON.stringify(searchWord));
     props.onGetMovies(searchWord);
     setError("");
-    props.onGetMovies(searchWord);
-    setSearchWord("");
+    // props.onGetMovies(searchWord); //level-3
+    // setSearchWord("");
   }
 
   React.useEffect(() => {
