@@ -149,6 +149,7 @@ function App() {
 
   const handleSignOut = () => {
     onSignout();
+    setShortMovies(false);
     setUserMovies([]);
     setSortedMovies([]);
     setCurrentUser({});
@@ -225,6 +226,7 @@ function App() {
         } else {
           const newMoviesList = userMovies.filter((c) => c.movieId !== movieId);
           setUserMovies(newMoviesList);
+          
         }
       })
       .catch((err) => console.log(`При удалении фильма: ${err}`));
@@ -249,8 +251,9 @@ function App() {
   }
 
   function handleCheckBox() {
+    localStorage.setItem("shortMovies", JSON.stringify(!shortMovies));
     setShortMovies(!shortMovies);
-    localStorage.setItem("shortMovies", JSON.stringify(shortMovies));
+    
   }
 
   function handleCheckBoxSavedMovies() {  //level-3
@@ -292,6 +295,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userMovies]);
 
+  
   React.useEffect(() => {
     if (loggedIn && getLocalStorageMovies() === null) {
       moviesApi
@@ -313,9 +317,7 @@ function App() {
 
       if (getLocalStorageShortMovies()) { //level-3
         setShortMovies(getLocalStorageShortMovies());
-        handleCheckBox();
       }
-
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
