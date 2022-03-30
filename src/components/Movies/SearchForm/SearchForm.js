@@ -23,24 +23,43 @@ export default function SearchForm(props) {
     }
   }
 
-function getLocatioUse(){
-    return location.pathname === "/movies"; 
-} // level-3
+  function getLocatioUse() {
+    return location.pathname === "/movies";
+  } // level-3
 
   function getLocalStorageSearchWord() {
     return JSON.parse(localStorage.getItem("searchWord"));
-  }  // level-3
+  } // level-3
 
-  React.useEffect(()=>{
-    if (getLocalStorageSearchWord()&&getLocatioUse()){
+  React.useEffect(() => {
+    if (getLocalStorageSearchWord() && getLocatioUse()) {
       setSearchWord(getLocalStorageSearchWord());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]); // level-3
 
+  React.useEffect(() => {
+    getLocatioUse() ? console.log() : props.onGetMoviesSavedMovies("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // level-3
 
   function handleChangeKeyWord(item) {
-    getLocatioUse()?setSearchWord(item.target.value):setSearchWordSavedMovie(item.target.value);
-    if (item.target.value.length === 0) {
+    getLocatioUse()
+      ? setSearchWord(item.target.value)
+      : setSearchWordSavedMovie(item.target.value);
+    if (
+      item.target.value.length === 0 ||
+      item.target.value.includes("*") ||
+      item.target.value.includes("/") ||
+      item.target.value.includes("(") ||
+      item.target.value.includes(")") ||
+      item.target.value.includes("+") ||
+      item.target.value.includes("|") ||
+      item.target.value.includes("\\") ||
+      item.target.value.includes("[") ||
+      item.target.value.includes("]") ||
+      item.target.value.includes("?")
+    ) {
       setError("  Нужно ввести ключевое слово");
     } else {
       setError("");
@@ -49,8 +68,12 @@ function getLocatioUse(){
 
   function handleSubmit(item) {
     item.preventDefault();
-    getLocatioUse()?localStorage.setItem("searchWord", JSON.stringify(searchWord)):console.log();
-    getLocatioUse()?props.onGetMovies(searchWord):props.onGetMovies(searchWordSavedMovie);
+    getLocatioUse()
+      ? localStorage.setItem("searchWord", JSON.stringify(searchWord))
+      : console.log();
+    getLocatioUse()
+      ? props.onGetMovies(searchWord)
+      : props.onGetMoviesSavedMovies(searchWordSavedMovie);
     setError("");
     // props.onGetMovies(searchWord); //level-3
     // setSearchWord("");
@@ -64,7 +87,8 @@ function getLocatioUse(){
     }
   }, [searchWord, error]);
 
-  React.useEffect(() => { //level-3
+  React.useEffect(() => {
+    //level-3
     if (searchWordSavedMovie && !error) {
       setFormValid(true);
     } else {
@@ -83,7 +107,7 @@ function getLocatioUse(){
           className="search-form__search-input"
           minLength="2"
           maxLength="40"
-          value={ getLocatioUse()?searchWord:searchWordSavedMovie}
+          value={getLocatioUse() ? searchWord : searchWordSavedMovie}
           onChange={handleChangeKeyWord}
           required
         />

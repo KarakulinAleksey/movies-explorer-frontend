@@ -33,6 +33,7 @@ function App() {
   const [moviesMessage, setMoviesMessage] = React.useState("");
   const [shortMovies, setShortMovies] = React.useState(false);
   const [shortSavedMovies, setShortSavedMovies] = React.useState(false); //level-3
+  const [isLoader, setIsLoader] = React.useState(false); //level-3
 
   const history = useHistory();
   let location = useLocation();
@@ -85,7 +86,11 @@ function App() {
 
   function getLocalStorageShortMovies() {
     return JSON.parse(localStorage.getItem("shortMovies"));
-  }  // level-3
+  } // level-3
+
+  function getLocalStorageUserMovies() {
+    return JSON.parse(localStorage.getItem("userMovies"));
+  } // level-3
 
   function handleRegister(name, email, password) {
     auth
@@ -156,7 +161,7 @@ function App() {
     setLoggedIn(false);
     setMessage("");
 
-    // localStorage.removeItem("userMovies"); //level-3
+    localStorage.removeItem("userMovies"); //level-3
     localStorage.removeItem("sortedMovies");
     localStorage.removeItem("currentUser");
     localStorage.removeItem("savedMovies");
@@ -166,24 +171,28 @@ function App() {
   };
 
   function handleGetMovies(keyword) {
-    setMoviesMessage("");
-    const key = new RegExp(keyword, "gi");
-    const findedMovies = movies.filter(
-      (item) => key.test(item.nameRU) || key.test(item.nameEN)
-    );
-    if (findedMovies.length === 0) {
-      setMoviesMessage("Ничего не найдено");
-    } else {
+    setIsLoader(true);
+    setTimeout(() => {
       setMoviesMessage("");
-      const checkedLikes = findedMovies.map((movie) => {
-        movie.isSaved = userMovies.some(
-          (userMovie) => userMovie.movieId === movie.id
-        );
-        return movie;
-      });
-      setSortedMovies(checkedLikes);
-      localStorage.setItem("sortedMovies", JSON.stringify(checkedLikes));
-    }
+      const key = new RegExp(keyword, "gi");
+      const findedMovies = movies.filter(
+        (item) => key.test(item.nameRU) || key.test(item.nameEN)
+      );
+      if (findedMovies.length === 0) {
+        setMoviesMessage("Ничего не найдено");
+      } else {
+        setMoviesMessage("");
+        const checkedLikes = findedMovies.map((movie) => {
+          movie.isSaved = userMovies.some(
+            (userMovie) => userMovie.movieId === movie.id
+          );
+          return movie;
+        });
+        setSortedMovies(checkedLikes);
+        localStorage.setItem("sortedMovies", JSON.stringify(checkedLikes));
+      }
+      setIsLoader(false);
+    }, 100);
   }
 
   function handleLikeChange(movie) {
@@ -226,7 +235,7 @@ function App() {
         } else {
           const newMoviesList = userMovies.filter((c) => c.movieId !== movieId);
           setUserMovies(newMoviesList);
-          
+          localStorage.setItem("userMovies", JSON.stringify(newMoviesList)); //level-3
         }
       })
       .catch((err) => console.log(`При удалении фильма: ${err}`));
@@ -237,38 +246,51 @@ function App() {
   }
 
   function handleGetSavedMovies(keyword) {
-    setMoviesMessage("");
-    const key = new RegExp(keyword, "gi");
-    const findedMovies = userMovies.filter(
-      (item) => key.test(item.nameRU) || key.test(item.nameEN)
-    );
-    if (findedMovies.length === 0) {
-      setMoviesMessage("Ничего не найдено");
-    } else {
-      setMoviesMessage(""); 
-      setUserMovies(findedMovies);
-    }
+    setIsLoader(true);
+    setTimeout(() => {
+      setMoviesMessage("");
+      if (keyword === "" && getLocalStorageUserMovies()) {
+        setUserMovies(getLocalStorageUserMovies());
+      } else {
+        const key = new RegExp(keyword, "gi");
+        const findedMovies = userMovies.filter(
+          (item) => key.test(item.nameRU) || key.test(item.nameEN)
+        );
+        if (findedMovies.length === 0) {
+          setMoviesMessage("Ничего не найдено");
+        } else {
+          setMoviesMessage("");
+          setUserMovies(findedMovies);
+        }
+      }
+      setIsLoader(false);
+    }, 100);
   }
 
   function handleCheckBox() {
     localStorage.setItem("shortMovies", JSON.stringify(!shortMovies));
     setShortMovies(!shortMovies);
-    
   }
 
-  function handleCheckBoxSavedMovies() {  //level-3
+  function handleCheckBoxSavedMovies() {
+    //level-3
     setShortSavedMovies(!shortSavedMovies);
   }
 
   function filterShortMovies(arr) {
     if (arr.length !== 0 || arr !== "undefind") {
-      return arr.filter((movie) => (shortMovies ? movie.duration <= MAX_DORATION : true));
+      return arr.filter((movie) =>
+        shortMovies ? movie.duration <= MAX_DORATION : true
+      );
     }
   }
 
-  function filterShortSavedMovies(arr) { //level-3
+  function filterShortSavedMovies(arr) {
+    //level-3
     if (arr.length !== 0 || arr !== "undefind") {
-      return arr.filter((movie) => (shortSavedMovies ? movie.duration <= MAX_DORATION : true));
+      return arr.filter((movie) =>
+        shortSavedMovies ? movie.duration <= MAX_DORATION : true
+      );
     }
   }
 
@@ -281,7 +303,7 @@ function App() {
           const savedMoviesList = savedMovies.filter(
             (item) => item.owner === userData._id
           );
-          // localStorage.setItem("userMovies", JSON.stringify(savedMoviesList)); //level-3
+          localStorage.setItem("userMovies", JSON.stringify(savedMoviesList)); //level-3
           setUserMovies(savedMoviesList);
         })
         .catch((err) => {
@@ -295,7 +317,6 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userMovies]);
 
-  
   React.useEffect(() => {
     if (loggedIn && getLocalStorageMovies() === null) {
       moviesApi
@@ -315,7 +336,8 @@ function App() {
         setSortedMovies(getLocalStorageSortedMovies());
       }
 
-      if (getLocalStorageShortMovies()) { //level-3
+      if (getLocalStorageShortMovies()) {
+        //level-3
         setShortMovies(getLocalStorageShortMovies());
       }
     }
@@ -373,6 +395,7 @@ function App() {
             isShortMovie={shortMovies}
             message={moviesMessage}
             likedMovies={checkSavedMovie}
+            isLoader={isLoader}
           />
 
           <ProtectedRoute
@@ -381,13 +404,14 @@ function App() {
             handlerNavigationOpen={handlerNavigationOpen}
             component={SavedMovies}
             movies={filterShortSavedMovies(userMovies)}
-            onGetMovies={handleGetSavedMovies}
+            onGetMoviesSavedMovies={handleGetSavedMovies}
             loggedIn={loggedIn}
             onDelete={handleMovieDeleteButton}
             isShortMovie={shortSavedMovies}
             onFilter={handleCheckBoxSavedMovies}
             message={moviesMessage}
             onSignOut={handleSignOut}
+            isLoader={isLoader}
           />
 
           <ProtectedRoute
@@ -415,8 +439,8 @@ function App() {
             onLogin={handleLogin}
             loggedIn={loggedIn}
             message={message}
-           />
-           
+          />
+
           {/* <Route path="/signup">
             <Register onRegister={handleRegister} message={message} />
           </Route> */}

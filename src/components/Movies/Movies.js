@@ -28,6 +28,7 @@ export default function Movies(props) {
           onAddMovie={props.onAddMovie}
           message={props.message}
           likedMovies={props.likedMovies}
+          isLoader={props.isLoader}
         />
       </main>
       <Footer />

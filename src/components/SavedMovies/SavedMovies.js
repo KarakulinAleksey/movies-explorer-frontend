@@ -7,6 +7,8 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 export default function SavedMovies(props) {
+
+
   
   return (
     <>
@@ -15,7 +17,7 @@ export default function SavedMovies(props) {
         handlerNavigationOpen={props.handlerNavigationOpen}
       />
       <main className="saved-movies">
-        <SearchForm size={props.size} onGetMovies={props.onGetMovies} />
+        <SearchForm size={props.size} onGetMoviesSavedMovies={props.onGetMoviesSavedMovies} />
         <FilterCheckbox
           onFilter={props.onFilter}
           isShortMovie={props.isShortMovie}
@@ -26,6 +28,7 @@ export default function SavedMovies(props) {
             movies={props.movies}
             onDelete={props.onDelete}
             message={props.message}
+            isLoader={props.isLoader}
           />
         ) : (
           <p className="saved-movies__message">

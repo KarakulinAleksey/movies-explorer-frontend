@@ -1,8 +1,9 @@
-import React, { Suspense } from "react";
+import React, {/* Suspense*/ } from "react";
 import "./movies-cardlist.css";
 import Preloader from "../../Movies/Preloader/Preloader";
 import { MIN_CARDS, MAX_CARDS, MIN_CARDS_MOBILE } from "../../../utils/config";
-const MoviesCard = React.lazy(() => import("../MoviesCard/MoviesCard"));
+// const MoviesCard = React.lazy(() => import("../MoviesCard/MoviesCard"));
+import MoviesCard from "../MoviesCard/MoviesCard";
 
 export default function MoviesCardList(props) {
   const [counter, setCounter] = React.useState(displayedCards(props.size));
@@ -27,7 +28,7 @@ export default function MoviesCardList(props) {
   return (
     <div className="movies-cardlist">
       <div className="movies-cardlist__list">
-        <Suspense fallback={<Preloader />}>
+        {/* <Suspense fallback={<Preloader />}>
           {props.message ? (
             <p className="movies-message">{props.message}</p>
           ) : (
@@ -46,7 +47,28 @@ export default function MoviesCardList(props) {
                 />
               ))
           )}
-        </Suspense>
+        </Suspense> */}
+
+         
+          {props.isLoader?<Preloader /> :(props.message ? (
+            <p className="movies-message">{props.message}</p>
+          ) : (
+            props.movies
+              .slice(0, counter)
+              .map((movie) => (
+                <MoviesCard
+                  key={movie.id}
+                  movie={movie}
+                  name={movie.nameRU}
+                  duration={movie.duration}
+                  id={movie._id}
+                  {...movie}
+                  onAddMovie={props.onAddMovie}
+                  likedMovies={props.likedMovies}
+                />
+              ))
+          ))}
+        
       </div>
 
       {props.movies.length >= displayedCards(props.size) &&
