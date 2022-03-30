@@ -75,8 +75,6 @@ export default function SearchForm(props) {
       ? props.onGetMovies(searchWord)
       : props.onGetMoviesSavedMovies(searchWordSavedMovie);
     setError("");
-    // props.onGetMovies(searchWord); //level-3
-    // setSearchWord("");
   }
 
   React.useEffect(() => {
@@ -97,9 +95,8 @@ export default function SearchForm(props) {
   }, [searchWordSavedMovie, error]);
 
   return (
-    <div className="search-form">
+    <form className="search-form" onSubmit={handleSubmit}>
       {searchFormIconElement()}
-      <form className="search-form__form" onSubmit={handleSubmit}>
         <input
           name="search-input"
           placeholder={`${error}?${error}:Фильм`.slice(2, 29)}
@@ -111,15 +108,13 @@ export default function SearchForm(props) {
           onChange={handleChangeKeyWord}
           required
         />
-      </form>
       <button
-        type="button"
-        onClick={handleSubmit}
+        type="submit"
         className="search-form__button"
         disabled={!formValid}
       >
         Найти
       </button>
-    </div>
+     </form>
   );
 }

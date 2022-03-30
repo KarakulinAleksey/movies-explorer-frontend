@@ -72,6 +72,56 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  React.useEffect(() => {
+    if (loggedIn) {
+      Promise.all([mainApi.getAuthUser(), mainApi.getAllMovies()])
+        .then(([userData, savedMovies]) => {
+          localStorage.setItem("currentUser", JSON.stringify(userData));
+          setCurrentUser(userData);
+          const savedMoviesList = savedMovies.filter(
+            (item) => item.owner === userData._id
+          );
+          localStorage.setItem("userMovies", JSON.stringify(savedMoviesList)); //level-3
+          setUserMovies(savedMoviesList);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [loggedIn]);
+
+  React.useEffect(() => {
+    checkSavedMovie(sortedMovies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userMovies]);
+
+  React.useEffect(() => {
+    if (loggedIn && getLocalStorageMovies() === null) {
+      moviesApi
+        .getAllMovies()
+        .then((allMovies) => {
+          setMovies(allMovies);
+          localStorage.setItem("movies", JSON.stringify(allMovies));
+        })
+        .catch((err) => {
+          console.log(`Ошибка: ${err}`);
+          localStorage.removeItem("movies");
+        });
+    } else {
+      setMovies(getLocalStorageMovies());
+
+      if (getLocalStorageSortedMovies()) {
+        setSortedMovies(getLocalStorageSortedMovies());
+      }
+
+      if (getLocalStorageShortMovies()) {
+        //level-3
+        setShortMovies(getLocalStorageShortMovies());
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser]);
+
   function getLocalStorageCurrentUser() {
     return JSON.parse(localStorage.getItem("currentUser"));
   }
@@ -152,24 +202,6 @@ function App() {
       });
   }
 
-  const handleSignOut = () => {
-    onSignout();
-    setShortMovies(false);
-    setUserMovies([]);
-    setSortedMovies([]);
-    setCurrentUser({});
-    setLoggedIn(false);
-    setMessage("");
-
-    localStorage.removeItem("userMovies"); //level-3
-    localStorage.removeItem("sortedMovies");
-    localStorage.removeItem("currentUser");
-    localStorage.removeItem("savedMovies");
-    localStorage.removeItem("movies");
-    localStorage.removeItem("searchWord");
-    localStorage.removeItem("shortMovies"); //level-3
-  };
-
   function handleGetMovies(keyword) {
     setIsLoader(true);
     setTimeout(() => {
@@ -190,6 +222,28 @@ function App() {
         });
         setSortedMovies(checkedLikes);
         localStorage.setItem("sortedMovies", JSON.stringify(checkedLikes));
+      }
+      setIsLoader(false);
+    }, 100);
+  }
+
+  function handleGetSavedMovies(keyword) {
+    setIsLoader(true);
+    setTimeout(() => {
+      setMoviesMessage("");
+      if (keyword === "" && getLocalStorageUserMovies()) {
+        setUserMovies(getLocalStorageUserMovies());
+      } else {
+        const key = new RegExp(keyword, "gi");
+        const findedMovies = userMovies.filter(
+          (item) => key.test(item.nameRU) || key.test(item.nameEN)
+        );
+        if (findedMovies.length === 0) {
+          setMoviesMessage("Ничего не найдено");
+        } else {
+          setMoviesMessage("");
+          setUserMovies(findedMovies);
+        }
       }
       setIsLoader(false);
     }, 100);
@@ -245,27 +299,6 @@ function App() {
     handleDislikeClick(movie);
   }
 
-  function handleGetSavedMovies(keyword) {
-    setIsLoader(true);
-    setTimeout(() => {
-      setMoviesMessage("");
-      if (keyword === "" && getLocalStorageUserMovies()) {
-        setUserMovies(getLocalStorageUserMovies());
-      } else {
-        const key = new RegExp(keyword, "gi");
-        const findedMovies = userMovies.filter(
-          (item) => key.test(item.nameRU) || key.test(item.nameEN)
-        );
-        if (findedMovies.length === 0) {
-          setMoviesMessage("Ничего не найдено");
-        } else {
-          setMoviesMessage("");
-          setUserMovies(findedMovies);
-        }
-      }
-      setIsLoader(false);
-    }, 100);
-  }
 
   function handleCheckBox() {
     localStorage.setItem("shortMovies", JSON.stringify(!shortMovies));
@@ -294,55 +327,29 @@ function App() {
     }
   }
 
-  React.useEffect(() => {
-    if (loggedIn) {
-      Promise.all([mainApi.getAuthUser(), mainApi.getAllMovies()])
-        .then(([userData, savedMovies]) => {
-          localStorage.setItem("currentUser", JSON.stringify(userData));
-          setCurrentUser(userData);
-          const savedMoviesList = savedMovies.filter(
-            (item) => item.owner === userData._id
-          );
-          localStorage.setItem("userMovies", JSON.stringify(savedMoviesList)); //level-3
-          setUserMovies(savedMoviesList);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [loggedIn]);
+  function checkSavedMovie(movie) {
+    return (movie.isSaved = userMovies.some(
+      (userMovie) => userMovie.movieId === movie.id
+    ));
+  }
 
-  React.useEffect(() => {
-    checkSavedMovie(sortedMovies);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userMovies]);
+  const handleSignOut = () => {
+    onSignout();
+    setShortMovies(false);
+    setUserMovies([]);
+    setSortedMovies([]);
+    setCurrentUser({});
+    setLoggedIn(false);
+    setMessage("");
 
-  React.useEffect(() => {
-    if (loggedIn && getLocalStorageMovies() === null) {
-      moviesApi
-        .getAllMovies()
-        .then((allMovies) => {
-          setMovies(allMovies);
-          localStorage.setItem("movies", JSON.stringify(allMovies));
-        })
-        .catch((err) => {
-          console.log(`Ошибка: ${err}`);
-          localStorage.removeItem("movies");
-        });
-    } else {
-      setMovies(getLocalStorageMovies());
-
-      if (getLocalStorageSortedMovies()) {
-        setSortedMovies(getLocalStorageSortedMovies());
-      }
-
-      if (getLocalStorageShortMovies()) {
-        //level-3
-        setShortMovies(getLocalStorageShortMovies());
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+    localStorage.removeItem("userMovies"); //level-3
+    localStorage.removeItem("sortedMovies");
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("savedMovies");
+    localStorage.removeItem("movies");
+    localStorage.removeItem("searchWord");
+    localStorage.removeItem("shortMovies"); //level-3
+  };
 
   function onSignout() {
     auth
@@ -351,12 +358,6 @@ function App() {
       .catch((err) => {
         console.log("Ошибка выхода ", err);
       });
-  }
-
-  function checkSavedMovie(movie) {
-    return (movie.isSaved = userMovies.some(
-      (userMovie) => userMovie.movieId === movie.id
-    ));
   }
 
   // открыть панель навигации Navigation
@@ -425,14 +426,6 @@ function App() {
             handlerNavigationOpen={handlerNavigationOpen}
           />
 
-          {/* <Route path="/signin">
-            <Login
-              onLogin={handleLogin}
-              loggedIn={loggedIn}
-              message={message}
-            />
-          </Route> */}
-
           <ProtectedRouteAuth // level-3
             path="/signin"
             component={Login}
@@ -440,10 +433,6 @@ function App() {
             loggedIn={loggedIn}
             message={message}
           />
-
-          {/* <Route path="/signup">
-            <Register onRegister={handleRegister} message={message} />
-          </Route> */}
 
           <ProtectedRouteAuth
             path="/signup"
