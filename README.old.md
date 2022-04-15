@@ -1,1 +1,0 @@
-Ссылка на фронтенд https://mov-exp.karakulin.nomoredomains.work/
