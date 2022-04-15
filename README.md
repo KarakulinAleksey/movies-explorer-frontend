@@ -1,72 +1,80 @@
-Ссылка на фронтенд https://mov-exp.karakulin.nomoredomains.work/
+# Дипломный проект Movies-explorer :tv: (frontend). 
+  Это фронтенд - часть дипломного выпускного проекта Movies-explorer. Movies-explorer это сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете после авторизации. Фронтенд - часть выполнена на основе сгенерированного макета, сервисом Figma.com.
+  
+  ### Проект состоит из нескольких страниц:
+1.	Главная. Содержит информацию о выполненном проекте.
+2.	Страница с фильмами. На ней есть форма поиска фильмов и блок с результатами поиска.
+3.	Страница с сохранёнными фильмами. Показывает фильмы, сохранённые пользователем.
+4.	Страница регистрации. Позволяет пользователю зарегистрировать аккаунт.
+5.	Страница авторизации. На ней пользователь может войти в систему.
+6.	Страница редактирования профиля. Пользователь может изменить данные своего аккаунта.
+ 
+  В проекте используются два бэкенда. Сторонний бэкенд - сервер для поиска фильмов по ключевому слову и бэкенд разработанный самостоятельно для аутентификации пользователя и сохранения фильмов.  
+  
+Frontend размещен на облачном сервере *Я.Облоко* https://mov-exp.karakulin.nomoredomains.work/  
+Backend размещен на облачном сервере *Я.Облоко* `https://api.mov-exp.karakulin.nomoredomains.work`
 
-# Getting Started with Create React App
+### Функциональность:
+Пользователь вводит в строку поиска ключевые слова и нажимает кнопку «Искать». После этого сайт выполняет два действия:
+-	отправляет запрос к стороннему сервису с данными о фильмах, получает данные и сохраняет;
+-	согласно введенному ключевому слову находит все подходящие фильмы и отображает карточки с ними на странице "Фильмы";
+-	когда пользователь сохраняет фильм, он отображаеться на странице "Сохраненные фильмы", 
+-	фильмы можно фильтровать по типу "короткометражный",
+-	если пользователь покинул страницы но не вышел из аккаунта, при следующем входе на сайт авторизация не потребуется,  
+- header изменяет состояние в зависимости от авторизации пользователя,
+- на разрешении менее 768рх появляется гамбургер-меню,
+- для хранения данных о пользователе использована глобальная стейт-переменная currentUser, созданная с помощью createContext,
+- настроено отражение фильмов по 7 карточек при разрешении до 320px и  по 4 карточки при разрешении менее 320px с кнопкой "еще",
+- сделана микроанимация кнопок, ссылок и инпутов,
+- разметка семантическая и портирована в JSX,
+- все классы названы по БЭМ,
+- вёрстка на Flex layout и/или Grid layout,
+- сайт адаптирован под рарешения: 1280px,  768px и 320рх,
+- в компонент App внедрен контекст через CurrentUserContext.Provider,
+- использованы хуки (useState, useEffect, useContext, useHistory),
+- настроен прелоадер так, чтобы он крутился, пока от сервера идёт ответ,
+- клик по карточке переводит на ютюб-трейлер фильма. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Запросы к собственному API:
+- проверка jwt токена,
+- авторизация с использованием cookie,
+- регистрация,
+- получение данных профиля ,
+- изменение данных профиля ,
+- добавление / удаление фильма в избранное.
+  
+### Запросы API к сервису beatfilm-movies:
+- получение всех фильмов и сохранение их в localStorage,
+- поиск фильма по ключевому слову,
+- сортировка фильмов в зависимости от длительности,
+- запрос на получение фильмов с сервиса beatfilm-movies происходит один раз и сохраняет их в localStorage.
 
-## Available Scripts
+### Роутинг:
+- все роуты, кроме '/ ', 'sign-in', sign-out' защищены HOC-компонентом ProtectedRoute,
+- при попытке перейти по защищенному роуту происходит редирект на главную страницу,
+- после успешной авторизации происходит редирект на /movies.  
 
-In the project directory, you can run:
+### Валидация форм:
+- изменение данных профиля,
+- поле поиска фильма,
+- форма регистрации и логина,
+- уведомление об (не)успешной регистрации.
+ 
+### :computer: Технологии
+- React
+- JavaScript 
+- CSS 
+- Flexbox
+- Grid layout
+- JSX
+- BEM
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### :rocket: Установка и запуск проекта
+*1. Клонируйте репозиторий:*<br/>
+`git clone https://github.com/KarakulinAleksey/movies-explorer-frontend.git`<br/>
+*2. Установите зависимости:*<br/>
+ `npm install`<br/>
+*3. Запустите проект:*<br/>
+ `npm run start` - для запуска <br/>
+Проект запуститься на локальном сервере по адресу: `http://localhost:3000`  
+Бэкенд - часть находиться по адресу https://github.com/KarakulinAleksey/movies-explorer-api.git
