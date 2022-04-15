@@ -1,6 +1,6 @@
 import React from "react";
 import "./about-me.css";
-import fotoMe from "../../../images/aboutMe.png";
+import fotoMe from "../../../images/aboutMe.jpg";
 
 export default function AboutMe(props) {
   return (
@@ -8,29 +8,29 @@ export default function AboutMe(props) {
       <h2 className="about-me__heading">Студент</h2>
       <li className="about-me__blocks-title">
         <div className="about-me__block-title">
-          <h3 className="about-me__block-title-heading">Виталий</h3>
+          <h3 className="about-me__block-title-heading">Алексей</h3>
           <p className="about-me__block-title-subtitle">
-            Фронтенд-разработчик, 30 лет
+            Фронтенд-разработчик, 40 лет
           </p>
           <p className="about-me__block-title-title">
-            Я родился и живу в Саратове, закончил факультет экономики СГУ. У
-            меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь
-            бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ
-            Контур». После того, как прошёл курс по веб-разработке, начал
-            заниматься фриланс-заказами и ушёл с постоянной работы.
+            После окончания университета устроился на работу в энергетику.
+            Работаю инженером и разрабатываю системы управления технологическими процессами.
+            Год назад заинтересовался Web-разработкой.
+            Закончил курс "Web-разработка" Я.Практикум. Очень понравилось.
+            Хочу получить практические навыки и еще сильнее углубиться в Web-разработку.
           </p>
           <div className="about-me__blocks-title-link">
-            <a
+            {/* <a
               className="about-me__block-title-link"
               href="https://www.facebook.com/"
               target="_blank"
               rel="noreferrer"
             >
               Facebook
-            </a>
+            </a> */}
             <a
               className="about-me__block-title-link"
-              href="https://www.github.com/"
+              href="https://github.com/KarakulinAleksey"
               target="_blank"
               rel="noreferrer"
             >

@@ -9,16 +9,7 @@ export default function Portfolio(props) {
 
       <a
         className="portfolio__link"
-        href="https://github.com/KarakulinAleksey/yet-another-project"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <p className="portfolio__link-title">Статичный сайт</p>
-        <img className="portfolio__image" src={linkImage} alt="ссылка" />
-      </a>
-      <a
-        className="portfolio__link"
-        href="https://github.com/KarakulinAleksey/mesto"
+        href="https://karakulinaleksey.github.io/yet-another-project/index.html"
         target="_blank"
         rel="noreferrer"
       >
@@ -27,13 +18,22 @@ export default function Portfolio(props) {
       </a>
       <a
         className="portfolio__link"
-        href="https://github.com/KarakulinAleksey/movies-explorer-frontend"
+        href="https://karakulinaleksey.github.io/mesto/index.html"
         target="_blank"
         rel="noreferrer"
       >
         <p className="portfolio__link-title">Одностраничное приложение</p>
         <img className="portfolio__image" src={linkImage} alt="ссылка" />
       </a>
+      {/* <a
+        className="portfolio__link"
+        href="https://mov-exp.karakulin.nomoredomains.work/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <p className="portfolio__link-title">Многостраничное приложение</p>
+        <img className="portfolio__image" src={linkImage} alt="ссылка" />
+      </a> */}
     </div>
   );
 }

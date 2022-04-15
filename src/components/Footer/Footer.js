@@ -19,20 +19,20 @@ export default function Footer(props) {
       </a>
       <a
         className="footer__link footer__text"
-        href="https://www.github.com/"
+        href="https://github.com/KarakulinAleksey"
         rel="noreferrer"
         target="_blank"
       >
         Github
       </a>
-      <a
+      {/* <a
         className="footer__link footer__text"
         href="https://www.facebook.com/"
         rel="noreferrer"
         target="_blank"
       >
         Facebook
-      </a>
+      </a> */}
     </div>
   );
 }

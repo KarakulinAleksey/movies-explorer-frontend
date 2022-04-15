@@ -222,6 +222,7 @@
 .about-me__block-title-image {
   width: 270px;
   height: 327px;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 768px) {
